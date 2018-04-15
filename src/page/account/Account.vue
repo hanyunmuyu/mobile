@@ -3,7 +3,7 @@
         <mu-list>
             <mu-list-item>
                 <mu-avatar slot="left" src="/static/images/honey.jpg"/>
-                <span class="mu-item-title-row">关注的高校</span>
+                <span class="mu-item-title-row">寒云</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
         </mu-list>

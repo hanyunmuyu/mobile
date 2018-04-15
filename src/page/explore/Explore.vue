@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="header">
-            <mu-appbar title="消息">
-                <mu-icon-button icon="add_alert" slot="right"/>
+            <mu-appbar title="莘莘团">
+                <mu-icon-button icon="search" slot="right"/>
             </mu-appbar>
         </div>
         <mu-list>

@@ -1,10 +1,7 @@
 <template>
     <div>
-        <mu-back-top icon="arrow_upward"/>
+        <mu-back-top :bottom="60" :duration="1500" icon="arrow_upward"/>
 
-        <mu-back-top :height="1" :bottom="60" :right="10" :duration="1000" :callBack="backTopCallBack">
-            <mu-raised-button icon="arrow_upward" label="" primary/>
-        </mu-back-top>
         <div class="footer">
             <mu-paper>
                 <mu-bottom-nav :value="bottomNav" shift @change="handleChange">

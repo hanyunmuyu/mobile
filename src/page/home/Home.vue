@@ -1,10 +1,5 @@
 <template>
     <div>
-        <div class="header">
-            <!--<mu-appbar title="">-->
-            <!--<mu-icon-button icon="search" slot="right"/>-->
-            <!--</mu-appbar>-->
-        </div>
         <mu-tabs :value="activeTab" @change="handleTabChange">
             <mu-tab value="school" title="校园"/>
             <mu-tab value="shetuan" title="社团"/>
