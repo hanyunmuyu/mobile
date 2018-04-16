@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const state = {
   count: 1,
-  loading: false
+  loading: false,
+  footerActive: 'home'
 }
 const mutations = {
   add (state) {
@@ -14,7 +15,13 @@ const mutations = {
     state.count -= 1
   }
 }
+const getters = {
+  footerActive: (state) => {
+    return state.footerActive
+  }
+}
 export default new Vuex.Store({
   state,
+  getters,
   mutations
 })

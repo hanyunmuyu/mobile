@@ -6,6 +6,8 @@ import School from '@/page/school/School'
 import Message from '@/page/message/Message'
 import Explore from '@/page/explore/Explore'
 import Account from '@/page/account/Account'
+import Login from '@/page/account/Login'
+import Register from '@/page/account/Register'
 import Search from '@/page/search/Search'
 
 Vue.use(Router)
@@ -36,6 +38,16 @@ export default new Router({
       path: '/account',
       name: 'Account',
       component: Account
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/search',

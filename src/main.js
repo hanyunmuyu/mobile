@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-
+import axios from 'axios'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+Vue.prototype.$axios = axios
 
 Vue.use(MuseUI)
 Vue.config.productionTip = false

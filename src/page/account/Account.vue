@@ -1,9 +1,11 @@
 <template>
     <div>
+
         <mu-list>
             <mu-list-item>
                 <mu-avatar slot="left" src="/static/images/honey.jpg"/>
-                <span class="mu-item-title-row">寒云</span>
+                <!--<span class="mu-item-title-row">寒云</span>-->
+                <mu-flat-button label="登录/注册" primary @click="login" />
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
         </mu-list>
@@ -85,6 +87,9 @@ export default {
   methods: {
     handleToggle (key) {
       this[key] = !this[key]
+    },
+    login () {
+      this.$router.push('/login')
     }
   }
 }
