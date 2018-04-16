@@ -2,7 +2,7 @@
     <div>
         <div class="header">
             <mu-appbar title="莘莘团">
-                <mu-icon-button icon="search" slot="right"/>
+                <mu-icon-button icon="search" slot="right" @click="search"/>
             </mu-appbar>
         </div>
         <mu-list>
@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  name: 'explore',
   data () {
     return {
       bottomNav: 'explore',
@@ -80,6 +81,9 @@ export default {
     },
     close (position) {
       this[position + 'Popup'] = false
+    },
+    search () {
+      this.$router.push('/search')
     }
   },
   watch: {
