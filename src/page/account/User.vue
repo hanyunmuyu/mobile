@@ -6,8 +6,6 @@
         <mu-list>
             <mu-list-item>
                 <mu-icon value="account_box" slot="left"/>
-                <!--<mu-avatar slot="left"-->
-                <!--src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>-->
                 <mu-text-field hintText="个性签名" value="寒云"/>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
@@ -24,7 +22,6 @@
                 <mu-radio label="男" name="group" class="space" nativeValue="1" v-model="gender"/>
                 <mu-radio label="女" name="group" class="space"  nativeValue="2" v-model="gender"/>
                 <mu-radio label="保密" name="group" class="space"  nativeValue="3" v-model="gender"/>
-
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
 
@@ -96,6 +93,5 @@ export default {
     }
     .space{
         float: left;
-        width: 33%;
     }
 </style>
