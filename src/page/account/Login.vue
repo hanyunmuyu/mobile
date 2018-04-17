@@ -52,7 +52,8 @@ export default {
         return res.data.data
       }).then((res) => {
         this.$store.state.loading = false
-        console.log(res.username)
+        console.log(res.token)
+        localStorage.setItem('token', res.token)
       })
     }
   }

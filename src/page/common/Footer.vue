@@ -35,6 +35,13 @@ export default {
     },
     backTopCallBack () {
       window.alert('I back top!')
+    },
+    checkAuth () {
+      let path = this.$route.path
+      let token = localStorage.getItem('token')
+      if (path.startsWith('/account')) {
+        console.log(token)
+      }
     }
   },
   computed: {
@@ -45,21 +52,21 @@ export default {
   },
   watch: {
     footerActive: (newVal, oldVal) => {
-      console.log(newVal)
-      console.log(oldVal)
+      // console.log(newVal)
+      // console.log(oldVal)
     }
   },
   created: function () {
     // 可以在这里进行认证状态判断
-    console.log(this.$store.state.token + 'created')
     let footerActive = this.$route.path.replace('/', '')
+    this.checkAuth()
     if (footerActive !== '') {
       this.$store.state.footerActive = footerActive
     }
   },
   updated: function () {
     // 可以在这里进行认证状态判断
-    console.log(this.$store.state.token + 'updated')
+    this.checkAuth()
   }
 }
 </script>
