@@ -7,9 +7,9 @@
                 <mu-bottom-nav :value="footerActive" shift @change="handleChange">
                     <mu-bottom-nav-item value="home" title="关注" to="/" icon="home"/>
                     <mu-bottom-nav-item value="explore" title="发现" to="/explore" icon="explore"/>
-                    <mu-bottom-nav-item value="group" title="校园" to="/school" icon="school"/>
-                    <mu-bottom-nav-item value="alert" title="消息" to="/message" icon="add_alert"/>
-                    <mu-bottom-nav-item value="account_circle" title="我的" to="/account" icon="account_circle"/>
+                    <mu-bottom-nav-item value="school" title="校园" to="/school" icon="school"/>
+                    <mu-bottom-nav-item value="message" title="消息" to="/message" icon="add_alert"/>
+                    <mu-bottom-nav-item value="account" title="我的" to="/account" icon="account_circle"/>
                 </mu-bottom-nav>
             </mu-paper>
         </div>
@@ -42,6 +42,24 @@ export default {
       'footerActive',
       'anotherGetter'
     ])
+  },
+  watch: {
+    footerActive: (newVal, oldVal) => {
+      console.log(newVal)
+      console.log(oldVal)
+    }
+  },
+  created: function () {
+    // 可以在这里进行认证状态判断
+    console.log(this.$store.state.token + 'created')
+    let footerActive = this.$route.path.replace('/', '')
+    if (footerActive !== '') {
+      this.$store.state.footerActive = footerActive
+    }
+  },
+  updated: function () {
+    // 可以在这里进行认证状态判断
+    console.log(this.$store.state.token + 'updated')
   }
 }
 </script>

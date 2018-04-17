@@ -5,7 +5,8 @@ Vue.use(Vuex)
 const state = {
   count: 1,
   loading: false,
-  footerActive: 'home'
+  footerActive: 'home',
+  token: '11111'
 }
 const mutations = {
   add (state) {
