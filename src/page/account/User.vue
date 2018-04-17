@@ -50,7 +50,7 @@
                 <mu-flat-button slot="right" label="关闭" color="white" @click="close('bottom')"/>
             </mu-appbar>
             <mu-content-block>
-                <p class="mu-item-title-row text-center">你选择了：{{addressProvince}}--{{addressCity}}</p>
+                <p class="mu-item-title-row selected-text-center">你选择了：{{addressProvince}}--{{addressCity}}</p>
                 <mu-picker :slots="addressSlots" :visible-item-count="5" @change="addressChange" :values="address"/>
             </mu-content-block>
         </mu-popup>
@@ -234,7 +234,7 @@ export default {
         width: 100%;
         max-width: 375px;
     }
-    .text-center{
+    .selected-text-center{
         text-align: center;width: 100%;position:relative;display: block;
     }
 </style>
