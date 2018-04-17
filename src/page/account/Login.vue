@@ -37,19 +37,19 @@ export default {
       this.$router.back()
     },
     login () {
-      let url = 'http://127.0.0.1:85/api/v1/login'
+      // let url = 'http://127.0.0.1:83/api/v1/login'
       var params = new URLSearchParams()
       // 你要传给后台的参数值 key/value
       params.append('username', this.username)
       params.append('password', this.password)
       this.$axios({
         method: 'post',
-        url: url,
+        url: this.$api.login,
         data: params
       }).then((res) => {
         // this.$store.state.loading = true
         // console.log(res.data)
-        return res.data
+        return res.data.data
       }).then((res) => {
         this.$store.state.loading = false
         console.log(res.username)
