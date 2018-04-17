@@ -1,7 +1,8 @@
 <template>
     <div>
-        <mu-appbar title="个人中心" icon="settings">
-            <mu-icon-button icon="settings" slot="right"/>
+        <mu-appbar title="编辑个人资料">
+            <mu-icon-button icon="arrow_back" slot="left" @click="goBack"/>
+            <mu-icon-button icon="edit" slot="right"/>
         </mu-appbar>
         <mu-list>
             <mu-list-item v-if="Object.is(token, null)" @click="login">
@@ -113,6 +114,9 @@ export default {
     },
     login () {
       this.$router.push('/login')
+    },
+    goBack () {
+      this.$router.back()
     }
   },
   computed: {
