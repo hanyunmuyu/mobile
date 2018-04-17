@@ -160,8 +160,8 @@ export default {
       this[position + 'Popup'] = false
     },
     select (position) {
-        this[position + 'Popup'] = false
-        this.address = [this.addressProvince, this.addressCity]
+      this[position + 'Popup'] = false
+      this.address = [this.addressProvince, this.addressCity]
     }
   },
   computed: {
