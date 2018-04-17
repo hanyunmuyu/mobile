@@ -21,7 +21,6 @@
                 <mu-icon value="account_circle" slot="left"/>
                 <mu-radio label="男" name="group" class="space" nativeValue="1" v-model="gender"/>
                 <mu-radio label="女" name="group" class="space"  nativeValue="2" v-model="gender"/>
-                <mu-radio label="保密" name="group" class="space"  nativeValue="3" v-model="gender"/>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
 
@@ -93,5 +92,7 @@ export default {
     }
     .space{
         float: left;
+        padding-left:20px;
+        padding-right:20px;
     }
 </style>

@@ -37,9 +37,12 @@ export default {
       window.alert('I back top!')
     },
     checkAuth () {
-      let path = this.$route.path
-      // let token = localStorage.getItem('token')
-      if (path.startsWith('/account')) {
+      let path = this.$route.path.replace('/', '')
+      let token = localStorage.getItem('token')
+      // console.log(token)
+      // console.log(path.startsWith('auth'))
+      if (path.startsWith('auth') && Object.is(token, null)) {
+        this.$router.push('/login')
       }
     }
   },

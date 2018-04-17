@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "jsonp": "^0.2.1",
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "muse-ui": "^2.1.0",

@@ -37,6 +37,8 @@ export default {
       this.$router.back()
     },
     login () {
+      localStorage.setItem('token', 1)
+
       // let url = 'http://127.0.0.1:83/api/v1/login'
       var params = new URLSearchParams()
       // 你要传给后台的参数值 key/value

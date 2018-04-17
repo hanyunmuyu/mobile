@@ -102,7 +102,7 @@ export default {
       this.$router.push('/login')
     },
     editUserInfo () {
-      this.$router.push('/user')
+      this.$router.push('/auth/user')
     }
   },
   computed: {
