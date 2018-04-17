@@ -6,6 +6,7 @@ import School from '@/page/school/School'
 import Message from '@/page/message/Message'
 import Explore from '@/page/explore/Explore'
 import Account from '@/page/account/Account'
+import User from '@/page/account/User'
 import Login from '@/page/account/Login'
 import Register from '@/page/account/Register'
 import Search from '@/page/search/Search'
@@ -38,6 +39,11 @@ export default new Router({
       path: '/account',
       name: 'Account',
       component: Account
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User
     },
     {
       path: '/login',

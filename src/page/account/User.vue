@@ -5,16 +5,18 @@
         </mu-appbar>
         <mu-list>
             <mu-list-item v-if="Object.is(token, null)" @click="login">
-                <mu-avatar slot="left" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
+                <mu-avatar slot="left"
+                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
                 <!--<span class="mu-item-title-row">寒云{{Object.is(token,null)}}</span>-->
                 <!--<mu-flat-button v-if="!Object.is(token, null)" label="寒云" primary/>-->
                 <!--<mu-flat-button v-else label="登录/注册" primary @click="login" />-->
                 <span class="mu-item-title-row">登录/注册</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
-            <mu-list-item v-else @click="editUserInfo">
-                <mu-avatar slot="left" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
-                <span class="mu-item-title-row">寒云<span style="width: 80%;text-align: right">编辑个人信息</span></span>
+            <mu-list-item v-else>
+                <mu-avatar slot="left"
+                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
+                <span class="mu-item-title-row">寒云</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
         </mu-list>
@@ -22,8 +24,16 @@
 
         <mu-list>
             <mu-list-item>
-                <mu-icon value="favorite" slot="left"/>
-                <span class="mu-item-title-row">收藏的文章</span>
+                <mu-icon value="school" slot="left"/>
+                <mu-select-field v-model="school">
+                    <mu-menu-item value="0" title="选择高校"/>
+                    <mu-menu-item value="1" title="阴阳师"/>
+                    <mu-menu-item value="2" title="影之刃"/>
+                    <mu-menu-item value="3" title="天下HD"/>
+                    <mu-menu-item value="4" title="穿越火线"/>
+                    <mu-menu-item value="5" title="英雄联盟"/>
+                    <mu-menu-item value="6" title="王者荣耀"/>
+                </mu-select-field>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
             <mu-list-item>
@@ -56,7 +66,7 @@
         <mu-list>
             <mu-list-item>
                 <mu-icon value="star_half" slot="left"/>
-                <mu-switch label="夜间模式" labelLeft class="mu-item-title-row" />
+                <mu-switch label="夜间模式" labelLeft class="mu-item-title-row"/>
             </mu-list-item>
             <mu-list-item>
                 <mu-icon value="history" slot="left"/>
@@ -83,7 +93,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 export default {
+  name: 'user',
   data () {
     return {
       events: false,
@@ -91,7 +103,8 @@ export default {
       messages: false,
       notifications: false,
       sounds: false,
-      videoSounds: false
+      videoSounds: false,
+      school: '0'
     }
   },
   methods: {
@@ -100,9 +113,6 @@ export default {
     },
     login () {
       this.$router.push('/login')
-    },
-    editUserInfo () {
-      this.$router.push('/user')
     }
   },
   computed: {
@@ -114,7 +124,7 @@ export default {
 }
 </script>
 <style>
-.demo-icon-badge{
-    display: inline-block;
-}
+    .demo-icon-badge {
+        display: inline-block;
+    }
 </style>
