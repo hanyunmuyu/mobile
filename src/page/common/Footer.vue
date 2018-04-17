@@ -38,16 +38,15 @@ export default {
     },
     checkAuth () {
       let path = this.$route.path
-      let token = localStorage.getItem('token')
+      // let token = localStorage.getItem('token')
       if (path.startsWith('/account')) {
-        console.log(token)
       }
     }
   },
   computed: {
     ...mapGetters([
       'footerActive',
-      'anotherGetter'
+      'token'
     ])
   },
   watch: {

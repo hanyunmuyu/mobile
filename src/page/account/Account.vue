@@ -1,11 +1,19 @@
 <template>
     <div>
-
+        <mu-appbar title="个人中心">
+        </mu-appbar>
         <mu-list>
-            <mu-list-item>
-                <mu-avatar slot="left" src="/static/images/honey.jpg"/>
-                <!--<span class="mu-item-title-row">寒云</span>-->
-                <mu-flat-button label="登录/注册" primary @click="login" />
+            <mu-list-item v-if="Object.is(token, null)" @click="login">
+                <mu-avatar slot="left" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
+                <!--<span class="mu-item-title-row">寒云{{Object.is(token,null)}}</span>-->
+                <!--<mu-flat-button v-if="!Object.is(token, null)" label="寒云" primary/>-->
+                <!--<mu-flat-button v-else label="登录/注册" primary @click="login" />-->
+                <span class="mu-item-title-row">登录/注册</span>
+                <mu-icon value="keyboard_arrow_right" slot="right"/>
+            </mu-list-item>
+            <mu-list-item v-else>
+                <mu-avatar slot="left" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
+                <span class="mu-item-title-row">寒云</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
         </mu-list>
@@ -73,6 +81,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -91,6 +100,12 @@ export default {
     login () {
       this.$router.push('/login')
     }
+  },
+  computed: {
+    ...mapGetters([
+      'footerActive',
+      'token'
+    ])
   }
 }
 </script>
