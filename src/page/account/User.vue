@@ -5,87 +5,30 @@
             <mu-icon-button icon="edit" slot="right"/>
         </mu-appbar>
         <mu-list>
-            <mu-list-item v-if="Object.is(token, null)" @click="login">
-                <mu-avatar slot="left"
-                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
-                <!--<span class="mu-item-title-row">寒云{{Object.is(token,null)}}</span>-->
-                <!--<mu-flat-button v-if="!Object.is(token, null)" label="寒云" primary/>-->
-                <!--<mu-flat-button v-else label="登录/注册" primary @click="login" />-->
-                <span class="mu-item-title-row">登录/注册</span>
+            <mu-list-item>
+                <mu-icon value="account_box" slot="left"/>
+                <!--<mu-avatar slot="left"-->
+                <!--src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>-->
+                <mu-text-field hintText="个性签名" value="寒云"/>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
-            <mu-list-item v-else>
-                <mu-avatar slot="left"
-                           src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
-                <span class="mu-item-title-row">寒云</span>
-                <mu-icon value="keyboard_arrow_right" slot="right"/>
-            </mu-list-item>
-        </mu-list>
-        <mu-divider inset/>
-
-        <mu-list>
             <mu-list-item>
                 <mu-icon value="school" slot="left"/>
                 <mu-select-field v-model="school">
-                    <mu-menu-item value="0" title="选择高校"/>
-                    <mu-menu-item value="1" title="阴阳师"/>
-                    <mu-menu-item value="2" title="影之刃"/>
-                    <mu-menu-item value="3" title="天下HD"/>
-                    <mu-menu-item value="4" title="穿越火线"/>
-                    <mu-menu-item value="5" title="英雄联盟"/>
-                    <mu-menu-item value="6" title="王者荣耀"/>
+                    <mu-menu-item v-for="(item,index) in schoolList" :value="index"  :key="index" :title="item"/>
                 </mu-select-field>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
             <mu-list-item>
-                <mu-icon value="insert_comment" slot="left"/>
-                <span class="mu-item-title-row">发表的评论</span>
-                <mu-icon value="keyboard_arrow_right" slot="right"/>
-            </mu-list-item>
-        </mu-list>
-        <mu-divider inset/>
-
-        <mu-list>
-            <mu-list-item>
-                <mu-icon value="school" slot="left"/>
-                <span class="mu-item-title-row">关注的高校</span>
+                <mu-icon value="edit" slot="left"/>
+                <mu-text-field hintText="个性签名"/>
+                <br/>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
             <mu-list-item>
-                <mu-icon value="group" slot="left"/>
-                <span class="mu-item-title-row">关注的社团</span>
-                <mu-icon value="keyboard_arrow_right" slot="right"/>
-            </mu-list-item>
-            <mu-list-item>
-                <mu-icon value="group_add" slot="left"/>
-                <span class="mu-item-title-row">关注的好友</span>
-                <mu-icon value="keyboard_arrow_right" slot="right"/>
-            </mu-list-item>
-        </mu-list>
-        <mu-divider inset/>
-
-        <mu-list>
-            <mu-list-item>
-                <mu-icon value="star_half" slot="left"/>
-                <mu-switch label="夜间模式" labelLeft class="mu-item-title-row"/>
-            </mu-list-item>
-            <mu-list-item>
-                <mu-icon value="history" slot="left"/>
-                <span class="mu-item-title-row">浏览历史</span>
-                <mu-icon value="keyboard_arrow_right" slot="right"/>
-            </mu-list-item>
-        </mu-list>
-        <mu-divider inset/>
-
-        <mu-list>
-            <mu-list-item>
-                <mu-icon value="share" slot="left"/>
-                <span class="mu-item-title-row">分享莘莘</span>
-                <mu-icon value="keyboard_arrow_right" slot="right"/>
-            </mu-list-item>
-            <mu-list-item>
-                <mu-icon value="help" slot="left"/>
-                <span class="mu-item-title-row">帮助与反馈</span>
+                <mu-icon value="phone" slot="left"/>
+                <mu-text-field hintText="电话号码"/>
+                <br/>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
         </mu-list>
@@ -105,7 +48,8 @@ export default {
       notifications: false,
       sounds: false,
       videoSounds: false,
-      school: '0'
+      school: 1,
+      schoolList: ['请选择高校', '河南工业大学', '郑州大学', '河南财经政法大学']
     }
   },
   methods: {
@@ -128,7 +72,8 @@ export default {
 }
 </script>
 <style>
-    .demo-icon-badge {
-        display: inline-block;
+    .mu-menu-item-title {
+        width: 100%;
+        text-align: center;
     }
 </style>
