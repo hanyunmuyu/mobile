@@ -6,9 +6,9 @@
             <mu-tab value="class" title="班级"/>
         </mu-tabs>
         <div v-if="activeTab === 'shetuan'">
-            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in list" class="list-item" :key="index">
+                <li v-for="(item,index) in shetuanList" class="list-item" :key="index">
                     <img :src="item.image"/>
                     <h2  @click="open('bottom',item.detail)">
                         河南工业大学
@@ -19,11 +19,12 @@
                     </p>
                 </li>
             </ul>
-            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
+            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore(activeTab)"/>
         </div>
         <div v-if="activeTab === 'school'">
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in list" class="list-item" :key="index">
+                <li v-for="(item,index) in schoolList" class="list-item" :key="index">
                     <img :src="item.image"/>
                     <h2  @click="open('bottom',item.detail)">
                         河南工业大学
@@ -34,10 +35,12 @@
                     </p>
                 </li>
             </ul>
+            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore(activeTab)"/>
         </div>
         <div v-if="activeTab === 'class'">
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in list" class="list-item" :key="index">
+                <li v-for="(item,index) in classList" class="list-item" :key="index">
                     <img :src="item.image"/>
                     <h2  @click="open('bottom',item.detail)">
                         河南工业大学
@@ -48,6 +51,7 @@
                     </p>
                 </li>
             </ul>
+            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore(activeTab)"/>
         </div>
 
         <mu-popup position="bottom" popupClass="popup-bottom" :open="bottomPopup" @close="close('bottom')">
@@ -75,7 +79,189 @@ export default {
       loading: false,
       scroller: null,
       num: 10,
-      list: [
+      shetuanList: [
+        {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }
+      ],
+      schoolList: [
+        {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }, {
+          image: '/static/hats.jpg',
+          title: '河南工业大学',
+          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+        }
+      ],
+      classList: [
         {
           image: '/static/hats.jpg',
           title: '河南工业大学',
@@ -186,7 +372,7 @@ export default {
     close (position) {
       this[position + 'Popup'] = false
     },
-    refresh () {
+    refresh (tag) {
       this.refreshing = true
       setTimeout(() => {
         const list = []
@@ -197,22 +383,40 @@ export default {
             detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
           })
         }
-        this.list = list
-        console.log(this.list)
+        if (tag === 'shetuan') {
+          this.shetuanList = list
+        } else if (tag === 'school') {
+          this.schoolList = list
+        } else {
+          this.classList = list
+        }
         this.refreshing = false
       }, 2000)
     },
-    loadMore () {
+    loadMore (tag) {
       this.loading = true
       setTimeout(() => {
         for (let i = this.num; i < this.num + 10; i++) {
-          this.list.push({
-            image: '/static/images/water-plant.jpg',
-            title: '河南工业大学' + i,
-            detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-          })
+          if (tag === 'shetuan') {
+            this.shetuanList.push({
+              image: '/static/images/water-plant.jpg',
+              title: '轮滑社团' + i,
+              detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+            })
+          } else if (tag === 'school') {
+            this.schoolList.push({
+              image: '/static/images/water-plant.jpg',
+              title: '河南工业大学' + i,
+              detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+            })
+          } else {
+            this.classList.push({
+              image: '/static/images/water-plant.jpg',
+              title: '经贸八班' + i,
+              detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
+            })
+          }
         }
-        console.log(this.list)
         this.loading = false
       }, 2000)
     }
