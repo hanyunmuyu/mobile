@@ -9,6 +9,7 @@ import MuseUI from 'muse-ui'
 import FastClick from 'fastclick'
 import 'muse-ui/dist/muse-ui.css'
 import api from './api'
+import 'reset.css'
 FastClick.attach(document.body)
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 Vue.prototype.$axios = axios

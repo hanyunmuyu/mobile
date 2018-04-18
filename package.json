@@ -19,6 +19,7 @@
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "muse-ui": "^2.1.0",
+    "reset.css": "^2.0.2",
     "vue": "^2.5.2",
     "vue-lazyload": "^1.2.3",
     "vue-router": "^3.0.1",
