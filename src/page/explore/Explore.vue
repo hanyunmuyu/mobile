@@ -168,8 +168,8 @@ export default {
       this.$router.push('/search')
     },
     go () {
-      // this.$router.push('/')
-      // this.$store.state.footerActive = 'home'
+      this.$router.push('/home')
+      this.$store.state.footerActive = 'home'
     }
   }
 }
