@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
 import Home from '@/page/home/Home'
 import School from '@/page/school/School'
 import Message from '@/page/message/Message'
