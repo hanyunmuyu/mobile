@@ -164,7 +164,7 @@ export default {
           }, {
             width: '100%',
             textAlign: 'left',
-            values: ['北京']
+            values: address[this.addressProvince]
           }
         ]
       }
