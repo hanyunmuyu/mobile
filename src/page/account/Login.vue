@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'login',
   data () {
@@ -57,6 +59,16 @@ export default {
         console.log(res.token)
         localStorage.setItem('token', res.token)
       })
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'token'
+    ])
+  },
+  beforeCreate: function () {
+    if (!Object.is(this.token, null)) {
+      this.$router.push('/')
     }
   }
 }
