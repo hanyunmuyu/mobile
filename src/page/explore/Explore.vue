@@ -168,7 +168,7 @@ export default {
       this.$router.push('/search')
     },
     go () {
-      this.$router.push('/home')
+      this.$router.push('/detail')
       this.$store.state.footerActive = 'home'
     }
   }

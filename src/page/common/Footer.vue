@@ -2,7 +2,7 @@
     <div>
         <mu-back-top :bottom="60" :duration="1500" icon="arrow_upward"/>
         <mu-linear-progress :size="10" v-if="$store.state.loading"  :strokeWidth="5" :value="0"/>
-        <div class="footer">
+        <div v-if="isShowFooter" class="footer">
             <mu-paper>
                 <mu-bottom-nav :value="footerActive" shift @change="handleChange">
                     <mu-bottom-nav-item value="home" title="关注" to="/home" icon="home"/>
@@ -40,6 +40,7 @@ export default {
   computed: {
     ...mapGetters([
       'footerActive',
+      'isShowFooter',
       'token'
     ])
   },

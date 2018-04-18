@@ -6,7 +6,8 @@ const state = {
   count: 1,
   loading: false,
   footerActive: 'explore',
-  token: null
+  token: null,
+  isShowFooter: true
 }
 const mutations = {
   add (state) {
@@ -22,6 +23,9 @@ const getters = {
   },
   token: () => {
     return localStorage.getItem('token')
+  },
+  isShowFooter: (state) => {
+    return state.isShowFooter
   }
 }
 export default new Vuex.Store({
