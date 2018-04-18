@@ -16,6 +16,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Explore',
+      component: Explore
+    },
+    {
+      path: '/home',
       name: 'Home',
       component: Home
     },
@@ -28,11 +33,6 @@ export default new Router({
       path: '/message',
       name: 'Message',
       component: Message
-    },
-    {
-      path: '/explore',
-      name: 'Explore',
-      component: Explore
     },
     {
       path: '/account',
