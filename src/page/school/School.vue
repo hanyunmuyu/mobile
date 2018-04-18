@@ -11,7 +11,7 @@
                 <li v-for="(item,index) in shetuanList" class="list-item" :key="index">
                     <img :src="item.image"/>
                     <h2  @click="open('bottom',item.detail)">
-                        河南工业大学
+                        {{item.title}}
                     </h2>
                     <p class="ul-list-footer">
                         <mu-checkbox label="喜欢" uncheckIcon="favorite_border" checkedIcon="favorite"/>
@@ -19,15 +19,15 @@
                     </p>
                 </li>
             </ul>
-            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore(activeTab)"/>
+            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
         </div>
         <div v-if="activeTab === 'school'">
-            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
                 <li v-for="(item,index) in schoolList" class="list-item" :key="index">
                     <img :src="item.image"/>
                     <h2  @click="open('bottom',item.detail)">
-                        河南工业大学
+                        {{item.title}}
                     </h2>
                     <p class="ul-list-footer">
                         <mu-checkbox label="喜欢" uncheckIcon="favorite_border" checkedIcon="favorite"/>
@@ -35,15 +35,15 @@
                     </p>
                 </li>
             </ul>
-            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore(activeTab)"/>
+            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
         </div>
         <div v-if="activeTab === 'class'">
-            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
                 <li v-for="(item,index) in classList" class="list-item" :key="index">
                     <img :src="item.image"/>
                     <h2  @click="open('bottom',item.detail)">
-                        河南工业大学
+                        {{item.title}}
                     </h2>
                     <p class="ul-list-footer">
                         <mu-checkbox label="喜欢" uncheckIcon="favorite_border" checkedIcon="favorite"/>
@@ -51,7 +51,7 @@
                     </p>
                 </li>
             </ul>
-            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore(activeTab)"/>
+            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
         </div>
 
         <mu-popup position="bottom" popupClass="popup-bottom" :open="bottomPopup" @close="close('bottom')">
@@ -372,8 +372,9 @@ export default {
     close (position) {
       this[position + 'Popup'] = false
     },
-    refresh (tag) {
+    refresh () {
       this.refreshing = true
+      let tag = this.activeTab
       setTimeout(() => {
         const list = []
         for (let i = this.num; i < this.num + 10; i++) {
@@ -393,26 +394,27 @@ export default {
         this.refreshing = false
       }, 2000)
     },
-    loadMore (tag) {
+    loadMore () {
       this.loading = true
+      let tag = this.activeTab
       setTimeout(() => {
         for (let i = this.num; i < this.num + 10; i++) {
           if (tag === 'shetuan') {
             this.shetuanList.push({
               image: '/static/images/water-plant.jpg',
-              title: '轮滑社团' + i,
+              title: '轮滑社团--------------' + i,
               detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
             })
           } else if (tag === 'school') {
             this.schoolList.push({
               image: '/static/images/water-plant.jpg',
-              title: '河南工业大学' + i,
+              title: '河南工业大学---------' + i,
               detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
             })
           } else {
             this.classList.push({
               image: '/static/images/water-plant.jpg',
-              title: '经贸八班' + i,
+              title: '经贸八班--------' + i,
               detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
             })
           }
