@@ -111,6 +111,17 @@ export default {
       rightPopup: false,
       school: 1,
       schoolList: ['请选择高校', '河南工业大学', '郑州大学', '河南财经政法大学'],
+      addressSlots: [
+        {
+          width: '100%',
+          textAlign: 'right',
+          values: Object.keys(address)
+        }, {
+          width: '100%',
+          textAlign: 'left',
+          values: ['北京']
+        }
+      ],
       gender: '1',
       address: ['北京', '北京'],
       addressProvince: '北京',
@@ -154,21 +165,6 @@ export default {
     }
   },
   computed: {
-    addressSlots: {
-      get: function () {
-        return [
-          {
-            width: '100%',
-            textAlign: 'right',
-            values: Object.keys(address)
-          }, {
-            width: '100%',
-            textAlign: 'left',
-            values: address[this.addressProvince]
-          }
-        ]
-      }
-    },
     ...mapGetters([
       'footerActive',
       'token'
