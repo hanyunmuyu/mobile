@@ -14,7 +14,7 @@
                     <span>寒云</span>
                 </div>
                 <div class="list-title">
-                    <h4>我得意的笑</h4>
+                    我得意的笑
                 </div>
                 <div v-if="item.imgList.length<=1" class="list-content">
                     <div class="list-content-text">
@@ -197,7 +197,12 @@ export default {
         width: 100%;
         height: 25px;
     }
-
+    .list-header span{
+        display: block;
+        line-height: 25px;
+        text-align: center;
+        vertical-align: center;
+    }
     .user-avatar {
         border-radius: 50%;
         overflow: hidden;
@@ -221,8 +226,9 @@ export default {
 
     .list-title {
         text-align: left;
+        font-size: 110%;
+        margin: 6px;
     }
-
     .list-content {
         width: 100%;
         display: flex;
@@ -232,6 +238,8 @@ export default {
         flex: 10;
         text-align: left;
         float: left;
+        font-size: 96%;
+        margin-bottom: 2px;
     }
 
     .list-content-img {
