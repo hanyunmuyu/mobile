@@ -14,8 +14,8 @@
                         {{item.title}}
                     </h2>
                     <p class="ul-list-footer">
-                        <mu-checkbox label="喜欢" uncheckIcon="favorite_border" checkedIcon="favorite"/>
-                        <mu-checkbox label="收藏" uncheckIcon="star_border" checkedIcon="star"/>
+                        <mu-icon size="15" value="favorite_border"/>{{index*10}}
+                        <mu-icon size="15" value="star_border"/>{{index*5}}
                     </p>
                 </li>
             </ul>
@@ -30,8 +30,8 @@
                         {{item.title}}
                     </h2>
                     <p class="ul-list-footer">
-                        <mu-checkbox label="喜欢" uncheckIcon="favorite_border" checkedIcon="favorite"/>
-                        <mu-checkbox label="收藏" uncheckIcon="star_border" checkedIcon="star"/>
+                        <mu-icon size="15" value="favorite_border"/>{{index*10}}
+                        <mu-icon size="15" value="star_border"/>{{index*5}}
                     </p>
                 </li>
             </ul>
@@ -46,8 +46,8 @@
                         {{item.title}}
                     </h2>
                     <p class="ul-list-footer">
-                        <mu-checkbox label="喜欢" uncheckIcon="favorite_border" checkedIcon="favorite"/>
-                        <mu-checkbox label="收藏" uncheckIcon="star_border" checkedIcon="star"/>
+                        <mu-icon size="15" value="favorite_border"/>{{index*10}}
+                        <mu-icon size="15" value="star_border"/>{{index*5}}
                     </p>
                 </li>
             </ul>
