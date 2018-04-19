@@ -37,8 +37,8 @@
                 </div>
                 <div class="list-footer">
                     <span>
-                        <mu-icon size="15" value="favorite_border"/>{{index*10}}
-                        <mu-icon size="15" value="star_border"/>{{index*5}}
+                        <mu-icon :size="12" value="favorite"/>{{index*10}}
+                        <mu-icon :size="14" value="star"/>{{index*5}}
                     </span>
                 </div>
             </mu-list-item>

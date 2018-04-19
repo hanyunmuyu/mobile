@@ -8,15 +8,16 @@
         <div v-if="activeTab === 'shetuan'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in shetuanList" class="list-item" :key="index">
-                    <img :src="item.image"/>
-                    <h2  @click="open('bottom',item.detail)">
+                <li v-for="(item,index) in shetuanList" class="list-item" :key="index" @click.stop="goToShetuan">
+                    <div class="list-item-img">
+                        <img :src="item.image"/>
+                    </div>
+                    <p class="ul-list-footer">
+                        {{index*10000}}人关注
+                    </p>
+                    <h2  @click.stop="open('bottom',item)">
                         {{item.title}}
                     </h2>
-                    <p class="ul-list-footer">
-                        <mu-icon size="15" value="favorite_border"/>{{index*10}}
-                        <mu-icon size="15" value="star_border"/>{{index*5}}
-                    </p>
                 </li>
             </ul>
             <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
@@ -24,15 +25,16 @@
         <div v-if="activeTab === 'school'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in schoolList" class="list-item" :key="index">
-                    <img :src="item.image"/>
-                    <h2  @click="open('bottom',item.detail)">
+                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan">
+                    <div class="list-item-img">
+                        <img :src="item.image"/>
+                    </div>
+                    <p class="ul-list-footer">
+                        {{index*10000}}人关注
+                    </p>
+                    <h2  @click.stop="open('bottom',item)">
                         {{item.title}}
                     </h2>
-                    <p class="ul-list-footer">
-                        <mu-icon size="15" value="favorite_border"/>{{index*10}}
-                        <mu-icon size="15" value="star_border"/>{{index*5}}
-                    </p>
                 </li>
             </ul>
             <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
@@ -40,15 +42,16 @@
         <div v-if="activeTab === 'class'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in classList" class="list-item" :key="index">
-                    <img :src="item.image"/>
-                    <h2  @click="open('bottom',item.detail)">
+                <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToShetuan">
+                    <div class="list-item-img">
+                        <img :src="item.image"/>
+                    </div>
+                    <p class="ul-list-footer">
+                        {{index*10000}}人关注
+                    </p>
+                    <h2  @click.stop="open('bottom',item)">
                         {{item.title}}
                     </h2>
-                    <p class="ul-list-footer">
-                        <mu-icon size="15" value="favorite_border"/>{{index*10}}
-                        <mu-icon size="15" value="star_border"/>{{index*5}}
-                    </p>
                 </li>
             </ul>
             <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
@@ -62,7 +65,6 @@
                 <p>{{detail}}</p>
             </mu-content-block>
         </mu-popup>
-
     </div>
 </template>
 
@@ -81,7 +83,7 @@ export default {
       num: 10,
       shetuanList: [
         {
-          image: '/static/hats.jpg',
+          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524133125781&di=c7963eadce9cc50b0fb01b032d1a7c47&imgtype=0&src=http%3A%2F%2Fpic25.photophoto.cn%2F20121030%2F0008020353982724_b.jpg',
           title: '河南工业大学',
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
         }, {
@@ -359,6 +361,9 @@ export default {
     this.scroller = this.$el
   },
   methods: {
+    goToShetuan () {
+      this.$router.push('/shetuan')
+    },
     handleChange (val) {
       this.bottomNav = val
     },
@@ -439,21 +444,41 @@ export default {
         margin: 0 auto;
         width: 100%;
     }
+    .list-item{
+        position: relative;
+        height: 170px;
+        overflow: hidden;
+    }
     .ul-list .list-item:nth-child(odd){
-        width: 49%;
+        margin-left: 8px;
+        width: 47%;
         float: left;
-        height: 200px;
     }
     .ul-list .list-item:nth-child(even ){
-        width: 49%;
+        width: 47%;
         float: right;
-        height: 200px;
+        margin-right: 8px;
     }
-    .list-item img{
+    .list-item-img{
         width: 100%;
+        max-height: 130px;
+        overflow: hidden;
+    }
+    .list-item-img img{
+        width: 100%;
+    }
+    .ul-list .list-item h2{
+        margin-top: 8px;
     }
     .ul-list-footer{
         width: 100%;
+        position: absolute;
+        top: 110px;
+        height: 25px;
+        line-height: 25px;
+        color: #ffffff;
+        background-color: #424242;
+        opacity: 0.8;
     }
 
     .popup-bottom {
