@@ -238,7 +238,7 @@ export default {
         flex: 10;
         text-align: left;
         float: left;
-        font-size: 96%;
+        font-size: 90%;
         margin-bottom: 2px;
     }
 
