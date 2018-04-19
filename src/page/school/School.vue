@@ -461,14 +461,14 @@ export default {
     }
     .list-item-img{
         width: 100%;
-        max-height: 130px;
+        height: 130px;
         overflow: hidden;
     }
     .list-item-img img{
         width: 100%;
     }
     .ul-list .list-item h2{
-        margin-top: 8px;
+        margin-top: 12px;
     }
     .ul-list-footer{
         width: 100%;
