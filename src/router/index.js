@@ -66,7 +66,7 @@ export default new Router({
       component: Detail
     },
     {
-      path: '/shetuan/:tab',
+      path: '/shetuan',
       name: 'ShetuanHome',
       component: ShetuanHome
     }

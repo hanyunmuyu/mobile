@@ -361,7 +361,7 @@ export default {
   },
   methods: {
     goToShetuan () {
-      this.$router.push('/shetuan/new')
+      this.$router.push('/shetuan')
     },
     handleChange (val) {
       this.bottomNav = val
