@@ -34,6 +34,7 @@ export default {
   name: 'home',
   data () {
     return {
+      activeTab: 'shetuan'
     }
   },
   methods: {
@@ -62,13 +63,9 @@ export default {
       })
     }
   },
-  computed: {
-    activeTab: {
-      get () {
-        return this.$route.params.tab
-      },
-      set (tabActive) {}
-    }
+  beforeMount: function () {
+    // 可以用tab来确定分享后显示的tab页面
+    this.activeTab = this.$route.query.tab === undefined ? this.activeTab : this.$route.query.tab
   }
 }
 </script>

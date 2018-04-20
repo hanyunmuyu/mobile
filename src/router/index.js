@@ -21,7 +21,7 @@ export default new Router({
       component: Explore
     },
     {
-      path: '/home/:tab',
+      path: '/home',
       name: 'Home',
       component: Home
     },

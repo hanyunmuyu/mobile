@@ -9,12 +9,12 @@
             <mu-avatar src="/static/images/water-plant.jpg" slot="avatar"/>
         </mu-card-header>
         <mu-tabs class="tabs" :value="activeTab" @change="handleTabChange">
-            <mu-tab class="tab" value="new" title="最新活动"/>
             <mu-tab class="tab" value="best" title="活动精选"/>
+            <mu-tab class="tab" value="new" title="最新活动"/>
             <mu-tab class="tab" value="album" title="活动相册"/>
             <mu-tab class="tab" value="member" title="成员"/>
         </mu-tabs>
-        <div v-if="activeTab === 'new'">
+        <div v-if="activeTab === 'best'">
             <mu-list>
                 <mu-list-item v-for="index in 10" :key="index">
                     <div style="width: 100%;overflow: hidden;display: flex">
@@ -36,7 +36,7 @@
                 </mu-list-item>
             </mu-list>
         </div>
-        <div v-if="activeTab === 'best'">
+        <div v-if="activeTab === 'new'">
             <mu-list>
                 <mu-list-item v-for="index in 10" :key="index">
                     <div style="width: 100%;overflow: hidden;display: flex">
@@ -82,23 +82,37 @@
         </div>
         <div v-if="activeTab === 'member'">
             <mu-list>
-                <mu-list-item v-for="index in 10" :key="index">
-                    <div style="width: 100%;overflow: hidden;display: flex">
-                        <div style="flex: 3">
-                            <div class="header-left">
-                                <mu-avatar :size=20 src="/static/images/water-plant.jpg" slot="avatar"/>
-                                <span>hanyun</span>
+                <mu-sub-header style="text-align: left">
+                    管理员（10）
+                </mu-sub-header>
+                <mu-list-item>
+                    <ul style="width: 100%;display: block">
+                        <li style="width: 33%;display: block;float: left;margin-bottom: 15px" v-for="index in 9" :key="index">
+                            <div style="width: 100%;">
+                                <mu-avatar :size=68 src="/static/images/avatar4.jpg" slot="avatar"/>
                             </div>
-                            <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
-                                <h1 style="font-size: 110%">钟楼广场进行轮滑报验开始了</h1>
-                                <div style="margin-top: 10px;font-size: 90%">预计下午进行轮滑表演，欢迎大家一起来观赏</div>
-                                <div style="margin-top: 10px;font-size: 80%">点击：100 收藏：10</div>
+                            <div style="width: 100%;min-height: 16px;text-align: center">
+                                寒云
                             </div>
-                        </div>
-                        <div style="flex: 1;">
-                            <img style="width: 100%" src="/static/hats.jpg"/>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
+                </mu-list-item>
+            </mu-list>
+            <mu-list>
+                <mu-sub-header style="text-align: left">
+                    关注的人（100）
+                </mu-sub-header>
+                <mu-list-item>
+                    <ul style="width: 100%;display: block">
+                        <li style="width: 33%;display: block;float: left;margin-bottom: 15px" v-for="index in 20" :key="index">
+                            <div style="width: 100%;">
+                                <mu-avatar size=68 src="/static/images/avatar1.jpg" slot="avatar"/>
+                            </div>
+                            <div style="width: 100%;min-height: 16px;text-align: center">
+                                寒云
+                            </div>
+                        </li>
+                    </ul>
                 </mu-list-item>
             </mu-list>
         </div>
@@ -131,16 +145,19 @@ export default {
 }
 </script>
 <style scoped>
-    .header-left{
+    .header-left {
         text-align: left;
     }
-    .tabs{
+
+    .tabs {
         background: #fafafa;
     }
-    .tab{
+
+    .tab {
         color: #757575;
     }
-    .mu-tab-active{
+
+    .mu-tab-active {
         color: #7e57c2;
     }
 </style>
