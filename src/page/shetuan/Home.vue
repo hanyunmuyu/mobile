@@ -85,35 +85,31 @@
                 <mu-sub-header style="text-align: left">
                     管理员（10）
                 </mu-sub-header>
-                <mu-list-item>
-                    <ul style="width: 100%;display: block">
-                        <li style="width: 33%;display: block;float: left;margin-bottom: 15px" v-for="index in 9" :key="index">
-                            <div style="width: 100%;">
-                                <mu-avatar :size=68 src="/static/images/avatar4.jpg" slot="avatar"/>
-                            </div>
-                            <div style="width: 100%;min-height: 16px;text-align: center">
-                                寒云
-                            </div>
-                        </li>
-                    </ul>
-                </mu-list-item>
+                <ul style="width: 100%;display: block">
+                    <li style="width: 33%;display: block;float: left;margin-bottom: 15px" v-for="index in 9" :key="index">
+                        <div style="width: 100%;">
+                            <mu-avatar :size=68 src="/static/images/avatar4.jpg" slot="avatar"/>
+                        </div>
+                        <div style="width: 100%;min-height: 16px;text-align: center">
+                            寒云
+                        </div>
+                    </li>
+                </ul>
             </mu-list>
             <mu-list>
                 <mu-sub-header style="text-align: left">
                     关注的人（100）
                 </mu-sub-header>
-                <mu-list-item>
-                    <ul style="width: 100%;display: block">
-                        <li style="width: 33%;display: block;float: left;margin-bottom: 15px" v-for="index in 20" :key="index">
-                            <div style="width: 100%;">
-                                <mu-avatar :size=68 src="/static/images/avatar1.jpg" slot="avatar"/>
-                            </div>
-                            <div style="width: 100%;min-height: 16px;text-align: center">
-                                寒云
-                            </div>
-                        </li>
-                    </ul>
-                </mu-list-item>
+                <ul style="width: 100%;display: block">
+                    <li style="width: 33%;display: block;float: left;margin-bottom: 15px" v-for="index in 20" :key="index">
+                        <div style="width: 100%;">
+                            <mu-avatar :size=68 src="/static/images/avatar1.jpg" slot="avatar"/>
+                        </div>
+                        <div style="width: 100%;min-height: 16px;text-align: center">
+                            寒云
+                        </div>
+                    </li>
+                </ul>
             </mu-list>
         </div>
     </div>
@@ -121,7 +117,7 @@
 
 <script>
 export default {
-  name: 'explore',
+  name: 'shetuan',
   data () {
     return {
       activeTab: 'new'

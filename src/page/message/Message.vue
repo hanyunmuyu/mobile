@@ -9,7 +9,7 @@
             <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
                 <mu-avatar src="/static/images/honey.jpg" slot="leftAvatar"/>
                 <span slot="describe">
-                            <span style="color: rgba(0, 0, 0, .87)">Myron Liu -</span> 周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
                         </span>
                 <mu-icon-menu slot="right" icon="keyboard_arrow_down" tooltip="操作">
                     <mu-menu-item title="回复"/>
@@ -21,18 +21,11 @@
         </mu-list>
     </div>
 </template>
-
 <script>
 export default {
+  name: 'message',
   data () {
     return {
-      bottomNav: 'explore',
-      bottomNavColor: 'explore',
-      activeTab: 'school',
-      bottomPopup: false,
-      topPopup: false,
-      leftPopup: false,
-      rightPopup: false,
       list: [
         {
           image: '/static/hats.jpg',
@@ -70,49 +63,9 @@ export default {
       ]
     }
   },
-  methods: {
-    handleChange (val) {
-      this.bottomNav = val
-    },
-    handleTabChange (val) {
-      this.activeTab = val
-    },
-    handleActive () {
-      window.alert('tab active')
-    },
-    open (position) {
-      this[position + 'Popup'] = true
-    },
-    close (position) {
-      this[position + 'Popup'] = false
-    }
-  },
-  watch: {
-    topPopup (val) {
-      if (val) {
-        setTimeout(() => {
-          this.topPopup = false
-        }, 2000)
-      }
-    }
-  }
+  methods: {}
 }
 </script>
 <style>
-    .header {
-        /*position: fixed;*/
-        top: 0;
-        width: 100%;
-    }
 
-    .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .popup-bottom {
-        width: 100%;
-        max-width: 375px;
-    }
 </style>
