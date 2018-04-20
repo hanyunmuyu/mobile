@@ -3,8 +3,8 @@
         <mu-tabs :value="activeTab" @change="handleTabChange">
             <mu-tab to="/home" value="school" title="校园"/>
             <mu-tab to="/home" value="shetuan" title="社团"/>
-            <mu-tab to="/home" value="class" title="班级"/>
             <mu-tab to="/home" value="student" title="同学"/>
+            <mu-tab to="/home" value="class" title="班级"/>
         </mu-tabs>
         <div>
             <div v-if="activeTab === 'school'">
@@ -18,7 +18,7 @@
                     </mu-list-item>
                 </mu-list>
             </div>
-            <div v-if="activeTab === 'shetuan'">
+            <div v-else-if="activeTab === 'shetuan'">
                 <mu-list>
                     <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
                         <mu-avatar src="/static/images/honey.jpg" slot="left"/>
@@ -29,7 +29,7 @@
                     </mu-list-item>
                 </mu-list>
             </div>
-            <div v-if="activeTab === 'class'">
+            <div v-else-if="activeTab === 'student'">
                 <mu-list>
                     <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
                         <mu-avatar src="/static/images/honey.jpg" slot="left"/>
@@ -40,7 +40,7 @@
                     </mu-list-item>
                 </mu-list>
             </div>
-            <div v-if="activeTab === 'student'">
+            <div v-else-if="activeTab === 'class'">
                 <mu-list>
                     <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
                         <mu-avatar src="/static/images/honey.jpg" slot="left"/>

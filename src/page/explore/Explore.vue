@@ -6,43 +6,24 @@
             </mu-appbar>
         </div>
         <mu-list>
-            <mu-list-item @click="go()" v-for="(item,index) in list" :key="index">
-                <div class="list-header">
-                    <div class="user-avatar">
-                        <img :src="item.avatar">
+            <mu-list-item @click="go" v-for="index in 10" :key="index">
+                <div style="width: 100%;overflow: hidden;display: flex">
+                    <div style="flex: 3">
+                        <div class="header-left">
+                            <mu-avatar :size=20 src="/static/images/water-plant.jpg" slot="avatar"/>
+                            <span>hanyun</span>
+                        </div>
+                        <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
+                            <h1 style="font-size: 110%">钟楼广场进行轮滑报验开始了</h1>
+                            <div style="margin-top: 10px;font-size: 90%">预计下午进行轮滑表演，欢迎大家一起来观赏</div>
+                            <div style="margin-top: 10px;font-size: 80%">点击：100 收藏：10</div>
+                        </div>
                     </div>
-                    <span>寒云</span>
-                </div>
-                <div class="list-title">
-                    我得意的笑
-                </div>
-                <div v-if="item.imgList.length<=1" class="list-content">
-                    <div class="list-content-text">
-                        {{item.description}}
+                    <div style="flex: 1;">
+                        <img style="width: 100%" src="/static/hats.jpg"/>
                     </div>
-                    <div v-if="true" class="list-content-img">
-                        <img class="img-1" v-for="(img,k) in item.imgList" :src="img" :key="k">
-                    </div>
-                </div>
-                <div v-else class="list-content-hasImages">
-                    <div class="list-content-text">
-                        {{item.description}}
-                    </div>
-                    <div v-if="item.imgList.length===2" class="list-content-img">
-                        <img class="img-2" v-for="(img,k) in item.imgList" :src="img" :key="k">
-                    </div>
-                    <div v-else-if="item.imgList.length===3" class="list-content-img">
-                        <img class="img-3" v-for="(img,k) in item.imgList" :src="img" :key="k">
-                    </div>
-                </div>
-                <div class="list-footer">
-                    <span>
-                        <mu-icon :size="12" value="favorite"/>{{index*10}}
-                        <mu-icon :size="14" value="star"/>{{index*5}}
-                    </span>
                 </div>
             </mu-list-item>
-            <mu-divider inset/>
         </mu-list>
     </div>
 </template>
@@ -191,72 +172,7 @@ export default {
         width: 100%;
         max-width: 375px;
     }
-
-    .list-header {
-        display: block;
-        width: 100%;
-        height: 25px;
-    }
-    .list-header span{
-        display: block;
-        line-height: 25px;
-        text-align: center;
-        vertical-align: center;
-    }
-    .user-avatar {
-        border-radius: 50%;
-        overflow: hidden;
-        width: 25px;
-        height: 25px;
-        display: inline-block;
-        position: relative;
-        float: left;
-    }
-
-    .list-header span {
-        float: left;
-        margin-left: 20px;
-    }
-
-    .user-avatar img {
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-    }
-
-    .list-title {
+    .header-left {
         text-align: left;
-        font-size: 110%;
-        margin: 6px;
-    }
-    .list-content {
-        width: 100%;
-        display: flex;
-    }
-
-    .list-content-text {
-        flex: 10;
-        text-align: left;
-        float: left;
-        font-size: 90%;
-        margin-bottom: 2px;
-    }
-
-    .list-content-img {
-        flex: 3;
-    }
-    .img-1{
-        width: 100%;
-    }
-    .img-2{
-        width: 50%;
-    }
-    .img-3{
-        width: 33%;
-    }
-
-    .list-footer span {
-        float: left;
-        margin-right: 10px;
     }
 </style>
