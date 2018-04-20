@@ -4,25 +4,52 @@
             <mu-tab to="/home" value="school" title="校园"/>
             <mu-tab to="/home" value="shetuan" title="社团"/>
             <mu-tab to="/home" value="class" title="班级"/>
+            <mu-tab to="/home" value="student" title="同学"/>
         </mu-tabs>
         <div>
             <div v-if="activeTab === 'school'">
-                <h2 @click="syncData">校园</h2>
-                <p>
-                    这是第二个 tab
-                </p>
+                <mu-list>
+                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
+                        <span slot="describe">
+                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                        </span>
+                        <mu-divider inset/>
+                    </mu-list-item>
+                </mu-list>
             </div>
             <div v-if="activeTab === 'shetuan'">
-                <h2>社团</h2>
-                <p>
-                    这是第二个 tab
-                </p>
+                <mu-list>
+                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
+                        <span slot="describe">
+                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                        </span>
+                        <mu-divider inset/>
+                    </mu-list-item>
+                </mu-list>
             </div>
             <div v-if="activeTab === 'class'">
-                <h2>班级</h2>
-                <p>
-                    这是第三个 tab
-                </p>
+                <mu-list>
+                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
+                        <span slot="describe">
+                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                        </span>
+                        <mu-divider inset/>
+                    </mu-list-item>
+                </mu-list>
+            </div>
+            <div v-if="activeTab === 'student'">
+                <mu-list>
+                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
+                        <span slot="describe">
+                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                        </span>
+                        <mu-divider inset/>
+                    </mu-list-item>
+                </mu-list>
             </div>
         </div>
     </div>
