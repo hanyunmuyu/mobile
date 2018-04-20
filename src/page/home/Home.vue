@@ -1,9 +1,9 @@
 <template>
     <div>
         <mu-tabs :value="activeTab" @change="handleTabChange">
-            <mu-tab value="school" title="校园"/>
-            <mu-tab value="shetuan" title="社团"/>
-            <mu-tab value="class" @active="handleActive" title="班级"/>
+            <mu-tab to="/home/school" value="school" title="校园"/>
+            <mu-tab to="/home/shetuan" value="shetuan" title="社团"/>
+            <mu-tab to="/home/class" value="class" title="班级"/>
         </mu-tabs>
         <div>
             <div v-if="activeTab === 'school'">
@@ -34,9 +34,6 @@ export default {
   name: 'home',
   data () {
     return {
-      bottomNav: 'explore',
-      bottomNavColor: 'explore',
-      activeTab: 'school'
     }
   },
   methods: {
@@ -45,9 +42,6 @@ export default {
     },
     handleTabChange (val) {
       this.activeTab = val
-    },
-    handleActive () {
-      window.alert('tab active')
     },
     syncData () {
       let url = 'http://192.168.1.131:8080/api/v1/order/detail?orderSn=2018020154485350'
@@ -66,6 +60,14 @@ export default {
         }, 3000)
         console.log(this.$store.state.count)
       })
+    }
+  },
+  computed: {
+    activeTab: {
+      get () {
+        return this.$route.params.tab
+      },
+      set (tabActive) {}
     }
   }
 }

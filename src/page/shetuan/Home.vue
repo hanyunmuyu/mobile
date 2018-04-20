@@ -9,28 +9,40 @@
             <mu-avatar src="/static/images/water-plant.jpg" slot="avatar"/>
         </mu-card-header>
         <mu-tabs class="tabs" :value="activeTab" @change="handleTabChange">
-            <mu-tab class="tab" value="new" title="最新活动"/>
-            <mu-tab class="tab" value="best" title="活动精选"/>
-            <mu-tab class="tab" value="album" title="活动相册"/>
-            <mu-tab class="tab" value="member" title="成员"/>
+            <mu-tab to="/shetuan/new" class="tab" value="new" title="最新活动"/>
+            <mu-tab to="/shetuan/best" class="tab" value="best" title="活动精选"/>
+            <mu-tab to="/shetuan/album" class="tab" value="album" title="活动相册"/>
+            <mu-tab to="/shetuan/member" class="tab" value="member" title="成员"/>
         </mu-tabs>
         <div v-if="activeTab === 'new'">
-            <h2>Tab One</h2>
-            <p>
-                最新活动
-            </p>
+            <mu-list>
+                <mu-list-item>
+                    <mu-icon slot="left" value="inbox"/>
+                </mu-list-item>
+            </mu-list>
         </div>
         <div v-if="activeTab === 'best'">
-            <h2>Tab Two</h2>
-            <p>
-                活动精选
-            </p>
+            <mu-flexbox class="mt8" orient="vertical">
+
+                <mu-flexbox-item>
+                    <img src="/static/hats.jpg"/>
+
+                </mu-flexbox-item>
+                <mu-flexbox-item>
+                    <img src="/static/hats.jpg"/>
+                </mu-flexbox-item>
+                <mu-flexbox-item>
+                    <img src="/static/hats.jpg"/>
+
+                </mu-flexbox-item>
+            </mu-flexbox>
         </div>
         <div v-if="activeTab === 'album'">
-            <h2>Tab Three</h2>
-            <p>
-                相册
-            </p>
+            <mu-list>
+                <mu-list-item title="Inbox">
+                    <mu-icon slot="left" value="inbox"/>
+                </mu-list-item>
+            </mu-list>
         </div>
         <div v-if="activeTab === 'member'">
             <h2>Tab Three</h2>
@@ -46,7 +58,7 @@ export default {
   name: 'explore',
   data () {
     return {
-      activeTab: 'best'
+      // activeTab: 'album'
     }
   },
   methods: {
@@ -60,6 +72,14 @@ export default {
       this.$router.back()
     },
     favorite () {}
+  },
+  computed: {
+    activeTab: {
+      get () {
+        return this.$route.params.tab
+      },
+      set (activeTab) {}
+    }
   }
 }
 </script>

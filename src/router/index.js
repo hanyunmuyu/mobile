@@ -21,12 +21,12 @@ export default new Router({
       component: Explore
     },
     {
-      path: '/home',
+      path: '/home/:tab',
       name: 'Home',
       component: Home
     },
     {
-      path: '/school',
+      path: '/school/:tab',
       name: 'School',
       component: School
     },
@@ -66,7 +66,7 @@ export default new Router({
       component: Detail
     },
     {
-      path: '/shetuan',
+      path: '/shetuan/:tab',
       name: 'ShetuanHome',
       component: ShetuanHome
     }

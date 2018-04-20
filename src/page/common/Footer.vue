@@ -5,9 +5,9 @@
         <div v-if="isShowFooter" class="footer">
             <mu-paper>
                 <mu-bottom-nav :value="footerActive" shift @change="handleChange">
-                    <mu-bottom-nav-item value="home" title="关注" to="/home" icon="home"/>
+                    <mu-bottom-nav-item value="home" title="关注" to="/home/school" icon="home"/>
                     <mu-bottom-nav-item value="explore" title="发现" to="/" icon="explore"/>
-                    <mu-bottom-nav-item value="school" title="校园" to="/school" icon="school"/>
+                    <mu-bottom-nav-item value="school" title="校园" to="/school/shetuan" icon="school"/>
                     <mu-bottom-nav-item value="message" title="消息" to="/message" icon="add_alert"/>
                     <mu-bottom-nav-item value="account" title="我的" to="/account" icon="account_circle"/>
                 </mu-bottom-nav>
@@ -38,8 +38,15 @@ export default {
     }
   },
   computed: {
+    footerActive: {
+      get () {
+        let list = this.$route.path.split('/')
+        return list[1] === '' ? 'explore' : list[1]
+      },
+      set (activeTab) {
+      }
+    },
     ...mapGetters([
-      'footerActive',
       'isShowFooter',
       'token'
     ])

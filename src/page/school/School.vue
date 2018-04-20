@@ -1,9 +1,9 @@
 <template>
     <div>
         <mu-tabs :value="activeTab" @change="handleTabChange">
-            <mu-tab value="shetuan" title="社团"/>
-            <mu-tab value="school" title="校园"/>
-            <mu-tab value="class" title="班级"/>
+            <mu-tab to="/school/shetuan" value="shetuan" title="社团"/>
+            <mu-tab to="/school/school" value="school" title="校园"/>
+            <mu-tab to="/school/class" value="class" title="班级"/>
         </mu-tabs>
         <div v-if="activeTab === 'shetuan'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
@@ -73,7 +73,6 @@ export default {
   name: 'school',
   data () {
     return {
-      activeTab: 'shetuan',
       bottomPopup: false,
       detail: '',
       refreshing: false,
@@ -435,6 +434,14 @@ export default {
           this.topPopup = false
         }, 2000)
       }
+    }
+  },
+  computed: {
+    activeTab: {
+      get () {
+        return this.$route.params.tab
+      },
+      set (activeTab) {}
     }
   }
 }
