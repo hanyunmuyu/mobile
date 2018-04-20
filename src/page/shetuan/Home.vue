@@ -9,10 +9,10 @@
             <mu-avatar src="/static/images/water-plant.jpg" slot="avatar"/>
         </mu-card-header>
         <mu-tabs class="tabs" :value="activeTab" @change="handleTabChange">
-            <mu-tab to="/shetuan?tab=new" class="tab" value="new" title="最新活动"/>
-            <mu-tab to="/shetuan?tab=best" class="tab" value="best" title="活动精选"/>
-            <mu-tab to="/shetuan?tab=album" class="tab" value="album" title="活动相册"/>
-            <mu-tab to="/shetuan?tab=member" class="tab" value="member" title="成员"/>
+            <mu-tab class="tab" value="new" title="最新活动"/>
+            <mu-tab class="tab" value="best" title="活动精选"/>
+            <mu-tab class="tab" value="album" title="活动相册"/>
+            <mu-tab class="tab" value="member" title="成员"/>
         </mu-tabs>
         <div v-if="activeTab === 'new'">
             <mu-list>
@@ -115,7 +115,6 @@ export default {
   },
   methods: {
     handleTabChange (val) {
-      console.log(this.$route.query)
       this.activeTab = val
     },
     handleActive () {
@@ -126,8 +125,8 @@ export default {
     }
   },
   beforeMount: function () {
-    console.log(this.$route.query.tab)
-    this.activeTab = this.$route.query.tab
+    // 可以用tab来确定分享后显示的tab页面
+    this.activeTab = this.$route.query.tab === undefined ? this.activeTab : this.$route.query.tab
   }
 }
 </script>
