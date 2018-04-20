@@ -26,7 +26,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/school/:tab',
+      path: '/school',
       name: 'School',
       component: School
     },

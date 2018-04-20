@@ -1,14 +1,14 @@
 <template>
     <div>
         <mu-tabs :value="activeTab" @change="handleTabChange">
-            <mu-tab to="/school/shetuan" value="shetuan" title="社团"/>
-            <mu-tab to="/school/school" value="school" title="校园"/>
-            <mu-tab to="/school/class" value="class" title="班级"/>
+            <mu-tab to="/school" value="school" title="校园"/>
+            <mu-tab to="/school" value="shetuan" title="社团"/>
+            <mu-tab to="/school" value="class" title="班级"/>
         </mu-tabs>
-        <div v-if="activeTab === 'shetuan'">
-            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
+        <div v-if="activeTab === 'school'">
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in shetuanList" class="list-item" :key="index" @click.stop="goToShetuan">
+                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan">
                     <div class="list-item-img">
                         <img :src="item.image"/>
                     </div>
@@ -22,10 +22,10 @@
             </ul>
             <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
         </div>
-        <div v-if="activeTab === 'school'">
-            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
+        <div v-if="activeTab === 'shetuan'">
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan">
+                <li v-for="(item,index) in shetuanList" class="list-item" :key="index" @click.stop="goToShetuan">
                     <div class="list-item-img">
                         <img :src="item.image"/>
                     </div>
@@ -56,7 +56,6 @@
             </ul>
             <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
         </div>
-
         <mu-popup position="bottom" popupClass="popup-bottom" :open="bottomPopup" @close="close('bottom')">
             <mu-appbar title="简介">
                 <mu-flat-button slot="right" label="关闭" color="white" @click="close('bottom')"/>
@@ -73,6 +72,7 @@ export default {
   name: 'school',
   data () {
     return {
+      activeTab: 'shetuan',
       bottomPopup: false,
       detail: '',
       refreshing: false,
@@ -436,13 +436,9 @@ export default {
       }
     }
   },
-  computed: {
-    activeTab: {
-      get () {
-        return this.$route.params.tab
-      },
-      set (activeTab) {}
-    }
+  beforeMount: function () {
+    // 可以用tab来确定分享后显示的tab页面
+    this.activeTab = this.$route.query.tab === undefined ? this.activeTab : this.$route.query.tab
   }
 }
 </script>

@@ -106,7 +106,7 @@
                     <ul style="width: 100%;display: block">
                         <li style="width: 33%;display: block;float: left;margin-bottom: 15px" v-for="index in 20" :key="index">
                             <div style="width: 100%;">
-                                <mu-avatar size=68 src="/static/images/avatar1.jpg" slot="avatar"/>
+                                <mu-avatar :size=68 src="/static/images/avatar1.jpg" slot="avatar"/>
                             </div>
                             <div style="width: 100%;min-height: 16px;text-align: center">
                                 寒云
