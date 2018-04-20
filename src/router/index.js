@@ -11,6 +11,7 @@ import Register from '@/page/account/Register'
 import Search from '@/page/search/Search'
 import Detail from '@/page/detail/Detail'
 import ShetuanHome from '@/page/shetuan/Home'
+import userInfo from '@/page/user/Info'
 Vue.use(Router)
 
 export default new Router({
@@ -69,6 +70,11 @@ export default new Router({
       path: '/shetuan',
       name: 'ShetuanHome',
       component: ShetuanHome
+    },
+    {
+      path: '/user/info',
+      name: 'userInfo',
+      component: userInfo
     }
   ]
 })
