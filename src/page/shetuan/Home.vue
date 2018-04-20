@@ -3,34 +3,39 @@
         <div class="header">
             <mu-appbar title="莘莘团">
                 <mu-icon-button icon="arrow_back" slot="left" @click="goBack"/>
-                <mu-icon-button icon="favorite" slot="right" @click="goBack"/>
             </mu-appbar>
         </div>
         <mu-card-header class="header-left" title="莘莘团" subTitle="莘莘团一个专注于的学社团的圈子社区">
             <mu-avatar src="/static/images/water-plant.jpg" slot="avatar"/>
         </mu-card-header>
         <mu-tabs class="tabs" :value="activeTab" @change="handleTabChange">
-            <mu-tab class="tab" value="tab1" title="最新活动"/>
-            <mu-tab class="tab" value="tab2" title="活动精选"/>
-            <mu-tab class="tab" value="tab3" title="活动相册"/>
-            <mu-tab class="tab" value="tab4" title="成员"/>
+            <mu-tab class="tab" value="new" title="最新活动"/>
+            <mu-tab class="tab" value="best" title="活动精选"/>
+            <mu-tab class="tab" value="album" title="活动相册"/>
+            <mu-tab class="tab" value="member" title="成员"/>
         </mu-tabs>
-        <div v-if="activeTab === 'tab1'">
+        <div v-if="activeTab === 'new'">
             <h2>Tab One</h2>
             <p>
-                这是第一个 tab
+                最新活动
             </p>
         </div>
-        <div v-if="activeTab === 'tab2'">
+        <div v-if="activeTab === 'best'">
             <h2>Tab Two</h2>
             <p>
-                这是第二个 tab
+                活动精选
             </p>
         </div>
-        <div v-if="activeTab === 'tab3'">
+        <div v-if="activeTab === 'album'">
             <h2>Tab Three</h2>
             <p>
-                这是第三个 tab
+                相册
+            </p>
+        </div>
+        <div v-if="activeTab === 'member'">
+            <h2>Tab Three</h2>
+            <p>
+                成员
             </p>
         </div>
     </div>
@@ -41,7 +46,7 @@ export default {
   name: 'explore',
   data () {
     return {
-      activeTab: 'tab1'
+      activeTab: 'best'
     }
   },
   methods: {
@@ -53,11 +58,12 @@ export default {
     },
     goBack () {
       this.$router.back()
-    }
+    },
+    favorite () {}
   }
 }
 </script>
-<style>
+<style scoped>
     .header-left{
         text-align: left;
     }
