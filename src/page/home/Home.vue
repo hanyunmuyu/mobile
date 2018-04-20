@@ -1,9 +1,9 @@
 <template>
     <div>
         <mu-tabs :value="activeTab" @change="handleTabChange">
-            <mu-tab to="/home/school" value="school" title="校园"/>
-            <mu-tab to="/home/shetuan" value="shetuan" title="社团"/>
-            <mu-tab to="/home/class" value="class" title="班级"/>
+            <mu-tab to="/home" value="school" title="校园"/>
+            <mu-tab to="/home" value="shetuan" title="社团"/>
+            <mu-tab to="/home" value="class" title="班级"/>
         </mu-tabs>
         <div>
             <div v-if="activeTab === 'school'">
