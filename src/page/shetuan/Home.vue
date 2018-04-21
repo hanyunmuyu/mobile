@@ -3,6 +3,7 @@
         <div class="header">
             <mu-appbar title="莘莘团">
                 <mu-icon-button icon="arrow_back" slot="left" @click="goBack"/>
+                <mu-icon-button :icon="icon" slot="right" @click="favorite"/>
             </mu-appbar>
         </div>
         <mu-card-header class="header-left" title="莘莘团" subTitle="莘莘团一个专注于校园生活的社区圈子">
@@ -120,7 +121,8 @@ export default {
   name: 'shetuan',
   data () {
     return {
-      activeTab: 'new'
+      activeTab: 'new',
+      icon: 'favorite'
     }
   },
   methods: {
@@ -132,6 +134,9 @@ export default {
     },
     goBack () {
       this.$router.back()
+    },
+    favorite () {
+      this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
     },
     getData () {
       this.activeTab = 'new'

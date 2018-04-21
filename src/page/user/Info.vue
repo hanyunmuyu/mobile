@@ -3,6 +3,7 @@
         <div class="header">
             <mu-appbar title="寒云的主页">
                 <mu-icon-button icon="arrow_back" slot="left" @click="goBack"/>
+                <mu-icon-button :icon="icon" slot="right" @click="favorite"/>
             </mu-appbar>
         </div>
         <mu-card-header class="header-left" title="寒云" subTitle="夫勇者,卒然临之而不惊,无故加之而不怒.泰山崩于前而色不变,麋鹿行于左而目不瞬">
@@ -119,7 +120,8 @@ export default {
   data () {
     return {
       activeTab: 'new',
-      num: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      num: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      icon: 'favorite'
     }
   },
   methods: {
@@ -131,6 +133,9 @@ export default {
     },
     goBack () {
       this.$router.back()
+    },
+    favorite () {
+      this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
     },
     getData () {
       this.activeTab = 'new'
