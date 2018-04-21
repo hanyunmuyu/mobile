@@ -8,8 +8,8 @@ import axios from 'axios'
 import MuseUI from 'muse-ui'
 import FastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
-
 import 'muse-ui/dist/muse-ui.css'
+import 'animate.css'
 import api from './api'
 import 'reset.css'
 FastClick.attach(document.body)
