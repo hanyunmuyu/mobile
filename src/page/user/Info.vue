@@ -10,34 +10,11 @@
             <mu-avatar src="/static/images/water-plant.jpg" slot="avatar"/>
         </mu-card-header>
         <mu-tabs class="tabs" :value="activeTab" @change="handleTabChange">
-            <mu-tab class="tab" value="best" title="Ta的评论"/>
             <mu-tab class="tab" value="new" title="Ta的动态"/>
-            <mu-tab class="tab" value="album" title="Ta的社团"/>
+            <mu-tab class="tab" value="shetuan" title="Ta的社团"/>
             <mu-tab class="tab" value="class" title="Ta的班级"/>
             <mu-tab class="tab" value="friend" title="Ta的同学"/>
         </mu-tabs>
-        <div v-if="activeTab === 'best'">
-            <mu-list>
-                <mu-list-item v-for="index in 10" :key="index">
-                    <div style="width: 100%;overflow: hidden;display: flex">
-                        <div style="flex: 3">
-                            <div class="header-left">
-                                <mu-avatar :size=20 src="/static/images/water-plant.jpg" slot="avatar"/>
-                                <span>hanyun</span>
-                            </div>
-                            <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
-                                <h1 style="font-size: 110%">钟楼广场进行轮滑报验开始了</h1>
-                                <div style="margin-top: 10px;font-size: 90%">预计下午进行轮滑表演，欢迎大家一起来观赏</div>
-                                <div style="margin-top: 10px;font-size: 80%">点击：100 收藏：10</div>
-                            </div>
-                        </div>
-                        <div style="flex: 1;">
-                            <img style="width: 100%" src="/static/hats.jpg"/>
-                        </div>
-                    </div>
-                </mu-list-item>
-            </mu-list>
-        </div>
         <div v-if="activeTab === 'new'">
             <mu-list>
                 <mu-list-item v-for="index in num" :key="index">
@@ -60,7 +37,7 @@
                 </mu-list-item>
             </mu-list>
         </div>
-        <div v-if="activeTab === 'album'">
+        <div v-if="activeTab === 'shetuan'">
             <mu-list>
                 <mu-list-item v-for="index in 10" :key="index">
                     <div style="width: 100%;overflow: hidden;display: flex">

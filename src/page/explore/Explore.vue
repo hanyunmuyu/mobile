@@ -6,21 +6,21 @@
             </mu-appbar>
         </div>
         <mu-list>
-            <mu-list-item @click="go" v-for="index in 10" :key="index">
+            <mu-list-item @click="go" v-for="(item,index) in dataList" :key="index">
                 <div style="width: 100%;overflow: hidden;display: flex">
                     <div style="flex: 3">
-                        <div class="header-left"  @click.stop="userInfo(index)">
-                            <mu-avatar :size=20 src="/static/images/water-plant.jpg" slot="avatar"/>
-                            <span>hanyun</span>
+                        <div class="header-left"  @click.stop="userInfo(item.userId)">
+                            <mu-avatar :size=20 :src="item.avatar" slot="avatar"/>
+                            <span>{{item.title}}</span>
                         </div>
                         <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
-                            <h1 style="font-size: 110%">钟楼广场进行轮滑报验开始了</h1>
-                            <div style="margin-top: 10px;font-size: 90%">预计下午进行轮滑表演，欢迎大家一起来观赏</div>
-                            <div style="margin-top: 10px;font-size: 80%">点击：100 收藏：10</div>
+                            <h1 style="font-size: 110%">{{item.username}}</h1>
+                            <div style="margin-top: 10px;font-size: 90%">{{item.description}}</div>
+                            <div style="margin-top: 10px;font-size: 80%">点击：{{item.clickNum}}   收藏：{{item.favoriteNum}}</div>
                         </div>
                     </div>
                     <div style="flex: 1;">
-                        <img style="width: 100%" v-lazy="'/static/hats.jpg'"/>
+                        <img style="width: 100%" v-lazy="item.avatar"/>
                     </div>
                 </div>
             </mu-list-item>
@@ -33,115 +33,7 @@ export default {
   name: 'explore',
   data () {
     return {
-      list: [
-        {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/camera.jpg',
-            '/static/images/camera.jpg',
-            '/static/images/breakfast.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }, {
-          avatar: '/static/hats.jpg',
-          title: '河南工业大学',
-          description: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介',
-          imgList: [
-            '/static/images/hats.jpg',
-            '/static/images/breakfast.jpg',
-            '/static/images/camera.jpg'
-          ]
-        }
-      ]
+      dataList: []
     }
   },
   methods: {
@@ -154,7 +46,25 @@ export default {
     },
     userInfo (id) {
       this.$router.push('/user/info/' + id)
+    },
+    getData () {
+      var params = new URLSearchParams()
+      // 你要传给后台的参数值 key/value
+      params.append('username', this.username)
+      params.append('password', this.password)
+      this.$axios({
+        method: 'get',
+        url: this.$api.home,
+        data: params
+      }).then((r) => {
+        this.dataList = r.data
+        // console.log(res.data)
+      }).then((res) => {
+      })
     }
+  },
+  mounted: function () {
+    this.getData()
   }
 }
 </script>

@@ -1,5 +1,6 @@
-export const DOMAIN = 'http://127.0.0.1:83/api/v1'
+export const DOMAIN = 'http://192.168.0.106:85'
 const api = {
-  login: DOMAIN + '/login'
+  login: DOMAIN + '/login',
+  home: DOMAIN + '/api/v1'
 }
 export default api
