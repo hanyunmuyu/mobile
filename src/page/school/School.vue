@@ -8,7 +8,7 @@
         <div v-if="activeTab === 'school'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan">
+                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan(index)">
                     <div class="list-item-img">
                         <img :src="item.image"/>
                     </div>
@@ -25,7 +25,7 @@
         <div v-if="activeTab === 'shetuan'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in shetuanList" class="list-item" :key="index" @click.stop="goToShetuan">
+                <li v-for="(item,index) in shetuanList" class="list-item" :key="index" @click.stop="goToShetuan(index)">
                     <div class="list-item-img">
                         <img :src="item.image"/>
                     </div>
@@ -42,7 +42,7 @@
         <div v-if="activeTab === 'class'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToShetuan">
+                <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToShetuan(index)">
                     <div class="list-item-img">
                         <img :src="item.image"/>
                     </div>
@@ -360,8 +360,8 @@ export default {
     this.scroller = this.$el
   },
   methods: {
-    goToShetuan () {
-      this.$router.push('/shetuan')
+    goToShetuan (id) {
+      this.$router.push('/shetuan/' + id)
     },
     handleChange (val) {
       this.bottomNav = val

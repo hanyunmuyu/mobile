@@ -132,11 +132,22 @@ export default {
     },
     goBack () {
       this.$router.back()
+    },
+    getData () {
+      this.activeTab = 'new'
+      // console.log(this.$route.params)
     }
   },
   beforeMount: function () {
     // 可以用tab来确定分享后显示的tab页面
     this.activeTab = this.$route.query.tab === undefined ? this.activeTab : this.$route.query.tab
+  },
+  watch: {
+    '$route' (to, from) {
+      console.log(to.params.id)
+      console.log(from)
+      this.getData()
+    }
   }
 }
 </script>
