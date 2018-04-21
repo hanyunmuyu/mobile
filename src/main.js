@@ -7,6 +7,8 @@ import store from './store'
 import axios from 'axios'
 import MuseUI from 'muse-ui'
 import FastClick from 'fastclick'
+import VueLazyload from 'vue-lazyload'
+
 import 'muse-ui/dist/muse-ui.css'
 import api from './api'
 import 'reset.css'
@@ -16,6 +18,16 @@ Vue.prototype.$axios = axios
 Vue.prototype.$api = api
 
 Vue.use(MuseUI)
+
+Vue.use(VueLazyload)
+
+// or with options
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: '../static/images/dog.gif',
+  loading: '../static/images/dog.gif',
+  attempt: 1
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

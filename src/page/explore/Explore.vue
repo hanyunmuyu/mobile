@@ -9,7 +9,7 @@
             <mu-list-item @click="go" v-for="index in 10" :key="index">
                 <div style="width: 100%;overflow: hidden;display: flex">
                     <div style="flex: 3">
-                        <div class="header-left">
+                        <div class="header-left"  @click.stop="userInfo(index)">
                             <mu-avatar :size=20 src="/static/images/water-plant.jpg" slot="avatar"/>
                             <span>hanyun</span>
                         </div>
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div style="flex: 1;">
-                        <img style="width: 100%" src="/static/hats.jpg"/>
+                        <img style="width: 100%" v-lazy="'/static/hats.jpg'"/>
                     </div>
                 </div>
             </mu-list-item>
@@ -151,6 +151,9 @@ export default {
     go () {
       this.$router.push('/detail')
       this.$store.state.footerActive = 'home'
+    },
+    userInfo (id) {
+      this.$router.push('/user/info/' + id)
     }
   }
 }
