@@ -8,15 +8,15 @@
         <div v-if="activeTab === 'school'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan(index)">
+                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan(item.id)">
                     <div class="list-item-img">
-                        <img :src="item.image"/>
+                        <img v-lazy="item.logo"/>
                     </div>
                     <p class="ul-list-footer">
                         {{index*10000}}人关注
                     </p>
                     <h2  @click.stop="open('bottom',item)">
-                        {{item.title}}
+                        {{item.name}}
                     </h2>
                 </li>
             </ul>
@@ -72,7 +72,7 @@ export default {
   name: 'school',
   data () {
     return {
-      activeTab: 'shetuan',
+      activeTab: 'school',
       bottomPopup: false,
       detail: '',
       refreshing: false,
@@ -171,97 +171,9 @@ export default {
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
         }
       ],
-      schoolList: [
-        {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }
-      ],
+      schoolTotalPage: 1,
+      schoolCurrentPage: 1,
+      schoolList: [],
       classList: [
         {
           image: '/static/hats.jpg',
@@ -358,6 +270,7 @@ export default {
   mounted () {
     this.trigger = this.$el
     this.scroller = this.$el
+    this.getSchoolList(true)
   },
   methods: {
     goToShetuan (id) {
@@ -377,54 +290,49 @@ export default {
       this[position + 'Popup'] = false
     },
     refresh () {
-      this.refreshing = true
       let tag = this.activeTab
-      setTimeout(() => {
-        const list = []
-        for (let i = this.num; i < this.num + 10; i++) {
-          list.push({
-            image: '/static/images/breakfast.jpg',
-            title: '河南工业大学' + i,
-            detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-          })
+      if (!this.loading) {
+        if (tag === 'school') {
+          this.getSchoolList(false)
         }
-        if (tag === 'shetuan') {
-          this.shetuanList = list
-        } else if (tag === 'school') {
-          this.schoolList = list
-        } else {
-          this.classList = list
-        }
-        this.refreshing = false
-      }, 2000)
+      }
     },
     loadMore () {
-      this.loading = true
       let tag = this.activeTab
-      setTimeout(() => {
-        for (let i = this.num; i < this.num + 10; i++) {
-          if (tag === 'shetuan') {
-            this.shetuanList.push({
-              image: '/static/images/water-plant.jpg',
-              title: '轮滑社团--------------' + i,
-              detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-            })
-          } else if (tag === 'school') {
-            this.schoolList.push({
-              image: '/static/images/water-plant.jpg',
-              title: '河南工业大学---------' + i,
-              detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-            })
-          } else {
-            this.classList.push({
-              image: '/static/images/water-plant.jpg',
-              title: '经贸八班--------' + i,
-              detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-            })
-          }
+      if (!this.loading) {
+        if (tag === 'school') {
+          this.getSchoolList(true)
         }
-        this.loading = false
-      }, 2000)
+      }
+    },
+    getSchoolList (isLoading) {
+      if (!this.loading) {
+        this.loading = true
+        if (!isLoading) {
+          this.schoolCurrentPage = 1
+        }
+        this.$axios({
+          method: 'get',
+          url: this.$api.schoolList + '?page=' + this.schoolCurrentPage
+        }).then((res) => {
+          return res.data
+        }).then((res) => {
+          if (res.code === 2000) {
+            let data = res.data.data
+            if (isLoading) {
+              for (let index in data) {
+                this.schoolList.push(data[index])
+              }
+            } else {
+              this.schoolList = data
+            }
+            this.schoolCurrentPage += 1
+          }
+          setTimeout(() => {
+            this.loading = false
+          }, 2000)
+        })
+      }
     }
   },
   watch: {
@@ -452,6 +360,11 @@ export default {
         height: 170px;
         overflow: hidden;
     }
+    .list-item h2{
+        text-overflow:ellipsis;
+        overflow:hidden;
+        white-space:nowrap;
+    }
     .ul-list .list-item:nth-child(odd){
         margin-left: 8px;
         width: 47%;
@@ -465,10 +378,6 @@ export default {
     .list-item-img{
         width: 100%;
         height: 130px;
-        overflow: hidden;
-    }
-    .list-item-img img{
-        width: 100%;
     }
     .ul-list .list-item h2{
         margin-top: 12px;

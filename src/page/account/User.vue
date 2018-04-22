@@ -12,7 +12,7 @@
             <mu-list-item>
                 <mu-icon value="school" slot="left"/>
                 <mu-select-field v-model="school">
-                    <mu-menu-item v-for="(item,index) in schoolList" :value="index" :key="index" :title="item"/>
+                    <mu-menu-item v-for="(item,index) in schoolList" :value="item.id" :key="index" :title="item.name"/>
                 </mu-select-field>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
@@ -109,7 +109,7 @@ export default {
       topPopup: false,
       leftPopup: false,
       rightPopup: false,
-      school: 1,
+      school: 2,
       schoolList: ['请选择高校', '河南工业大学', '郑州大学', '河南财经政法大学'],
       addressSlots: [
         {
@@ -178,6 +178,17 @@ export default {
         }, 2000)
       }
     }
+  },
+  mounted: function () {
+    this.$axios({
+      method: 'get',
+      url: this.$api.schoolList
+    }).then((res) => {
+      return res.data
+    }).then((res) => {
+      this.school = 1
+      this.schoolList = res.data
+    })
   }
 }
 </script>
