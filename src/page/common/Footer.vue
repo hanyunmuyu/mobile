@@ -1,7 +1,7 @@
 <template>
     <div style="margin-top: 45px">
         <mu-back-top :bottom="60" :duration="1500" icon="arrow_upward"/>
-        <mu-linear-progress size=10 v-if="$store.state.loading"  :strokeWidth="5" :value="0"/>
+        <mu-linear-progress :size=10 v-if="$store.state.loading"  :strokeWidth="5" :value="0"/>
         <div v-if="isShowFooter" class="footer">
             <mu-paper>
                 <mu-bottom-nav :value="footerActive" shift @change="handleChange">
@@ -60,14 +60,14 @@ export default {
   created: function () {
     // 可以在这里进行认证状态判断
     let footerActive = this.$route.path.replace('/', '')
-    this.checkAuth()
+    // this.checkAuth()
     if (footerActive !== '') {
       this.$store.state.footerActive = footerActive
     }
   },
   updated: function () {
     // 可以在这里进行认证状态判断
-    this.checkAuth()
+    // this.checkAuth()
   }
 }
 </script>

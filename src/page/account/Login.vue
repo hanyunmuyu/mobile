@@ -10,7 +10,7 @@
             <mu-text-field type="password" v-model="password" required icon="lock" hintText="密码"/><br/>
             <mu-raised-button label="登录" @click="login"  primary/>
         </div>
-
+        <mu-toast v-if="toast" :message="msg"/>
     </div>
 </template>
 
@@ -21,14 +21,10 @@ export default {
   name: 'login',
   data () {
     return {
-      events: false,
-      calls: false,
-      messages: false,
-      notifications: false,
-      sounds: false,
-      videoSounds: false,
       username: '',
-      password: ''
+      password: '',
+      toast: false,
+      msg: ''
     }
   },
   methods: {
@@ -39,25 +35,31 @@ export default {
       this.$router.back()
     },
     login () {
-      localStorage.setItem('token', 1)
-
-      // let url = 'http://127.0.0.1:83/api/v1/login'
-      var params = new URLSearchParams()
+      this.$store.state.loading = true
+      setTimeout(() => {
+        this.$store.state.loading = false
+      }, 5000)
+      let params = new URLSearchParams()
       // 你要传给后台的参数值 key/value
-      params.append('username', this.username)
-      params.append('password', this.password)
+      params.append('userName', this.username)
+      params.append('userPwd', this.password)
       this.$axios({
         method: 'post',
         url: this.$api.login,
         data: params
       }).then((res) => {
-        // this.$store.state.loading = true
-        // console.log(res.data)
-        return res.data.data
+        return res.data
       }).then((res) => {
+        this.toast = true
+        this.msg = res.msg
         this.$store.state.loading = false
-        console.log(res.token)
-        localStorage.setItem('token', res.token)
+        setTimeout(() => {
+          this.toast = false
+          if (res.code === 2000) {
+            localStorage.setItem('token', res.data.token)
+            this.$router.push('/')
+          }
+        }, 2000)
       })
     }
   },
@@ -67,7 +69,8 @@ export default {
     ])
   },
   beforeCreate: function () {
-    if (!Object.is(this.token, null)) {
+    let token = this.$store.state.token
+    if (!Object.is(token, null)) {
       this.$router.push('/')
     }
   }

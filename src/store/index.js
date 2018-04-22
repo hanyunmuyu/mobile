@@ -6,7 +6,7 @@ const state = {
   count: 1,
   loading: false,
   footerActive: 'explore',
-  token: null,
+  token: localStorage.getItem('token'),
   isShowFooter: true
 }
 const mutations = {
