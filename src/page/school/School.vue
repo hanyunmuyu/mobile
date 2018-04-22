@@ -309,6 +309,7 @@ export default {
       if (!this.loading) {
         this.loading = true
         if (!isLoading) {
+          this.refreshing = true
           this.schoolCurrentPage = 1
         }
         this.$axios({
@@ -328,11 +329,12 @@ export default {
             }
             this.schoolCurrentPage += 1
           }
-          setTimeout(() => {
-            this.loading = false
-          }, 2000)
         })
       }
+      setTimeout(() => {
+        this.loading = false
+        this.refreshing = false
+      }, 2000)
     }
   },
   watch: {
