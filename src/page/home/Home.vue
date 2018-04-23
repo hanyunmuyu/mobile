@@ -9,44 +9,95 @@
         <div>
             <div v-if="activeTab === 'school'">
                 <mu-list>
-                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
-                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
-                        <span slot="describe">
-                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
-                        </span>
-                        <mu-divider inset/>
+                    <mu-list-item v-for="index in 10" :key="index">
+                        <div style="display: flex">
+                            <div style="flex: 2;">
+                                <img style="width: 100%;border-radius: 6px"
+                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453075183&di=3708c2cb0f550b515119f50071199637&imgtype=0&src=http%3A%2F%2Fwww.dxsbb.com%2FupFiles%2FinfoImg%2F2015120537135861.jpg"/>
+                            </div>
+                            <div style="flex: 8;text-align: left;margin-left: 10px">
+                                <div>
+                                    <h1 style="font-size: 100%;position: relative">轮滑社团
+                                        <span v-if="hasNewItem"
+                                              style="width: 10px;height: 10px;background: #7e57c2;position:absolute;border-radius: 50%;line-height: 10px"></span>
+                                        <span style="display: inline;margin-left: 20px;font-size: 66%">2个更新</span>
+                                    </h1>
+                                    <p style="text-overflow:ellipsis;overflow:hidden;font-size: 86%;margin-top: 6px">今天在钟楼广场举行轮滑表演欢迎大家前去观看</p>
+                                </div>
+                            </div>
+                        </div>
+                        <mu-icon value="keyboard_arrow_right" slot="right"/>
                     </mu-list-item>
                 </mu-list>
             </div>
             <div v-else-if="activeTab === 'shetuan'">
                 <mu-list>
-                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
-                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
-                        <span slot="describe">
-                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
-                        </span>
+                    <mu-list-item v-for="index in 10" :key="index">
+                        <div style="display: flex">
+                            <div style="flex: 2;">
+                                <img style="width: 100%;border-radius: 6px"
+                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453075183&di=3708c2cb0f550b515119f50071199637&imgtype=0&src=http%3A%2F%2Fwww.dxsbb.com%2FupFiles%2FinfoImg%2F2015120537135861.jpg"/>
+                            </div>
+                            <div style="flex: 8;text-align: left;margin-left: 10px">
+                                <div>
+                                    <h1 style="font-size: 120%;position: relative">寒云
+                                        <span v-if="hasNewItem"
+                                              style="width: 10px;height: 10px;background: #7e57c2;position:absolute;border-radius: 50%;line-height: 10px"></span>
+                                        <span style="display: inline;margin-left: 20px;font-size: 80%">2个更新</span>
+                                    </h1>
+                                    <p style="font-size: 86%;margin-top: 6px">鸿茅药酒怎么了</p>
+                                </div>
+                            </div>
+                        </div>
+                        <mu-icon value="keyboard_arrow_right" slot="right"/>
                         <mu-divider inset/>
                     </mu-list-item>
                 </mu-list>
             </div>
             <div v-else-if="activeTab === 'student'">
                 <mu-list>
-                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
-                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
-                        <span slot="describe">
-                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
-                        </span>
+                    <mu-list-item v-for="index in 10" :key="index">
+                        <div style="display: flex">
+                            <div style="flex: 2;">
+                                <img style="width: 100%;border-radius: 6px"
+                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453075183&di=3708c2cb0f550b515119f50071199637&imgtype=0&src=http%3A%2F%2Fwww.dxsbb.com%2FupFiles%2FinfoImg%2F2015120537135861.jpg"/>
+                            </div>
+                            <div style="flex: 8;text-align: left;margin-left: 10px">
+                                <div>
+                                    <h1 style="font-size: 120%;position: relative">寒云
+                                        <span v-if="hasNewItem"
+                                              style="width: 10px;height: 10px;background: #7e57c2;position:absolute;border-radius: 50%;line-height: 10px"></span>
+                                        <span style="display: inline;margin-left: 20px;font-size: 80%">2个更新</span>
+                                    </h1>
+                                    <p style="font-size: 86%;margin-top: 6px">鸿茅药酒怎么了</p>
+                                </div>
+                            </div>
+                        </div>
+                        <mu-icon value="keyboard_arrow_right" slot="right"/>
                         <mu-divider inset/>
                     </mu-list-item>
                 </mu-list>
             </div>
             <div v-else-if="activeTab === 'class'">
                 <mu-list>
-                    <mu-list-item v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
-                        <mu-avatar src="/static/images/honey.jpg" slot="left"/>
-                        <span slot="describe">
-                            周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
-                        </span>
+                    <mu-list-item v-for="index in 10" :key="index">
+                        <div style="display: flex">
+                            <div style="flex: 2;">
+                                <img style="width: 100%;border-radius: 6px"
+                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453075183&di=3708c2cb0f550b515119f50071199637&imgtype=0&src=http%3A%2F%2Fwww.dxsbb.com%2FupFiles%2FinfoImg%2F2015120537135861.jpg"/>
+                            </div>
+                            <div style="flex: 8;text-align: left;margin-left: 10px">
+                                <div>
+                                    <h1 style="font-size: 120%;position: relative">寒云
+                                        <span v-if="hasNewItem"
+                                              style="width: 10px;height: 10px;background: #7e57c2;position:absolute;border-radius: 50%;line-height: 10px"></span>
+                                        <span style="display: inline;margin-left: 20px;font-size: 80%">2个更新</span>
+                                    </h1>
+                                    <p style="font-size: 86%;margin-top: 6px">鸿茅药酒怎么了</p>
+                                </div>
+                            </div>
+                        </div>
+                        <mu-icon value="keyboard_arrow_right" slot="right"/>
                         <mu-divider inset/>
                     </mu-list-item>
                 </mu-list>
@@ -57,11 +108,13 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'home',
   data () {
     return {
-      activeTab: 'shetuan'
+      activeTab: 'school',
+      hasNewItem: true
     }
   },
   methods: {
