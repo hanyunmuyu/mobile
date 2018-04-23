@@ -72,7 +72,7 @@ export default {
   name: 'school',
   data () {
     return {
-      activeTab: 'school',
+      activeTab: 'shetuan',
       bottomPopup: false,
       detail: '',
       refreshing: false,
@@ -86,15 +86,15 @@ export default {
           title: '河南工业大学',
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
         }, {
-          image: '/static/hats.jpg',
+          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524452873434&di=28930392c56539208af718d681815172&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ff1e571678cf32f8758c9bf5b661.jpg%403000w_1l_2o_100sh.jpg',
           title: '河南工业大学',
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
         }, {
-          image: '/static/hats.jpg',
+          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453075183&di=3708c2cb0f550b515119f50071199637&imgtype=0&src=http%3A%2F%2Fwww.dxsbb.com%2FupFiles%2FinfoImg%2F2015120537135861.jpg',
           title: '河南工业大学',
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
         }, {
-          image: '/static/hats.jpg',
+          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453245889&di=85c5cd28cdcbe993b72f2913e3d2e925&imgtype=0&src=http%3A%2F%2Fcdn6.haitou.cc%2Funiversity%2F112.png',
           title: '河南工业大学',
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
         }, {
@@ -380,6 +380,11 @@ export default {
     .list-item-img{
         width: 100%;
         height: 130px;
+        display: flex;
+        overflow: hidden;
+    }
+    .list-item-img img{
+        width: 100%;
     }
     .ul-list .list-item h2{
         margin-top: 12px;

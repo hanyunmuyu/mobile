@@ -8,7 +8,11 @@
         <div class="login">
             <mu-text-field type="text" v-model="username" required icon="account_circle" hintText="用户名"/><br/>
             <mu-text-field type="password" v-model="password" required icon="lock" hintText="密码"/><br/>
-            <mu-raised-button label="登录" @click="login"  primary/>
+            <mu-raised-button full-width label="登录" @click="login"  primary/>
+            <p>
+                <mu-flat-button @click="register" label="注册" primary/>
+                <mu-flat-button label="忘记密码"/>
+            </p>
         </div>
         <mu-toast v-if="toast" :message="msg"/>
     </div>
@@ -61,6 +65,9 @@ export default {
           }
         }, 2000)
       })
+    },
+    register () {
+      this.$router.push('/register')
     }
   },
   computed: {
@@ -80,5 +87,8 @@ export default {
 .login{
     margin-top: 168px;
     vertical-align: center;
+}
+.mu-text-field-hint.show{
+    text-align: left;
 }
 </style>
