@@ -11,10 +11,10 @@
                 <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan(item.id)">
                     <div class="list-item-img">
                         <img v-lazy="item.logo"/>
+                        <p class="ul-list-footer">
+                            {{index*10000}}人关注
+                        </p>
                     </div>
-                    <p class="ul-list-footer">
-                        {{index*10000}}人关注
-                    </p>
                     <h2  @click.stop="open('bottom',item)">
                         {{item.name}}
                     </h2>
@@ -28,10 +28,10 @@
                 <li v-for="(item,index) in shetuanList" class="list-item" :key="index" @click.stop="goToShetuan(index)">
                     <div class="list-item-img">
                         <img :src="item.image"/>
+                        <p class="ul-list-footer">
+                            {{index*10000}}人关注
+                        </p>
                     </div>
-                    <p class="ul-list-footer">
-                        {{index*10000}}人关注
-                    </p>
                     <h2  @click.stop="open('bottom',item)">
                         {{item.title}}
                     </h2>
@@ -45,10 +45,10 @@
                 <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToShetuan(index)">
                     <div class="list-item-img">
                         <img :src="item.image"/>
+                        <p class="ul-list-footer">
+                            {{index*10000}}人关注
+                        </p>
                     </div>
-                    <p class="ul-list-footer">
-                        {{index*10000}}人关注
-                    </p>
                     <h2  @click.stop="open('bottom',item)">
                         {{item.title}}
                     </h2>
@@ -69,10 +69,10 @@
 
 <script>
 export default {
-  name: 'school',
+  name: 'shetuan',
   data () {
     return {
-      activeTab: 'shetuan',
+      activeTab: 'school',
       bottomPopup: false,
       detail: '',
       refreshing: false,
@@ -109,66 +109,6 @@ export default {
           image: '/static/hats.jpg',
           title: '河南工业大学',
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
         }
       ],
       schoolTotalPage: 1,
@@ -176,66 +116,6 @@ export default {
       schoolList: [],
       classList: [
         {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
           image: '/static/hats.jpg',
           title: '河南工业大学',
           detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
@@ -358,8 +238,9 @@ export default {
         width: 100%;
     }
     .list-item{
+        width: 47%;
         position: relative;
-        height: 170px;
+        height: 160px;
         overflow: hidden;
     }
     .list-item h2{
@@ -369,22 +250,22 @@ export default {
     }
     .ul-list .list-item:nth-child(odd){
         margin-left: 8px;
-        width: 47%;
         float: left;
     }
     .ul-list .list-item:nth-child(even ){
-        width: 47%;
         float: right;
         margin-right: 8px;
     }
     .list-item-img{
-        width: 100%;
-        height: 130px;
-        display: flex;
+        height: 120px;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
         overflow: hidden;
+        position: relative;
     }
     .list-item-img img{
-        width: 100%;
+        height: 100%;
     }
     .ul-list .list-item h2{
         margin-top: 12px;
@@ -392,7 +273,7 @@ export default {
     .ul-list-footer{
         width: 100%;
         position: absolute;
-        top: 110px;
+        bottom: 0;
         height: 25px;
         line-height: 25px;
         color: #ffffff;
