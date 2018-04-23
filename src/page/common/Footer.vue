@@ -21,7 +21,9 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'foot',
   data () {
-    return {}
+    return {
+      routerShowList: ['Explore', 'Home', 'School', 'Message', 'Account']
+    }
   },
   methods: {
     handleChange (val) {
@@ -34,6 +36,16 @@ export default {
       // console.log(path.startsWith('auth'))
       if (path.startsWith('auth') && Object.is(token, null)) {
         this.$router.push('/login')
+      }
+    },
+    showRouter: function (routeName) {
+      for (let a in this.routerShowList) {
+        if (this.routerShowList[a].toLowerCase() === routeName.toLowerCase()) {
+          this.$store.state.isShowFooter = true
+          break
+        } else {
+          this.$store.state.isShowFooter = false
+        }
       }
     }
   },
@@ -58,15 +70,7 @@ export default {
     },
     '$route' (to, from) {
       let name = to.name
-      let list = ['Explore', 'Home', 'School', 'Message', 'Account']
-      for (let a in list) {
-        if (list[a].toLowerCase() === name.toLowerCase()) {
-          this.$store.state.isShowFooter = true
-          break
-        } else {
-          this.$store.state.isShowFooter = false
-        }
-      }
+      this.showRouter(name)
     }
   },
   created: function () {
@@ -76,6 +80,8 @@ export default {
     if (footerActive !== '') {
       this.$store.state.footerActive = footerActive
     }
+    let name = this.$route.name
+    this.showRouter(name)
   },
   updated: function () {
     // 可以在这里进行认证状态判断
