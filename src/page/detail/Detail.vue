@@ -289,10 +289,10 @@
         </div>
         <div style="display:flex;position: fixed;bottom:0;width: 100%;background-color: #f5f5f5;text-align: center">
             <div style="flex: 3">
-                <mu-text-field hintText="发表评论" icon="mode_edit"/>
+                <mu-text-field hintText="发表评论" :value="comment"  icon="mode_edit"/>
             </div>
             <div style="flex: 1;color: #7e57c2">
-                <mu-icon-button icon="favorite_border" primary slot="right"/>
+                <mu-icon-button :icon="icon" @click="favorite" primary slot="right"/>
             </div>
 
         </div>
@@ -303,11 +303,17 @@
 export default {
   name: 'detail',
   data () {
-    return {}
+    return {
+      icon: 'favorite_border',
+      comment: ''
+    }
   },
   methods: {
     goBack () {
       this.$router.back()
+    },
+    favorite () {
+      this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
     }
   }
 }
