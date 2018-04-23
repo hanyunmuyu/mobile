@@ -2,7 +2,6 @@
     <div>
         <div class="header">
             <mu-appbar title="莘莘团">
-                <mu-icon-button icon="search" slot="right" @click="search"/>
             </mu-appbar>
         </div>
         <mu-list>

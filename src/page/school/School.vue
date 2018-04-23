@@ -171,7 +171,7 @@ export default {
     },
     refresh () {
       let tag = this.activeTab
-      if (!this.loading) {
+      if (!this.refreshing) {
         if (tag === 'school') {
           this.getSchoolList(false)
         }
@@ -205,6 +205,7 @@ export default {
                 this.schoolList.push(data[index])
               }
             } else {
+              this.schoolList = []
               this.schoolList = data
             }
             this.schoolCurrentPage += 1
