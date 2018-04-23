@@ -55,6 +55,18 @@ export default {
     footerActive: (newVal, oldVal) => {
       // console.log(newVal)
       // console.log(oldVal)
+    },
+    '$route' (to, from) {
+      let name = to.name
+      let list = ['Explore', 'Home', 'School', 'Message', 'Account']
+      for (let a in list) {
+        if (list[a].toLowerCase() === name.toLowerCase()) {
+          this.$store.state.isShowFooter = true
+          break
+        } else {
+          this.$store.state.isShowFooter = false
+        }
+      }
     }
   },
   created: function () {
