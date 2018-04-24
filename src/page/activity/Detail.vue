@@ -37,9 +37,8 @@
                         <div style="flex: 1">
                             <div style="width: 100%;line-height: 40px">
                                 <div style="display:block;float:left;width:40px;height: 40px;border-radius: 50%;overflow: hidden;">
-                                    <img style="height: inherit;"
-                                         src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1524530156&di=16ad7e58d060f544f118921007c21868&src=http://www.cnr.cn/lvyou/list/20150402/W020150402384247571517.jpg"/>
-                                </div>
+                                    <mu-avatar :size="32"
+                                               src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1524530156&di=16ad7e58d060f544f118921007c21868&src=http://www.cnr.cn/lvyou/list/20150402/W020150402384247571517.jpg"/>                                </div>
                                 <div style="display: block;float: left;line-height:inherit">
                                     <h1>寒云</h1>
                                 </div>
