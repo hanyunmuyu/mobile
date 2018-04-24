@@ -12,6 +12,7 @@ import Search from '@/page/search/Search'
 import Detail from '@/page/detail/Detail'
 import ShetuanHome from '@/page/shetuan/Home'
 import UserInfo from '@/page/user/Info'
+import ActivityDetail from '@/page/activity/Detail'
 Vue.use(Router)
 
 export default new Router({
@@ -75,6 +76,11 @@ export default new Router({
       path: '/user/info/:id',
       name: 'UserInfo',
       component: UserInfo
+    },
+    {
+      path: '/activity/detail',
+      name: 'ActivityDetail',
+      component: ActivityDetail
     }
   ]
 })

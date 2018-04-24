@@ -287,15 +287,28 @@
                 <mu-raised-button label="关注" icon="add" slot="left" primary/>
             </div>
         </div>
-        <div style="display:flex;position: fixed;bottom:0;width: 100%;background-color: #f5f5f5;text-align: center">
-            <div style="flex: 3">
-                <mu-text-field hintText="发表评论" :value="comment"  icon="mode_edit"/>
-            </div>
-            <div style="flex: 1;color: #7e57c2">
-                <mu-icon-button :icon="icon" @click="favorite" primary slot="right"/>
-            </div>
 
+        <div style="display:block;width:100%;position: fixed;bottom: 0;background-color: #f5f5f5;text-align: center">
+            <div v-if="comment" style="display: flex;width: 100%">
+                <div style="width: 100%">
+                    <mu-text-field hintText="写点评论" icon="mode_edit"/>
+                    <mu-flat-button label="发表" primary/>
+
+                </div>
+            </div>
+            <div style="display:flex;width: 100%;background-color: #f5f5f5;text-align: center">
+                <div style="flex: 1;color: #7e57c2" @click="showComment">
+                    <mu-icon-button icon="insert_comment" primary slot="right"/>
+                </div>
+                <div style="flex: 1;color: #7e57c2">
+                    <mu-icon-button :icon="icon" @click="favorite" primary slot="right"/>
+                </div>
+                <div style="flex: 1;color: #7e57c2">
+                    <mu-icon-button icon="share" primary slot="right"/>
+                </div>
+            </div>
         </div>
+
     </div>
 </template>
 
@@ -314,6 +327,9 @@ export default {
     },
     favorite () {
       this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
+    },
+    showComment () {
+      this.comment = !this.comment
     }
   }
 }
