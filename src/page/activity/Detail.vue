@@ -32,7 +32,7 @@
             </mu-sub-header>
 
             <mu-list-item v-for="index in 10" :key="index">
-                <div style="display: block;width: 100%;min-height: 100px">
+                <div style="display: block;width: 100%;min-height: 200px">
                     <div style="display: flex;width: 100%">
                         <div style="flex: 1">
                             <div style="width: 100%;line-height: 40px">
@@ -70,6 +70,11 @@
                         </div>
                     </div>
                 </div>
+                <div style="display:flex;width: 100%;background-color: #f5f5f5;text-align: center">
+                    <div style="flex: 1;color: #7e57c2">
+                        <mu-checkbox label="赞一个"  @input="good(index)" @change="changeVal" uncheckIcon="favorite_border" checkedIcon="favorite"/> <br/>
+                    </div>
+                </div>
             </mu-list-item>
         </mu-list>
 
@@ -104,7 +109,9 @@ export default {
     return {
       hasNewItem: true,
       comment: false,
-      icon: 'favorite_border'
+      icon: 'favorite_border',
+      index: 1,
+      value: true
     }
   },
   methods: {
@@ -116,6 +123,14 @@ export default {
     },
     favorite () {
       this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
+    },
+    changeVal (val) {
+      this.value = val
+    },
+    good (index) {
+      // 点赞事件，根据value的值进行进行判断是点赞还是取消赞，根据index可以知道是哪一条评论
+      console.log(index)
+      console.log(this.value)
     }
   }
 }
