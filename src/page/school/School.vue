@@ -84,7 +84,8 @@ export default {
       classCurrentPage: 1,
       schoolList: [],
       clubList: [],
-      classList: []
+      classList: [],
+      timer: null
     }
   },
   mounted () {
@@ -124,10 +125,11 @@ export default {
       this[position + 'Popup'] = false
     },
     refresh () {
-      setTimeout(() => {
-        this.refreshing = false
-      }, 2000)
       if (!this.refreshing) {
+        this.refreshing = true
+        this.timer = setTimeout(() => {
+          this.refreshing = false
+        }, 2000)
         if (this.activeTab === 'school') {
           this.getSchoolList()
         }
@@ -137,14 +139,14 @@ export default {
         if (this.activeTab === 'class') {
           this.getClassList()
         }
-        this.refreshing = true
       }
     },
     loadMore () {
-      setTimeout(() => {
-        this.loading = false
-      }, 2000)
       if (!this.loading) {
+        this.loading = true
+        this.timer = setTimeout(() => {
+          this.loading = false
+        }, 2000)
         if (this.activeTab === 'school') {
           this.syncSchoolList()
         }
@@ -153,7 +155,6 @@ export default {
         } if (this.activeTab === 'class') {
           this.syncClassList()
         }
-        this.loading = true
       }
     },
     getSchoolList () {
@@ -163,6 +164,8 @@ export default {
         if (res.code === 2000) {
           this.schoolList = res.data
           this.schoolCurrentPage += 1
+          clearTimeout(this.timer)
+          this.refreshing = false
         }
       })
     },
@@ -174,6 +177,8 @@ export default {
             this.schoolList.push(data[index])
           }
           this.schoolCurrentPage += 1
+          clearTimeout(this.timer)
+          this.loading = false
         }
       })
     },
@@ -182,11 +187,10 @@ export default {
       this.clubCurrentPage = 1
       this.$service.getClubList(this.$api.clublList, {page: this.clubCurrentPage}).then((res) => {
         if (res.code === 2000) {
-          let data = res.data
-          for (let index in data) {
-            this.clubList.push(data[index])
-          }
+          this.clubList = res.data
           this.clubCurrentPage += 1
+          clearTimeout(this.timer)
+          this.refreshing = false
         }
       })
     },
@@ -198,6 +202,8 @@ export default {
             this.clubList.push(data[index])
           }
           this.clubCurrentPage += 1
+          clearTimeout(this.timer)
+          this.loading = false
         }
       })
     },
@@ -208,6 +214,8 @@ export default {
         if (res.code === 2000) {
           this.classList = res.data
           this.classCurrentPage += 1
+          clearTimeout(this.timer)
+          this.refreshing = false
         }
       })
     },
@@ -219,6 +227,8 @@ export default {
             this.classList.push(data[index])
           }
           this.classCurrentPage += 1
+          clearTimeout(this.timer)
+          this.loading = false
         }
       })
     }
