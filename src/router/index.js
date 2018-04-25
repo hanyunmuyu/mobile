@@ -18,7 +18,6 @@ import ActivityDetail from '@/page/activity/Detail'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history', // 去掉路由地址的#
   routes: [
     {
       path: '/',
