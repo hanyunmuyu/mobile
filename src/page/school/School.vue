@@ -132,7 +132,7 @@ export default {
     refresh () {
       setTimeout(() => {
         this.refreshing = false
-      }, 2000)
+      }, 3000)
       if (!this.refreshing) {
         this.refreshing = true
         if (this.activeTab === 'school') {
@@ -149,7 +149,7 @@ export default {
     loadMore () {
       setTimeout(() => {
         this.loading = false
-      }, 2000)
+      }, 3000)
       if (!this.loading) {
         this.loading = true
         if (this.activeTab === 'school') {
@@ -166,7 +166,7 @@ export default {
       this.schoolList = []
       this.schoolCurrentPage = 1
       this.$service.getSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
-        if (res.code === 3000) {
+        if (res.code === 2000) {
           this.schoolList = res.data
           this.schoolCurrentPage += 1
         }
@@ -174,7 +174,7 @@ export default {
     },
     syncSchoolList () {
       this.$service.syncSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
-        if (res.code === 3000) {
+        if (res.code === 2000) {
           let data = res.data
           for (let index in data) {
             this.schoolList.push(data[index])
