@@ -16,11 +16,11 @@
                         <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
                             <h1 style="font-size: 110%">{{item.title}}</h1>
                             <div style="margin-top: 10px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2; ">{{item.description}}</div>
-                            <div style="margin-top: 10px;font-size: 80%">点击：{{item.clickNum}}   收藏：{{item.favoriteNum}}</div>
+                            <div style="margin-top: 10px;font-size: 80%">点击：{{item.click_num}}   收藏：{{item.favorite_num}}</div>
                         </div>
                     </div>
-                    <div style="flex: 1;">
-                        <img style="width: 100%;" v-lazy="item.img"/>
+                    <div style="flex: 1;height: 50px">
+                        <img style="width: 100%;" v-lazy="item.img_a"/>
                     </div>
                 </div>
             </mu-list-item>
@@ -75,7 +75,7 @@ export default {
       this.exploreCurrentPage = 1
       this.$service.getExploreList(this.$api.explore, {page: this.exploreCurrentPage}).then((r) => {
         if (r.code === 2000) {
-          this.dataList = r.data
+          this.dataList = r.data.data
           this.exploreCurrentPage += 1
         }
       })
@@ -83,7 +83,7 @@ export default {
     syncDataList () {
       this.$service.sybcExploreList(this.$api.explore, {page: this.exploreCurrentPage}).then((r) => {
         if (r.code === 2000) {
-          let data = r.data
+          let data = r.data.data
           for (let index in data) {
             this.dataList.push(data[index])
           }

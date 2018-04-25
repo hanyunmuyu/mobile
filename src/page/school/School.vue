@@ -25,7 +25,7 @@
         <div v-if="activeTab === 'club'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in clubList" class="list-item" :key="index" @click.stop="goToClub(index)">
+                <li v-for="(item,index) in clubList" class="list-item" :key="index" @click.stop="goToClub(item.id)">
                     <div class="list-item-img">
                         <img v-lazy="item.logo"/>
                         <p class="ul-list-footer">
@@ -42,7 +42,7 @@
         <div v-if="activeTab === 'class'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToClass(index)">
+                <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToClass(item.id)">
                     <div class="list-item-img">
                         <img v-lazy="item.logo"/>
                         <p class="ul-list-footer">
@@ -167,7 +167,7 @@ export default {
       this.schoolCurrentPage = 1
       this.$service.getSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
         if (res.code === 2000) {
-          this.schoolList = res.data
+          this.schoolList = res.data.data
           this.schoolCurrentPage += 1
         }
       })
@@ -175,7 +175,7 @@ export default {
     syncSchoolList () {
       this.$service.syncSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
         if (res.code === 2000) {
-          let data = res.data
+          let data = res.data.data
           for (let index in data) {
             this.schoolList.push(data[index])
           }
@@ -188,7 +188,7 @@ export default {
       this.clubCurrentPage = 1
       this.$service.getClubList(this.$api.clublList, {page: this.clubCurrentPage}).then((res) => {
         if (res.code === 2000) {
-          let data = res.data
+          let data = res.data.data
           for (let index in data) {
             this.clubList.push(data[index])
           }
@@ -199,7 +199,7 @@ export default {
     syncClubList () {
       this.$service.syncClubList(this.$api.clublList, {page: this.clubCurrentPage}).then((res) => {
         if (res.code === 2000) {
-          let data = res.data
+          let data = res.data.data
           for (let index in data) {
             this.clubList.push(data[index])
           }
@@ -212,7 +212,7 @@ export default {
       this.classCurrentPage = 1
       this.$service.getClassList(this.$api.classList, {page: this.classCurrentPage}).then((res) => {
         if (res.code === 2000) {
-          this.classList = res.data
+          this.classList = res.data.data
           this.classCurrentPage += 1
         }
       })
@@ -220,7 +220,7 @@ export default {
     syncClassList () {
       this.$service.syncClassList(this.$api.classList, {page: this.classCurrentPage}).then((res) => {
         if (res.code === 2000) {
-          let data = res.data
+          let data = res.data.data
           for (let index in data) {
             this.classList.push(data[index])
           }

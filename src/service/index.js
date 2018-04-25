@@ -2,6 +2,9 @@ import axios from 'axios'
 import store from '../store'
 export function get (url, ps) {
   store.state.loading = true
+  setTimeout(() => {
+    store.state.loading = false
+  }, 3000)
   return axios.get(url, {params: ps}).then((res) => {
     store.state.loading = false
     return res.data
@@ -9,6 +12,9 @@ export function get (url, ps) {
 }
 export function post (url, ps) {
   store.state.loading = true
+  setTimeout(() => {
+    store.state.loading = false
+  }, 3000)
   let params = new URLSearchParams()
   // 你要传给后台的参数值 key/value
   for (let p in ps) {
