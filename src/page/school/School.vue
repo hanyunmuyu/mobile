@@ -90,7 +90,7 @@ export default {
   mounted () {
     this.trigger = this.$el
     this.scroller = this.$el
-    this.getSchoolList(true)
+    this.getSchoolList()
   },
   methods: {
     goToSchool (id) {
@@ -166,7 +166,7 @@ export default {
       this.schoolList = []
       this.schoolCurrentPage = 1
       this.$service.getSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
-        if (res.code === 2000) {
+        if (res.code === 3000) {
           this.schoolList = res.data
           this.schoolCurrentPage += 1
         }
@@ -174,7 +174,7 @@ export default {
     },
     syncSchoolList () {
       this.$service.syncSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
-        if (res.code === 2000) {
+        if (res.code === 3000) {
           let data = res.data
           for (let index in data) {
             this.schoolList.push(data[index])

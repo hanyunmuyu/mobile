@@ -22,6 +22,9 @@ const service = {
   getExploreList: (url, ps) => {
     return get(url, ps)
   },
+  sybcExploreList: (url, ps) => {
+    return get(url, ps)
+  },
   getSchoolList: (url, ps) => {
     return get(url, ps)
   },

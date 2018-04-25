@@ -5,6 +5,7 @@
             </mu-appbar>
         </div>
         <mu-list>
+            <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <mu-list-item @click="go" v-for="(item,index) in dataList" :key="index">
                 <div style="width: 100%;overflow: hidden;display: flex">
                     <div style="flex: 3">
@@ -23,6 +24,7 @@
                     </div>
                 </div>
             </mu-list-item>
+            <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
         </mu-list>
     </div>
 </template>
@@ -32,7 +34,12 @@ export default {
   name: 'explore',
   data () {
     return {
-      dataList: []
+      dataList: [],
+      refreshing: false,
+      trigger: null,
+      loading: false,
+      scroller: null,
+      exploreCurrentPage: 1
     }
   },
   methods: {
@@ -46,14 +53,49 @@ export default {
     userInfo (id) {
       this.$router.push('/user/info/' + id)
     },
+    refresh () {
+      setTimeout(() => {
+        this.refreshing = false
+      }, 3000)
+      if (!this.refreshing) {
+        this.refreshing = true
+        this.getData()
+      }
+    },
+    loadMore () {
+      setTimeout(() => {
+        this.loading = false
+      }, 3000)
+      if (!this.loading) {
+        this.loading = true
+        this.syncDataList()
+      }
+    },
     getData () {
-      this.$service.getExploreList(this.$api.explore, {page: 1}).then((r) => {
-        this.dataList = r.data
+      this.exploreCurrentPage = 1
+      this.$service.getExploreList(this.$api.explore, {page: this.exploreCurrentPage}).then((r) => {
+        if (r.code === 2000) {
+          this.dataList = r.data
+          this.exploreCurrentPage += 1
+        }
+      })
+    },
+    syncDataList () {
+      this.$service.sybcExploreList(this.$api.explore, {page: this.exploreCurrentPage}).then((r) => {
+        if (r.code === 2000) {
+          let data = r.data
+          for (let index in data) {
+            this.dataList.push(data[index])
+          }
+          this.exploreCurrentPage += 1
+        }
       })
     }
   },
-  mounted: function () {
+  mounted () {
     this.getData()
+    this.trigger = this.$el
+    this.scroller = this.$el
   }
 }
 </script>
