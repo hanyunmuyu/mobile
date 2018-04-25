@@ -1,7 +1,7 @@
 <template>
     <div style="margin-top: 45px">
         <mu-back-top :bottom="110" :right="10" :duration="1500" icon="arrow_upward"/>
-        <mu-linear-progress :size=10 v-if="$store.state.loading"  :strokeWidth="5" :value="0"/>
+        <mu-circular-progress v-if="$store.state.loading"  :size="60" :strokeWidth="4"/>
         <div v-if="isShowFooter" class="footer">
             <mu-paper>
                 <mu-bottom-nav :value="footerActive" shift @change="handleChange">
