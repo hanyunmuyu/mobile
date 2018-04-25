@@ -19,6 +19,9 @@ export function post (url, ps) {
   })
 }
 const service = {
+  getExploreList: (url, ps) => {
+    return get(url, ps)
+  },
   getSchoolList: (url, ps) => {
     return get(url, ps)
   },

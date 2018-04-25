@@ -20,15 +20,13 @@ Vue.prototype.$api = api
 Vue.prototype.$service = service
 
 Vue.use(MuseUI)
-
-Vue.use(VueLazyload)
-
-// or with options
+// 懒加载
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: '../static/images/dog.gif',
   loading: '../static/images/dog.gif',
-  attempt: 1
+  attempt: 2,
+  listenEvents: [ 'scroll' ]
 })
 Vue.config.productionTip = false
 

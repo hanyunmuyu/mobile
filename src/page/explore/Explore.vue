@@ -10,16 +10,16 @@
                     <div style="flex: 3">
                         <div class="header-left"  @click.stop="userInfo(item.userId)">
                             <mu-avatar :size=20 :src="item.avatar" slot="avatar"/>
-                            <span>{{item.title}}</span>
+                            <span>{{item.username}}</span>
                         </div>
                         <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
-                            <h1 style="font-size: 110%">{{item.username}}</h1>
-                            <div style="margin-top: 10px;font-size: 90%">{{item.description}}</div>
+                            <h1 style="font-size: 110%">{{item.title}}</h1>
+                            <div style="margin-top: 10px;">{{item.description}}</div>
                             <div style="margin-top: 10px;font-size: 80%">点击：{{item.clickNum}}   收藏：{{item.favoriteNum}}</div>
                         </div>
                     </div>
                     <div style="flex: 1;">
-                        <img style="width: 100%" v-lazy="item.avatar"/>
+                        <img style="width: 100%;" v-lazy="item.img"/>
                     </div>
                 </div>
             </mu-list-item>
@@ -47,18 +47,8 @@ export default {
       this.$router.push('/user/info/' + id)
     },
     getData () {
-      var params = new URLSearchParams()
-      // 你要传给后台的参数值 key/value
-      params.append('username', this.username)
-      params.append('password', this.password)
-      this.$axios({
-        method: 'get',
-        url: this.$api.home,
-        data: params
-      }).then((r) => {
+      this.$service.getExploreList(this.$api.explore, {page: 1}).then((r) => {
         this.dataList = r.data
-        // console.log(res.data)
-      }).then((res) => {
       })
     }
   },
