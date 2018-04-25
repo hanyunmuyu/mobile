@@ -159,12 +159,7 @@ export default {
     getSchoolList () {
       this.schoolList = []
       this.schoolCurrentPage = 1
-      this.$axios({
-        method: 'get',
-        url: this.$api.schoolList
-      }).then((res) => {
-        return res.data
-      }).then((res) => {
+      this.$service.getSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
         if (res.code === 2000) {
           this.schoolList = res.data
           this.schoolCurrentPage += 1
@@ -172,12 +167,7 @@ export default {
       })
     },
     syncSchoolList () {
-      this.$axios({
-        method: 'get',
-        url: this.$api.schoolList + '?page=' + this.schoolCurrentPage
-      }).then((res) => {
-        return res.data
-      }).then((res) => {
+      this.$service.syncSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
         if (res.code === 2000) {
           let data = res.data
           for (let index in data) {
@@ -190,12 +180,7 @@ export default {
     getClubList () {
       this.clubList = []
       this.clubCurrentPage = 1
-      this.$axios({
-        method: 'get',
-        url: this.$api.clublList
-      }).then((res) => {
-        return res.data
-      }).then((res) => {
+      this.$service.getClubList(this.$api.clublList, {page: this.clubCurrentPage}).then((res) => {
         if (res.code === 2000) {
           let data = res.data
           for (let index in data) {
@@ -206,12 +191,7 @@ export default {
       })
     },
     syncClubList () {
-      this.$axios({
-        method: 'get',
-        url: this.$api.clublList + '?page=' + this.clubCurrentPage
-      }).then((res) => {
-        return res.data
-      }).then((res) => {
+      this.$service.syncClubList(this.$api.clublList, {page: this.clubCurrentPage}).then((res) => {
         if (res.code === 2000) {
           let data = res.data
           for (let index in data) {
@@ -224,12 +204,7 @@ export default {
     getClassList () {
       this.classList = []
       this.classCurrentPage = 1
-      this.$axios({
-        method: 'get',
-        url: this.$api.classList
-      }).then((res) => {
-        return res.data
-      }).then((res) => {
+      this.$service.getClassList(this.$api.classList, {page: this.classCurrentPage}).then((res) => {
         if (res.code === 2000) {
           this.classList = res.data
           this.classCurrentPage += 1
@@ -237,12 +212,7 @@ export default {
       })
     },
     syncClassList () {
-      this.$axios({
-        method: 'get',
-        url: this.$api.classList + '?page=' + this.classCurrentPage
-      }).then((res) => {
-        return res.data
-      }).then((res) => {
+      this.$service.syncClassList(this.$api.classList, {page: this.classCurrentPage}).then((res) => {
         if (res.code === 2000) {
           let data = res.data
           for (let index in data) {
