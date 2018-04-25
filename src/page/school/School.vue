@@ -2,7 +2,7 @@
     <div>
         <mu-tabs :value="activeTab" @change="handleTabChange">
             <mu-tab to="/school" value="school" title="校园"/>
-            <mu-tab to="/school" value="shetuan" title="社团"/>
+            <mu-tab to="/school" value="club" title="社团"/>
             <mu-tab to="/school" value="class" title="班级"/>
         </mu-tabs>
         <div v-if="activeTab === 'school'">
@@ -22,18 +22,18 @@
             </ul>
             <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
         </div>
-        <div v-if="activeTab === 'shetuan'">
+        <div v-if="activeTab === 'club'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in shetuanList" class="list-item" :key="index" @click.stop="goToShetuan(index)">
+                <li v-for="(item,index) in clubList" class="list-item" :key="index" @click.stop="goToShetuan(index)">
                     <div class="list-item-img">
-                        <img :src="item.image"/>
+                        <img v-lazy="item.logo"/>
                         <p class="ul-list-footer">
                             {{index*10000}}人关注
                         </p>
                     </div>
                     <h2  @click.stop="open('bottom',item)">
-                        {{item.title}}
+                        {{item.name}}
                     </h2>
                 </li>
             </ul>
@@ -44,13 +44,13 @@
             <ul class="ul-list">
                 <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToShetuan(index)">
                     <div class="list-item-img">
-                        <img :src="item.image"/>
+                        <img v-lazy="item.logo"/>
                         <p class="ul-list-footer">
                             {{index*10000}}人关注
                         </p>
                     </div>
                     <h2  @click.stop="open('bottom',item)">
-                        {{item.title}}
+                        {{item.name}}
                     </h2>
                 </li>
             </ul>
@@ -79,72 +79,12 @@ export default {
       trigger: null,
       loading: false,
       scroller: null,
-      num: 10,
-      shetuanList: [
-        {
-          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524133125781&di=c7963eadce9cc50b0fb01b032d1a7c47&imgtype=0&src=http%3A%2F%2Fpic25.photophoto.cn%2F20121030%2F0008020353982724_b.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524452873434&di=28930392c56539208af718d681815172&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01ff1e571678cf32f8758c9bf5b661.jpg%403000w_1l_2o_100sh.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453075183&di=3708c2cb0f550b515119f50071199637&imgtype=0&src=http%3A%2F%2Fwww.dxsbb.com%2FupFiles%2FinfoImg%2F2015120537135861.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524453245889&di=85c5cd28cdcbe993b72f2913e3d2e925&imgtype=0&src=http%3A%2F%2Fcdn6.haitou.cc%2Funiversity%2F112.png',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }
-      ],
-      schoolTotalPage: 1,
       schoolCurrentPage: 1,
+      clubCurrentPage: 1,
+      classCurrentPage: 1,
       schoolList: [],
-      classList: [
-        {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }, {
-          image: '/static/hats.jpg',
-          title: '河南工业大学',
-          detail: '河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介河南工业大学简介'
-        }
-      ]
+      clubList: [],
+      classList: []
     }
   },
   mounted () {
@@ -156,11 +96,25 @@ export default {
     goToShetuan (id) {
       this.$router.push('/shetuan/' + id)
     },
-    handleChange (val) {
-      this.bottomNav = val
-    },
     handleTabChange (val) {
       this.activeTab = val
+      this.refreshing = false
+      this.loading = false
+      if (this.activeTab === 'school') {
+        if (this.schoolList.length <= 0) {
+          this.getSchoolList()
+        }
+      }
+      if (this.activeTab === 'club') {
+        if (this.clubList.length <= 0) {
+          this.getClubList()
+        }
+      }
+      if (this.activeTab === 'class') {
+        if (this.classList.length <= 0) {
+          this.getClassList()
+        }
+      }
     },
     open (position, detail) {
       this[position + 'Popup'] = true
@@ -170,52 +124,133 @@ export default {
       this[position + 'Popup'] = false
     },
     refresh () {
-      let tag = this.activeTab
+      setTimeout(() => {
+        this.refreshing = false
+      }, 2000)
       if (!this.refreshing) {
-        if (tag === 'school') {
-          this.getSchoolList(false)
+        if (this.activeTab === 'school') {
+          this.getSchoolList()
         }
+        if (this.activeTab === 'club') {
+          this.getClubList()
+        }
+        if (this.activeTab === 'class') {
+          this.getClassList()
+        }
+        this.refreshing = true
       }
     },
     loadMore () {
-      let tag = this.activeTab
-      if (!this.loading) {
-        if (tag === 'school') {
-          this.getSchoolList(true)
-        }
-      }
-    },
-    getSchoolList (isLoading) {
-      if (!this.loading) {
-        this.loading = true
-        if (!isLoading) {
-          this.refreshing = true
-          this.schoolCurrentPage = 1
-        }
-        this.$axios({
-          method: 'get',
-          url: this.$api.schoolList + '?page=' + this.schoolCurrentPage
-        }).then((res) => {
-          return res.data
-        }).then((res) => {
-          if (res.code === 2000) {
-            let data = res.data.data
-            if (isLoading) {
-              for (let index in data) {
-                this.schoolList.push(data[index])
-              }
-            } else {
-              this.schoolList = []
-              this.schoolList = data
-            }
-            this.schoolCurrentPage += 1
-          }
-        })
-      }
       setTimeout(() => {
         this.loading = false
-        this.refreshing = false
       }, 2000)
+      if (!this.loading) {
+        if (this.activeTab === 'school') {
+          this.syncSchoolList()
+        }
+        if (this.activeTab === 'club') {
+          this.syncClubList()
+        } if (this.activeTab === 'class') {
+          this.syncClassList()
+        }
+        this.loading = true
+      }
+    },
+    getSchoolList () {
+      this.schoolList = []
+      this.schoolCurrentPage = 1
+      this.$axios({
+        method: 'get',
+        url: this.$api.schoolList
+      }).then((res) => {
+        return res.data
+      }).then((res) => {
+        if (res.code === 2000) {
+          this.schoolList = res.data
+          this.schoolCurrentPage += 1
+        }
+      })
+    },
+    syncSchoolList () {
+      this.$axios({
+        method: 'get',
+        url: this.$api.schoolList + '?page=' + this.schoolCurrentPage
+      }).then((res) => {
+        return res.data
+      }).then((res) => {
+        if (res.code === 2000) {
+          let data = res.data
+          for (let index in data) {
+            this.schoolList.push(data[index])
+          }
+          this.schoolCurrentPage += 1
+        }
+      })
+    },
+    getClubList () {
+      this.clubList = []
+      this.clubCurrentPage = 1
+      this.$axios({
+        method: 'get',
+        url: this.$api.clublList
+      }).then((res) => {
+        return res.data
+      }).then((res) => {
+        if (res.code === 2000) {
+          let data = res.data
+          for (let index in data) {
+            this.clubList.push(data[index])
+          }
+          this.clubCurrentPage += 1
+        }
+      })
+    },
+    syncClubList () {
+      this.$axios({
+        method: 'get',
+        url: this.$api.clublList + '?page=' + this.clubCurrentPage
+      }).then((res) => {
+        return res.data
+      }).then((res) => {
+        if (res.code === 2000) {
+          let data = res.data
+          for (let index in data) {
+            this.clubList.push(data[index])
+          }
+          this.clubCurrentPage += 1
+        }
+      })
+    },
+    getClassList () {
+      this.classList = []
+      this.classCurrentPage = 1
+      this.$axios({
+        method: 'get',
+        url: this.$api.classList
+      }).then((res) => {
+        return res.data
+      }).then((res) => {
+        if (res.code === 2000) {
+          this.classList = res.data
+          this.classCurrentPage += 1
+        }
+      })
+    },
+    syncClassList () {
+      this.$axios({
+        method: 'get',
+        url: this.$api.classList + '?page=' + this.classCurrentPage
+      }).then((res) => {
+        return res.data
+      }).then((res) => {
+        if (res.code === 2000) {
+          let data = res.data
+          for (let index in data) {
+            this.classList.push(data[index])
+          }
+          this.classCurrentPage += 1
+        }
+      })
     }
   },
   watch: {
