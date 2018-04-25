@@ -10,7 +10,9 @@ import Login from '@/page/account/Login'
 import Register from '@/page/account/Register'
 import Search from '@/page/search/Search'
 import Detail from '@/page/detail/Detail'
-import ShetuanHome from '@/page/shetuan/Home'
+import SchoolIndex from '@/page/school/index'
+import Club from '@/page/club/index'
+import Class from '@/page/class/index'
 import UserInfo from '@/page/user/Info'
 import ActivityDetail from '@/page/activity/Detail'
 Vue.use(Router)
@@ -69,9 +71,19 @@ export default new Router({
       component: Detail
     },
     {
-      path: '/shetuan/:id',
-      name: 'ShetuanHome',
-      component: ShetuanHome
+      path: '/school/:id',
+      name: 'SchoolIndex',
+      component: SchoolIndex
+    },
+    {
+      path: '/club/:id',
+      name: 'Club',
+      component: Club
+    },
+    {
+      path: '/class/:id',
+      name: 'Class',
+      component: Class
     },
     {
       path: '/user/info/:id',

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-            <mu-appbar title="莘莘团">
+            <mu-appbar title="经贸八班">
                 <mu-icon-button icon="arrow_back" slot="left" @click="goBack"/>
                 <mu-icon-button :icon="icon" slot="right" @click="favorite"/>
             </mu-appbar>
@@ -12,7 +12,7 @@
         <mu-tabs class="tabs" :value="activeTab" @change="handleTabChange">
             <mu-tab class="tab" value="best" title="活动精选"/>
             <mu-tab class="tab" value="new" title="最新活动"/>
-            <mu-tab class="tab" value="album" title="活动相册"/>
+            <!--<mu-tab class="tab" value="album" title="活动相册"/>-->
             <mu-tab class="tab" value="member" title="成员"/>
         </mu-tabs>
         <div v-if="activeTab === 'best'">
@@ -118,7 +118,7 @@
 
 <script>
 export default {
-  name: 'shetuan',
+  name: 'club',
   data () {
     return {
       activeTab: 'new',

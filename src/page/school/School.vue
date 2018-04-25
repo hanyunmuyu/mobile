@@ -8,7 +8,7 @@
         <div v-if="activeTab === 'school'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToShetuan(item.id)">
+                <li v-for="(item,index) in schoolList" class="list-item" :key="index"  @click="goToSchool(item.id)">
                     <div class="list-item-img">
                         <img v-lazy="item.logo"/>
                         <p class="ul-list-footer">
@@ -25,7 +25,7 @@
         <div v-if="activeTab === 'club'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh(activeTab)"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in clubList" class="list-item" :key="index" @click.stop="goToShetuan(index)">
+                <li v-for="(item,index) in clubList" class="list-item" :key="index" @click.stop="goToClub(index)">
                     <div class="list-item-img">
                         <img v-lazy="item.logo"/>
                         <p class="ul-list-footer">
@@ -42,7 +42,7 @@
         <div v-if="activeTab === 'class'">
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <ul class="ul-list">
-                <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToShetuan(index)">
+                <li v-for="(item,index) in classList" class="list-item" :key="index"  @click="goToClass(index)">
                     <div class="list-item-img">
                         <img v-lazy="item.logo"/>
                         <p class="ul-list-footer">
@@ -93,8 +93,14 @@ export default {
     this.getSchoolList(true)
   },
   methods: {
-    goToShetuan (id) {
-      this.$router.push('/shetuan/' + id)
+    goToSchool (id) {
+      this.$router.push('/school/' + id)
+    },
+    goToClub (id) {
+      this.$router.push('/club/' + id)
+    },
+    goToClass (id) {
+      this.$router.push('/class/' + id)
     },
     handleTabChange (val) {
       this.activeTab = val
