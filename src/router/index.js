@@ -1,20 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/page/home/Home'
-import School from '@/page/school/School'
-import Message from '@/page/message/Message'
-import Explore from '@/page/explore/Explore'
-import Account from '@/page/account/Account'
-import User from '@/page/account/User'
-import Login from '@/page/account/Login'
-import Register from '@/page/account/Register'
-import Search from '@/page/search/Search'
-import Detail from '@/page/detail/Detail'
-import SchoolIndex from '@/page/school/index'
-import Club from '@/page/club/index'
-import Class from '@/page/class/index'
-import UserInfo from '@/page/user/Info'
-import ActivityDetail from '@/page/activity/Detail'
+const Explore = resolve => require(['../page/explore/Explore'], resolve)
+const ActivityDetail = resolve => require(['../page/activity/Detail'], resolve)
+const UserInfo = resolve => require(['../page/user/Info'], resolve)
+const Class = resolve => require(['../page/class/index'], resolve)
+const Club = resolve => require(['../page/club/index'], resolve)
+const SchoolIndex = resolve => require(['../page/school/index'], resolve)
+const Detail = resolve => require(['../page/detail/Detail'], resolve)
+const Search = resolve => require(['../page/search/Search'], resolve)
+const Register = resolve => require(['../page/account/Register'], resolve)
+const Login = resolve => require(['../page/account/Login'], resolve)
+const User = resolve => require(['../page/account/User'], resolve)
+const Account = resolve => require(['../page/account/Account'], resolve)
+const Message = resolve => require(['../page/message/Message'], resolve)
+const School = resolve => require(['../page/school/School'], resolve)
+const Home = resolve => require(['../page/home/Home'], resolve)
+
 Vue.use(Router)
 
 export default new Router({
