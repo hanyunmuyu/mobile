@@ -6,10 +6,10 @@
         </div>
         <mu-list>
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
-            <mu-list-item @click="go" v-for="(item,index) in dataList" :key="index">
+            <mu-list-item v-for="(item,index) in dataList"  @click="detail(item)"  :key="index">
                 <div style="width: 100%;overflow: hidden;display: flex;min-height: 100px">
                     <div style="flex: 3">
-                        <div class="header-left"  @click.stop="userInfo(item.userId)">
+                        <div class="header-left"  @click.stop="itemSource(item)">
                             <mu-avatar :size=20 :src="item.avatar" slot="avatar"/>
                             <span>{{item.name}}</span>
                         </div>
@@ -47,12 +47,24 @@ export default {
     search () {
       this.$router.push('/search')
     },
-    go () {
-      this.$router.push('/detail')
-      this.$store.state.footerActive = 'home'
+    detail (item) {
+      if (item.tag === 'club') {
+        this.$router.push('/activity/club/detail/' + item.id)
+      } else if (item.tag === 'school') {
+        this.$router.push('/activity/school/detail/' + item.id)
+      } else if (item.tag === 'user_post') {
+        this.$router.push('/activity/user/detail/' + item.id)
+      }
+      // this.$store.state.footerActive = 'home'
     },
-    userInfo (id) {
-      this.$router.push('/user/info/' + id)
+    itemSource (item) {
+      if (item.tag === 'club') {
+        this.$router.push('/club/' + item.id)
+      } else if (item.tag === 'school') {
+        this.$router.push('/school/' + item.id)
+      } else if (item.tag === 'user_post') {
+        this.$router.push('/user/info/' + item.id)
+      }
     },
     refresh () {
       this.timer = setTimeout(() => {

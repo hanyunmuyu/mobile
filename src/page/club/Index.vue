@@ -39,7 +39,7 @@
         </div>
         <div v-if="activeTab === 'new'">
             <mu-list>
-                <mu-list-item to="/activity/detail" v-for="index in 10" :key="index">
+                <mu-list-item v-for="index in 10"  :to="'/activity/detail/'+index" :key="index">
                     <div style="width: 100%;overflow: hidden;display: flex">
                         <div style="flex: 3">
                             <div class="header-left">
