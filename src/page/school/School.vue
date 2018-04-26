@@ -177,9 +177,12 @@ export default {
       this.$service.syncSchoolList(this.$api.schoolList, {page: this.schoolCurrentPage}).then((res) => {
         if (res.code === 2000) {
           let data = res.data.data
+          let tmp = []
+          tmp = this.schoolList
           for (let index in data) {
-            this.schoolList.push(data[index])
+            tmp.push(data[index])
           }
+          this.schoolList = tmp
           this.schoolCurrentPage += 1
         }
       })
@@ -201,9 +204,12 @@ export default {
       this.$service.syncClubList(this.$api.clublList, {page: this.clubCurrentPage}).then((res) => {
         if (res.code === 2000) {
           let data = res.data.data
+          let tmp = []
+          tmp = this.clubList
           for (let index in data) {
-            this.clubList.push(data[index])
+            tmp.push(data[index])
           }
+          this.clubList = tmp
           this.clubCurrentPage += 1
         }
       })
@@ -222,9 +228,12 @@ export default {
       this.$service.syncClassList(this.$api.classList, {page: this.classCurrentPage}).then((res) => {
         if (res.code === 2000) {
           let data = res.data.data
+          let tmp = []
+          tmp = this.classList
           for (let index in data) {
-            this.classList.push(data[index])
+            tmp.push(data[index])
           }
+          this.classList = tmp
           this.classCurrentPage += 1
         }
       })

@@ -85,9 +85,12 @@ export default {
       this.$service.sybcExploreList(this.$api.explore, {page: this.exploreCurrentPage}).then((r) => {
         if (r.code === 2000) {
           let data = r.data.data
+          let tmp = []
+          tmp = this.dataList
           for (let index in data) {
-            this.dataList.push(data[index])
+            tmp.push(data[index])
           }
+          this.dataList = tmp
           this.exploreCurrentPage += 1
         }
       })
@@ -97,7 +100,7 @@ export default {
         this.loading = false
         this.refreshing = false
         clearTimeout(this.timer)
-      }, 1000)
+      }, 2000)
     }
   },
   mounted () {
