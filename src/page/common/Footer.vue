@@ -40,7 +40,7 @@ export default {
     },
     showRouter: function (routeName) {
       for (let a in this.routerShowList) {
-        if (this.routerShowList[a].toLowerCase() === routeName.toLowerCase()) {
+        if (!Object.is(null, routeName) && this.routerShowList[a].toLowerCase() === routeName.toLowerCase()) {
           this.$store.state.isShowFooter = true
           break
         } else {

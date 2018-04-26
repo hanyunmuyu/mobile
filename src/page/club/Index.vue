@@ -6,8 +6,8 @@
                 <mu-icon-button :icon="icon" slot="right" @click="favorite"/>
             </mu-appbar>
         </div>
-        <mu-card-header class="header-left" title="莘莘团" subTitle="莘莘团一个专注于校园生活的社区圈子">
-            <mu-avatar src="/static/images/water-plant.jpg" slot="avatar"/>
+        <mu-card-header class="header-left" :title="detail.name" :subTitle="detail.description">
+            <mu-avatar :src="detail.logo" slot="avatar"/>
         </mu-card-header>
         <mu-tabs class="tabs" :value="activeTab" @change="handleTabChange">
             <mu-tab class="tab" value="best" title="活动精选"/>
@@ -39,7 +39,8 @@
         </div>
         <div v-if="activeTab === 'new'">
             <mu-list>
-                <mu-list-item v-for="index in 10"  :to="'/activity/detail/'+index" :key="index">
+                <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
+                <mu-list-item v-for="(item,index) in clubNewActivityList"  :to="'/activity/detail/'+index" :key="index">
                     <div style="width: 100%;overflow: hidden;display: flex">
                         <div style="flex: 3">
                             <div class="header-left">
@@ -57,6 +58,7 @@
                         </div>
                     </div>
                 </mu-list-item>
+                <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
             </mu-list>
         </div>
         <div v-if="activeTab === 'album'">
@@ -122,15 +124,32 @@ export default {
   data () {
     return {
       activeTab: 'new',
-      icon: 'favorite'
+      icon: 'favorite',
+      refreshing: false,
+      trigger: null,
+      loading: false,
+      scroller: null,
+      clubNewActivityCurrentPage: 1,
+      timer: null,
+      clubNewActivityList: [],
+      clubId: 0,
+      detail: {}
     }
+  },
+  mounted () {
+    this.trigger = this.$el
+    this.scroller = this.$el
+    this.clubId = this.$route.params.id
+    this.getClubNewActivityList()
   },
   methods: {
     handleTabChange (val) {
       this.activeTab = val
-    },
-    handleActive () {
-      window.alert('tab active')
+      if (val === 'new') {
+        if (this.clubNewActivityList.length <= 0) {
+          this.getClubNewActivityList()
+        }
+      }
     },
     goBack () {
       this.$router.back()
@@ -141,6 +160,55 @@ export default {
     getData () {
       this.activeTab = 'new'
       // console.log(this.$route.params)
+    },
+    refresh () {
+      this.timer = setTimeout(() => {
+        this.refreshing = false
+      }, 10000)
+      if (!this.refreshing) {
+        this.refreshing = true
+        this.getClubNewActivityList()
+      }
+    },
+    loadMore () {
+      this.timer = setTimeout(() => {
+        this.refreshing = false
+      }, 10000)
+      if (!this.loading) {
+        this.loading = true
+        this.syncClubNewActivityList()
+      }
+    },
+    getClubNewActivityList () {
+      this.clubNewActivityCurrentPage = 1
+      this.$service.getClubNewActivity(this.$api.clubNewActivity, {page: this.clubNewActivityCurrentPage, clubId: this.clubId}).then((r) => {
+        if (r.code === 2000) {
+          this.clubNewActivityList = r.data.data
+          this.detail = r.data.detail
+          this.clubNewActivityCurrentPage += 1
+        }
+      })
+    },
+    syncClubNewActivityList () {
+      this.$service.syncClubNewActivity(this.$api.clubNewActivity, {page: this.clubNewActivityCurrentPage, clubId: this.clubId}).then((r) => {
+        if (r.code === 2000) {
+          let tmp = []
+          let data = r.data.data
+          tmp = this.clubNewActivityList
+          for (let index in data) {
+            tmp.push(data[index])
+          }
+          this.clubNewActivityList = tmp
+          this.clubNewActivityCurrentPage += 1
+        }
+      })
+    },
+    clearTimer () {
+      setTimeout(() => {
+        this.loading = false
+        this.refreshing = false
+        clearTimeout(this.timer)
+      }, 2000)
     }
   },
   beforeMount: function () {
@@ -152,6 +220,9 @@ export default {
       console.log(to.params.id)
       console.log(from)
       this.getData()
+    },
+    clubNewActivityList (v1) {
+      this.clearTimer()
     }
   }
 }

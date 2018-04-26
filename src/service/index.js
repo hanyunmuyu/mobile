@@ -34,6 +34,12 @@ const service = {
   getClubList: (url, ps) => {
     return get(url, ps)
   },
+  getClubNewActivity: (url, ps) => {
+    return get(url, ps)
+  },
+  syncClubNewActivity: (url, ps) => {
+    return get(url, ps)
+  },
   syncClubList: (url, ps) => {
     return get(url, ps)
   },

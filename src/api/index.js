@@ -4,6 +4,7 @@ const api = {
   explore: DOMAIN + '',
   schoolList: DOMAIN + '/school/list',
   clublList: DOMAIN + '/club/list',
+  clubNewActivity: DOMAIN + '/club/activity/new',
   classList: DOMAIN + '/class/list'
 }
 export default api
