@@ -84,7 +84,8 @@ export default {
       classCurrentPage: 1,
       schoolList: [],
       clubList: [],
-      classList: []
+      classList: [],
+      timer: null
     }
   },
   mounted () {
@@ -130,9 +131,9 @@ export default {
       this[position + 'Popup'] = false
     },
     refresh () {
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.refreshing = false
-      }, 3000)
+      }, 10000)
       if (!this.refreshing) {
         this.refreshing = true
         if (this.activeTab === 'school') {
@@ -147,9 +148,9 @@ export default {
       }
     },
     loadMore () {
-      setTimeout(() => {
-        this.loading = false
-      }, 3000)
+      this.timer = setTimeout(() => {
+        this.refreshing = false
+      }, 10000)
       if (!this.loading) {
         this.loading = true
         if (this.activeTab === 'school') {
@@ -227,6 +228,13 @@ export default {
           this.classCurrentPage += 1
         }
       })
+    },
+    clearTimer () {
+      setTimeout(() => {
+        this.loading = false
+        this.refreshing = false
+        clearTimeout(this.timer)
+      }, 1000)
     }
   },
   watch: {
@@ -236,6 +244,15 @@ export default {
           this.topPopup = false
         }, 2000)
       }
+    },
+    schoolList (v1) {
+      this.clearTimer()
+    },
+    clubList (v1) {
+      this.clearTimer()
+    },
+    classList (v1) {
+      this.clearTimer()
     }
   },
   beforeMount: function () {

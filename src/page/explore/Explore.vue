@@ -11,7 +11,7 @@
                     <div style="flex: 3">
                         <div class="header-left"  @click.stop="userInfo(item.userId)">
                             <mu-avatar :size=20 :src="item.avatar" slot="avatar"/>
-                            <span>{{item.username}}</span>
+                            <span>{{item.name}}</span>
                         </div>
                         <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
                             <h1 style="font-size: 110%">{{item.title}}</h1>
@@ -39,7 +39,8 @@ export default {
       trigger: null,
       loading: false,
       scroller: null,
-      exploreCurrentPage: 1
+      exploreCurrentPage: 1,
+      timer: null
     }
   },
   methods: {
@@ -54,18 +55,18 @@ export default {
       this.$router.push('/user/info/' + id)
     },
     refresh () {
-      setTimeout(() => {
+      this.timer = setTimeout(() => {
         this.refreshing = false
-      }, 3000)
+      }, 10000)
       if (!this.refreshing) {
         this.refreshing = true
         this.getData()
       }
     },
     loadMore () {
-      setTimeout(() => {
-        this.loading = false
-      }, 3000)
+      this.timer = setTimeout(() => {
+        this.refreshing = false
+      }, 10000)
       if (!this.loading) {
         this.loading = true
         this.syncDataList()
@@ -90,12 +91,24 @@ export default {
           this.exploreCurrentPage += 1
         }
       })
+    },
+    clearTimer () {
+      setTimeout(() => {
+        this.loading = false
+        this.refreshing = false
+        clearTimeout(this.timer)
+      }, 1000)
     }
   },
   mounted () {
     this.getData()
     this.trigger = this.$el
     this.scroller = this.$el
+  },
+  watch: {
+    dataList (v1) {
+      this.clearTimer()
+    }
   }
 }
 </script>
