@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Explore = resolve => require(['../page/explore/Explore'], resolve)
-const ClubActivityDetail = resolve => require(['../page/activity/club/Detail'], resolve)
+const ClubActivityDetail = resolve => require(['../page/club/activity/Detail'], resolve)
 const SchoolActivityDetail = resolve => require(['../page/activity/school/Detail'], resolve)
 const ClassActivityDetail = resolve => require(['../page/activity/class/Detail'], resolve)
 const UserActivityDetail = resolve => require(['../page/activity/user/Detail'], resolve)
@@ -94,7 +94,7 @@ export default new Router({
       component: UserInfo
     },
     {
-      path: '/activity/club/detail/:id',
+      path: '/club/activity/detail/:id',
       name: 'ClubActivityDetail',
       component: ClubActivityDetail
     },

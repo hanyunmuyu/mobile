@@ -40,7 +40,7 @@
         <div v-if="activeTab === 'new'">
             <mu-list>
                 <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
-                <mu-list-item v-for="(item,index) in clubNewActivityList"  :to="'/activity/detail/'+index" :key="index">
+                <mu-list-item v-for="(item,index) in clubNewActivityList"  :to="'/club/activity/detail/'+item.id" :key="index">
                     <div style="width: 100%;overflow: hidden;display: flex">
                         <div style="flex: 3">
                             <div class="header-left">
@@ -48,8 +48,8 @@
                                 <span>hanyun</span>
                             </div>
                             <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
-                                <h1 style="font-size: 110%">钟楼广场进行轮滑报验开始了</h1>
-                                <div style="margin-top: 10px;font-size: 90%">预计下午进行轮滑表演，欢迎大家一起来观赏</div>
+                                <h1 style="font-size: 110%">{{item.title}}</h1>
+                                <div style="margin-top: 10px;font-size: 90%">{{item.content}}</div>
                                 <div style="margin-top: 10px;font-size: 80%">点击：100 收藏：10</div>
                             </div>
                         </div>
