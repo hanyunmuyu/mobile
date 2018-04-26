@@ -49,7 +49,7 @@ export default {
     },
     detail (item) {
       if (item.tag === 'club') {
-        this.$router.push('/activity/club/detail/' + item.id)
+        this.$router.push('/club/activity/detail/' + item.id)
       } else if (item.tag === 'school') {
         this.$router.push('/activity/school/detail/' + item.id)
       } else if (item.tag === 'user_post') {
