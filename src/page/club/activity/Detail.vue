@@ -116,6 +116,9 @@ export default {
       msg: ''
     }
   },
+  mounted () {
+    this.init()
+  },
   methods: {
     goBack () {
       this.$router.back()
@@ -130,7 +133,9 @@ export default {
       }, 2000)
       let id = this.$route.params.id
       this.$service.recommendFavorite(this.$api.recommendFavoriteUrl, {id: id}).then((r) => {
-        this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
+        if (r.code === 2000) {
+          this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
+        }
         this.msg = r.msg
       })
     },
@@ -141,6 +146,16 @@ export default {
       // 点赞事件，根据value的值进行进行判断是点赞还是取消赞，根据index可以知道是哪一条评论
       console.log(index)
       console.log(this.value)
+    },
+    init () {
+      let id = this.$route.params.id
+      this.$service.recommendFavoriteDetail(this.$api.recommendFavoriteDetailUrl, {id: id}).then((r) => {
+        if (r.code === 2000) {
+          if (r.data.favorite === 1) {
+            this.icon = 'favorite'
+          }
+        }
+      })
     }
   },
   watch: {

@@ -58,6 +58,9 @@ const service = {
   },
   recommendFavorite: (url, ps) => {
     return post(url, ps)
+  },
+  recommendFavoriteDetail: (url, ps) => {
+    return post(url, ps)
   }
 }
 export default service
