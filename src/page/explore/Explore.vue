@@ -96,13 +96,13 @@ export default {
       this.$router.push('/search')
     },
     detail (item) {
-      this.$service.clickNumberAdd(this.$api.clickNumberAddUlr, {id: item.id})
+      this.$service.clickNumberAdd(this.$api.clickNumberAddUlr, {sourceId: item.source_id, tag: item.tag})
       if (item.tag === 'club') {
-        this.$router.push('/club/activity/detail/' + item.id)
+        this.$router.push('/club/activity/detail/' + item.source_id)
       } else if (item.tag === 'school') {
-        this.$router.push('/school/activity/detail/' + item.id)
+        this.$router.push('/school/activity/detail/' + item.source_id)
       } else if (item.tag === 'user_post') {
-        this.$router.push('/user/activity/detail/' + item.id)
+        this.$router.push('/user/activity/detail/' + item.source_id)
       }
       // this.$store.state.footerActive = 'home'
     },

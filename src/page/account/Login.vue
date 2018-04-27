@@ -64,7 +64,7 @@ export default {
             this.$store.state.token = res.data.token
             this.$router.push('/')
           }
-        }, 2000)
+        }, 1000)
       })
     },
     register () {

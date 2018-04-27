@@ -1,13 +1,14 @@
 import axios from 'axios'
 import store from '../store'
-let token = store.state.token
 export function get (url, ps) {
+  let token = store.state.token
   ps.token = token
   return axios.get(url, {params: ps}).then((res) => {
     return res.data
   })
 }
 export function post (url, ps) {
+  let token = store.state.token
   let params = new URLSearchParams()
   // 你要传给后台的参数值 key/value
   for (let p in ps) {
