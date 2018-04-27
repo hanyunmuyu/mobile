@@ -5,6 +5,7 @@ const api = {
   schoolList: DOMAIN + '/school/list',
   clublList: DOMAIN + '/club/list',
   clubNewActivity: DOMAIN + '/club/activity/new',
-  classList: DOMAIN + '/class/list'
+  classList: DOMAIN + '/class/list',
+  clickNumberAddUlr: DOMAIN + '/click/number/increment'
 }
 export default api

@@ -6,21 +6,69 @@
         </div>
         <mu-list>
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
-            <mu-list-item v-for="(item,index) in dataList"  @click="detail(item)"  :key="index">
-                <div style="width: 100%;overflow: hidden;display: flex;min-height: 100px">
-                    <div style="flex: 3">
-                        <div class="header-left"  @click.stop="itemSource(item)">
-                            <mu-avatar :size=20 :src="item.avatar" slot="avatar"/>
-                            <span>{{item.name}}</span>
+            <mu-list-item v-for="(item,index) in dataList" @click="detail(item)" :key="index">
+                <div class="list-item" v-if="item.imgList.length===0">
+                    <div class="header-left" @click.stop="itemSource(item)">
+                        <mu-avatar :size=24 :src="item.avatar" slot="avatar"/>
+                        <span>{{item.name}}</span>
+                    </div>
+                    <div class="title">
+                        <h1 class="title-text">{{item.title}}</h1>
+                    </div>
+                    <div class="description">
+                        {{item.description}}
+                    </div>
+                    <div class="item-footer">
+                        <mu-icon size=13 color="#7e57c2" value="remove_red_eye"/>
+                        {{item.click_num}}
+                        <mu-icon size=13 color="#7e57c2" value="favorite"/>
+                        {{item.favorite_num}}
+                    </div>
+                </div>
+                <div class="list-item" v-if="item.imgList.length===1">
+                    <div class="header-left" @click.stop="itemSource(item)">
+                        <mu-avatar :size=24 :src="item.avatar" slot="avatar"/>
+                        <span>{{item.name}}</span>
+                    </div>
+                    <div class="title">
+                        <h1>{{item.title}}</h1>
+                    </div>
+                    <div class="description description-flex">
+                        <div class="description-text">
+                            {{item.description}}
                         </div>
-                        <div style="margin-top:10px;display: block;clear:both;width: 100%;text-align: left">
-                            <h1 style="font-size: 110%">{{item.title}}</h1>
-                            <div style="margin-top: 10px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2; ">{{item.description}}</div>
-                            <div style="margin-top: 10px;font-size: 80%">点击：{{item.click_num}}   收藏：{{item.favorite_num}}</div>
+                        <div class="description-img">
+                            <img v-for="(img,i) in item.imgList" :style="{width: 100/(item.imgList.length)+'%'}"
+                                 v-lazy="img"/>
                         </div>
                     </div>
-                    <div style="flex: 1;height: 50px">
-                        <img style="width: 100%;" v-lazy="item.img_a"/>
+                    <div class="item-footer">
+                        <mu-icon size=13 color="#7e57c2" value="remove_red_eye"/>
+                        {{item.click_num}}
+                        <mu-icon size=13 color="#7e57c2" value="favorite"/>
+                        {{item.favorite_num}}
+                    </div>
+                </div>
+                <div class="list-item" v-else-if="item.imgList.length>1">
+                    <div class="header-left" @click.stop="itemSource(item)">
+                        <mu-avatar :size=24 :src="item.avatar" slot="avatar"/>
+                        <span>{{item.name}}</span>
+                    </div>
+                    <div class="title">
+                        <h1>{{item.title}}</h1>
+                    </div>
+                    <div class="description">
+                        {{item.description}}
+                    </div>
+                    <div class="img-list">
+                        <img v-for="(img,i) in item.imgList" :style="{width: 100/(item.imgList.length)+'%'}"
+                             v-lazy="img" :key="i"/>
+                    </div>
+                    <div class="item-footer">
+                        <mu-icon size=13 color="#7e57c2" value="remove_red_eye"/>
+                        {{item.click_num}}
+                        <mu-icon size=13 color="#7e57c2" value="favorite"/>
+                        {{item.favorite_num}}
                     </div>
                 </div>
             </mu-list-item>
@@ -48,6 +96,7 @@ export default {
       this.$router.push('/search')
     },
     detail (item) {
+      this.$service.clickNumberAdd(this.$api.clickNumberAddUlr, {id: item.id})
       if (item.tag === 'club') {
         this.$router.push('/club/activity/detail/' + item.id)
       } else if (item.tag === 'school') {
@@ -128,23 +177,67 @@ export default {
 }
 </script>
 <style lang="less">
-    .header {
-        /*position: fixed;*/
-        top: 0;
+    .list-item {
         width: 100%;
-    }
-
-    .footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .popup-bottom {
-        width: 100%;
-        max-width: 375px;
-    }
-    .header-left {
+        overflow: hidden;
+        display: block;
+        min-height: 100px;
         text-align: left;
+        .header-left {
+            width: 100%;
+            span{
+                height: inherit;
+            }
+        }
+        .title {
+            width: 100%;
+            margin: 6px auto;
+            .title-text {
+                font-size: 110%;
+            }
+        }
+        .description {
+            margin-top: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            /*-webkit-line-clamp: 2;*/
+        }
+        .description-flex{
+            display: flex;
+            .description-text{
+                flex: 3;
+            }
+            .description-img{
+                flex: 1;
+            }
+        }
+        .img-list {
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+            img{
+                padding: 1px;
+                border-radius: 5%;
+            }
+            img:first-child(odd){
+                float: left;
+            }
+            img:nth-child(2){
+                margin: 0 auto;
+            }
+            img:last-child{
+                float: right;
+            }
+        }
+        .item-footer {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 80%;
+            text-align: left
+        }
     }
 </style>

@@ -48,6 +48,9 @@ const service = {
   },
   syncClassList: (url, ps) => {
     return get(url, ps)
+  },
+  clickNumberAdd: (url, ps) => {
+    return post(url, ps)
   }
 }
 export default service
