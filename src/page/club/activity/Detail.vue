@@ -129,8 +129,8 @@ export default {
         this.toast = false
       }, 2000)
       let id = this.$route.params.id
-      this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
       this.$service.recommendFavorite(this.$api.recommendFavoriteUrl, {id: id}).then((r) => {
+        this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
         this.msg = r.msg
       })
     },

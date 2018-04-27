@@ -61,6 +61,7 @@ export default {
           this.toast = false
           if (res.code === 2000) {
             localStorage.setItem('token', res.data.token)
+            this.$store.state.token = res.data.token
             this.$router.push('/')
           }
         }, 2000)
