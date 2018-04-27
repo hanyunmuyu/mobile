@@ -316,7 +316,7 @@ export default {
         line-height: 25px;
         color: #ffffff;
         background-color: #424242;
-        opacity: 0.8;
+        opacity: 0.6;
     }
 
     .popup-bottom {

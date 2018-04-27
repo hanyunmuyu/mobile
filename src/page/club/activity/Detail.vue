@@ -98,7 +98,7 @@
                 </div>
             </div>
         </div>
-
+        <mu-toast v-if="toast" :message="msg"/>
     </div>
 </template>
 
@@ -111,7 +111,9 @@ export default {
       comment: false,
       icon: 'favorite_border',
       index: 1,
-      value: true
+      value: true,
+      toast: false,
+      msg: ''
     }
   },
   methods: {
@@ -122,9 +124,15 @@ export default {
       this.comment = !this.comment
     },
     favorite () {
+      this.toast = true
+      setTimeout(() => {
+        this.toast = false
+      }, 2000)
       let id = this.$route.params.id
       this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
-      this.$service.recommendFavorite(this.$api.recommendFavoriteUrl, {id: id})
+      this.$service.recommendFavorite(this.$api.recommendFavoriteUrl, {id: id}).then((r) => {
+        this.msg = r.msg
+      })
     },
     changeVal (val) {
       this.value = val
@@ -134,6 +142,8 @@ export default {
       console.log(index)
       console.log(this.value)
     }
+  },
+  watch: {
   }
 }
 </script>

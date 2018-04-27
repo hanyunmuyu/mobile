@@ -1,5 +1,8 @@
 import axios from 'axios'
+import store from '../store'
+let token = store.state.token
 export function get (url, ps) {
+  ps.token = token
   return axios.get(url, {params: ps}).then((res) => {
     return res.data
   })
@@ -10,6 +13,7 @@ export function post (url, ps) {
   for (let p in ps) {
     params.append(p, ps[p])
   }
+  params.append('token', token)
   return axios({
     method: 'post',
     url: url,
