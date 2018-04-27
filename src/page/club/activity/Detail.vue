@@ -122,7 +122,9 @@ export default {
       this.comment = !this.comment
     },
     favorite () {
+      let id = this.$route.params.id
       this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
+      this.$service.recommendFavorite(this.$api.recommendFavoriteUrl, {id: id})
     },
     changeVal (val) {
       this.value = val

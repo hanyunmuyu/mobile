@@ -19,9 +19,9 @@
                         {{item.description}}
                     </div>
                     <div class="item-footer">
-                        <mu-icon size=13 color="#7e57c2" value="remove_red_eye"/>
+                        <mu-icon :size=13 color="#7e57c2" value="remove_red_eye"/>
                         {{item.click_num}}
-                        <mu-icon size=13 color="#7e57c2" value="favorite"/>
+                        <mu-icon :size=13 color="#7e57c2" value="favorite"/>
                         {{item.favorite_num}}
                     </div>
                 </div>
@@ -39,13 +39,13 @@
                         </div>
                         <div class="description-img">
                             <img v-for="(img,i) in item.imgList" :style="{width: 100/(item.imgList.length)+'%'}"
-                                 v-lazy="img"/>
+                                 v-lazy="img" :key="i"/>
                         </div>
                     </div>
                     <div class="item-footer">
-                        <mu-icon size=13 color="#7e57c2" value="remove_red_eye"/>
+                        <mu-icon :size=13 color="#7e57c2" value="remove_red_eye"/>
                         {{item.click_num}}
-                        <mu-icon size=13 color="#7e57c2" value="favorite"/>
+                        <mu-icon :size=13 color="#7e57c2" value="favorite"/>
                         {{item.favorite_num}}
                     </div>
                 </div>
@@ -65,9 +65,9 @@
                              v-lazy="img" :key="i"/>
                     </div>
                     <div class="item-footer">
-                        <mu-icon size=13 color="#7e57c2" value="remove_red_eye"/>
+                        <mu-icon :size=13 color="#7e57c2" value="remove_red_eye"/>
                         {{item.click_num}}
-                        <mu-icon size=13 color="#7e57c2" value="favorite"/>
+                        <mu-icon :size=13 color="#7e57c2" value="favorite"/>
                         {{item.favorite_num}}
                     </div>
                 </div>

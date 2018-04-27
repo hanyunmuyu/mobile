@@ -51,6 +51,9 @@ const service = {
   },
   clickNumberAdd: (url, ps) => {
     return post(url, ps)
+  },
+  recommendFavorite: (url, ps) => {
+    return post(url, ps)
   }
 }
 export default service
