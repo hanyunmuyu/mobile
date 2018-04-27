@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="header">
-            <mu-appbar title="莘莘团">
+            <mu-appbar title="河南工业大学">
                 <mu-icon-button icon="arrow_back" slot="left" @click="goBack"/>
             </mu-appbar>
         </div>
@@ -9,11 +9,11 @@
             <mu-sub-header>
                 <div style="display: block;width: 100%;margin-top: 16px">
                     <div style="display: flex;width: 100%">
-                            <mu-chip>
-                                <mu-avatar :size="32"
-                                           src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1524530156&di=16ad7e58d060f544f118921007c21868&src=http://www.cnr.cn/lvyou/list/20150402/W020150402384247571517.jpg"/>
-                                楼主
-                            </mu-chip>
+                        <mu-chip>
+                            <mu-avatar :size="32"
+                                       src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1524530156&di=16ad7e58d060f544f118921007c21868&src=http://www.cnr.cn/lvyou/list/20150402/W020150402384247571517.jpg"/>
+                            楼主
+                        </mu-chip>
                     </div>
                     <div style="width: 100%;text-align: left">
                         <div>三月桃花红胜火三月桃花红胜火三月桃花红胜火</div>
@@ -98,21 +98,27 @@
                 </div>
             </div>
         </div>
-
+        <mu-toast v-if="toast" :message="msg"/>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'schoolActivityDetail',
+  name: 'clubActivityDetail',
   data () {
     return {
       hasNewItem: true,
       comment: false,
       icon: 'favorite_border',
       index: 1,
-      value: true
+      value: true,
+      toast: false,
+      msg: '',
+      tag: 'school'
     }
+  },
+  mounted () {
+    this.init()
   },
   methods: {
     goBack () {
@@ -122,7 +128,17 @@ export default {
       this.comment = !this.comment
     },
     favorite () {
-      this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
+      this.toast = true
+      setTimeout(() => {
+        this.toast = false
+      }, 2000)
+      let id = this.$route.params.id
+      this.$service.addFavorite(this.$api.addFavoriteUrl, {id: id, tag: this.tag}).then((r) => {
+        if (r.code === 2000) {
+          this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
+        }
+        this.msg = r.msg
+      })
     },
     changeVal (val) {
       this.value = val
@@ -131,7 +147,19 @@ export default {
       // 点赞事件，根据value的值进行进行判断是点赞还是取消赞，根据index可以知道是哪一条评论
       console.log(index)
       console.log(this.value)
+    },
+    init () {
+      let id = this.$route.params.id
+      this.$service.favoriteDetail(this.$api.favoriteDetailUrl, {id: id, tag: this.tag}).then((r) => {
+        if (r.code === 2000) {
+          if (r.data.favorite === 1) {
+            this.icon = 'favorite'
+          }
+        }
+      })
     }
+  },
+  watch: {
   }
 }
 </script>
