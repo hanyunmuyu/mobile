@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const Explore = resolve => require(['../page/explore/Explore'], resolve)
 const ClubActivityDetail = resolve => require(['../page/club/activity/Detail'], resolve)
-const SchoolActivityDetail = resolve => require(['../page/activity/school/Detail'], resolve)
-const ClassActivityDetail = resolve => require(['../page/activity/class/Detail'], resolve)
-const UserActivityDetail = resolve => require(['../page/activity/user/Detail'], resolve)
+const SchoolActivityDetail = resolve => require(['../page/school/activity/Detail'], resolve)
+const ClassActivityDetail = resolve => require(['../page/class/activity/Detail'], resolve)
+const UserActivityDetail = resolve => require(['../page/user/activity/Detail'], resolve)
 const UserInfo = resolve => require(['../page/user/Info'], resolve)
 const Class = resolve => require(['../page/class/index'], resolve)
 const Club = resolve => require(['../page/club/index'], resolve)
@@ -99,19 +99,26 @@ export default new Router({
       component: ClubActivityDetail
     },
     {
-      path: '/activity/school/detail/:id',
+      path: '/school/activity/detail/:id',
       name: 'SchoolActivityDetail',
       component: SchoolActivityDetail
     },
     {
-      path: '/activity/class/detail/:id',
+      path: '/class/activity/detail/:id',
       name: 'ClassActivityDetail',
       component: ClassActivityDetail
     },
     {
-      path: '/activity/user/detail/:id',
+      path: '/user/activity/detail/:id',
       name: 'UserActivityDetail',
       component: UserActivityDetail
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({ x: 0, y: 0 })
+      }, 500)
+    })
+  }
 })

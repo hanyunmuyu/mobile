@@ -51,9 +51,9 @@ export default {
       if (item.tag === 'club') {
         this.$router.push('/club/activity/detail/' + item.id)
       } else if (item.tag === 'school') {
-        this.$router.push('/activity/school/detail/' + item.id)
+        this.$router.push('/school/activity/detail/' + item.id)
       } else if (item.tag === 'user_post') {
-        this.$router.push('/activity/user/detail/' + item.id)
+        this.$router.push('/user/activity/detail/' + item.id)
       }
       // this.$store.state.footerActive = 'home'
     },

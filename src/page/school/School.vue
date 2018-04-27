@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  name: 'shetuan',
+  name: 'school',
   data () {
     return {
       activeTab: 'school',
