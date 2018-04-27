@@ -7,7 +7,7 @@
         <mu-list>
             <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
             <mu-list-item v-for="(item,index) in dataList" @click="detail(item)" :key="index">
-                <div class="list-item" v-if="item.imgList.length===0">
+                <div class="list-item-container" v-if="item.imgList.length===0">
                     <div class="header-left" @click.stop="itemSource(item)">
                         <mu-avatar :size=24 :src="item.avatar" slot="avatar"/>
                         <span>{{item.name}}</span>
@@ -25,7 +25,7 @@
                         {{item.favorite_num}}
                     </div>
                 </div>
-                <div class="list-item" v-if="item.imgList.length===1">
+                <div class="list-item-container" v-if="item.imgList.length===1">
                     <div class="header-left" @click.stop="itemSource(item)">
                         <mu-avatar :size=24 :src="item.avatar" slot="avatar"/>
                         <span>{{item.name}}</span>
@@ -49,7 +49,7 @@
                         {{item.favorite_num}}
                     </div>
                 </div>
-                <div class="list-item" v-else-if="item.imgList.length>1">
+                <div class="list-item-container" v-else-if="item.imgList.length>1">
                     <div class="header-left" @click.stop="itemSource(item)">
                         <mu-avatar :size=24 :src="item.avatar" slot="avatar"/>
                         <span>{{item.name}}</span>
@@ -177,7 +177,7 @@ export default {
 }
 </script>
 <style lang="less">
-    .list-item {
+    .list-item-container {
         width: 100%;
         overflow: hidden;
         display: block;
@@ -185,6 +185,7 @@ export default {
         text-align: left;
         .header-left {
             width: 100%;
+            display: block;
             span{
                 height: inherit;
             }
