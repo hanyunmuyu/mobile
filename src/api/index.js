@@ -7,7 +7,7 @@ const api = {
   clubNewActivity: DOMAIN + '/club/activity/new',
   classList: DOMAIN + '/class/list',
   clickNumberAddUlr: DOMAIN + '/click/number/increment',
-  recommendFavoriteUrl: DOMAIN + '/recommend/favorite',
-  recommendFavoriteDetailUrl: DOMAIN + '/recommend/favorite/detail'
+  addFavoriteUrl: DOMAIN + '/recommend/favorite',
+  favoriteDetailUrl: DOMAIN + '/recommend/favorite/detail'
 }
 export default api

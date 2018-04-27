@@ -133,7 +133,7 @@ export default {
         this.toast = false
       }, 2000)
       let id = this.$route.params.id
-      this.$service.recommendFavorite(this.$api.recommendFavoriteUrl, {id: id, tag: this.tag}).then((r) => {
+      this.$service.addFavorite(this.$api.addFavoriteUrl, {id: id, tag: this.tag}).then((r) => {
         if (r.code === 2000) {
           this.icon = this.icon === 'favorite_border' ? 'favorite' : 'favorite_border'
         }
@@ -150,7 +150,7 @@ export default {
     },
     init () {
       let id = this.$route.params.id
-      this.$service.recommendFavoriteDetail(this.$api.recommendFavoriteDetailUrl, {id: id, tag: this.tag}).then((r) => {
+      this.$service.favoriteDetail(this.$api.favoriteDetailUrl, {id: id, tag: this.tag}).then((r) => {
         if (r.code === 2000) {
           if (r.data.favorite === 1) {
             this.icon = 'favorite'

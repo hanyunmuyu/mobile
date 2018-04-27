@@ -56,10 +56,10 @@ const service = {
   clickNumberAdd: (url, ps) => {
     return post(url, ps)
   },
-  recommendFavorite: (url, ps) => {
+  addFavorite: (url, ps) => {
     return post(url, ps)
   },
-  recommendFavoriteDetail: (url, ps) => {
+  favoriteDetail: (url, ps) => {
     return post(url, ps)
   }
 }
