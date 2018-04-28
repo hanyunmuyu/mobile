@@ -5,7 +5,7 @@
         </mu-appbar>
         <mu-list>
             <mu-list-item v-if="Object.is(token, null)" @click="login">
-                <mu-avatar slot="left" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
+                <mu-avatar slot="left" :src="userInfo.avatar"/>
                 <!--<span class="mu-item-title-row">寒云{{Object.is(token,null)}}</span>-->
                 <!--<mu-flat-button v-if="!Object.is(token, null)" label="寒云" primary/>-->
                 <!--<mu-flat-button v-else label="登录/注册" primary @click="login" />-->
@@ -13,8 +13,8 @@
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
             <mu-list-item v-else @click="editUserInfo">
-                <mu-avatar slot="left" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1523943299425&di=25b779282f457ba10df131b6b981a33e&imgtype=0&src=http%3A%2F%2Fwww.cnr.cn%2Flvyou%2Flist%2F20150402%2FW020150402384247571517.jpg"/>
-                <span class="mu-item-title-row">寒云<span style="width: 80%;text-align: right">编辑个人信息</span></span>
+                <mu-avatar slot="left" :src="userInfo.avatar"/>
+                <span class="mu-item-title-row">{{userInfo.user_name}}<span style="width: 80%;text-align: right">编辑个人信息</span></span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
         </mu-list>
@@ -111,7 +111,8 @@ export default {
   computed: {
     ...mapGetters([
       'footerActive',
-      'token'
+      'token',
+      'userInfo'
     ])
   }
 }

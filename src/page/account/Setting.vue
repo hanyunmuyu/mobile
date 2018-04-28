@@ -19,6 +19,7 @@ export default {
     },
     logout () {
       this.$store.commit('logout')
+      this.$router.back()
     }
   }
 }

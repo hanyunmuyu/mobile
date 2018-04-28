@@ -62,6 +62,9 @@ const service = {
   },
   favoriteDetail: (url, ps) => {
     return post(url, ps)
+  },
+  login: (url, ps) => {
+    return post(url, ps)
   }
 }
 export default service

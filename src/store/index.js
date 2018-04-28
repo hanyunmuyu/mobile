@@ -7,7 +7,8 @@ const state = {
   loading: false,
   footerActive: 'explore',
   token: localStorage.getItem('token'),
-  isShowFooter: true
+  isShowFooter: true,
+  userInfo: {user_name: localStorage.getItem('user_name'), avatar: localStorage.getItem('avatar')}
 }
 const mutations = {
   add (state) {
@@ -18,18 +19,26 @@ const mutations = {
   },
   logout (state) {
     localStorage.clear()
+    state.userInfo = {}
     state.token = null
+  },
+  login (state, userInfo) {
+    state.userInfo = userInfo
+    state.token = userInfo.token
   }
 }
 const getters = {
   footerActive: (state) => {
     return state.footerActive
   },
-  token: () => {
-    return localStorage.getItem('token')
+  token: (state) => {
+    return state.token
   },
   isShowFooter: (state) => {
     return state.isShowFooter
+  },
+  userInfo: (state) => {
+    return state.userInfo
   }
 }
 export default new Vuex.Store({
