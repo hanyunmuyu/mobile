@@ -1,7 +1,7 @@
 <template>
     <div>
         <mu-appbar title="个人中心" icon="settings">
-            <mu-icon-button icon="settings" slot="right"/>
+            <mu-icon-button icon="settings" @click="setting" slot="right"/>
         </mu-appbar>
         <mu-list>
             <mu-list-item v-if="Object.is(token, null)" @click="login">
@@ -103,6 +103,9 @@ export default {
     },
     editUserInfo () {
       this.$router.push('/auth/user')
+    },
+    setting () {
+      this.$router.push('/setting')
     }
   },
   computed: {

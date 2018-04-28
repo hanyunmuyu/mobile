@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 const Explore = resolve => require(['../page/explore/Explore'], resolve)
 const ClubActivityDetail = resolve => require(['../page/club/activity/Detail'], resolve)
 const SchoolActivityDetail = resolve => require(['../page/school/activity/Detail'], resolve)
@@ -18,7 +19,7 @@ const Account = resolve => require(['../page/account/Account'], resolve)
 const Message = resolve => require(['../page/message/Message'], resolve)
 const School = resolve => require(['../page/school/School'], resolve)
 const Home = resolve => require(['../page/home/Home'], resolve)
-
+const Setting = resolve => require(['../page/account/Setting'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -112,12 +113,16 @@ export default new Router({
       path: '/user/activity/detail/:id',
       name: 'UserActivityDetail',
       component: UserActivityDetail
+    }, {
+      path: '/setting',
+      name: 'Setting',
+      component: Setting
     }
   ],
   scrollBehavior (to, from, savedPosition) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({ x: 0, y: 0 })
+        resolve({x: 0, y: 0})
       }, 500)
     })
   }

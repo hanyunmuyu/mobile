@@ -15,6 +15,10 @@ const mutations = {
   },
   reduce (state) {
     state.count -= 1
+  },
+  logout (state) {
+    localStorage.clear()
+    state.token = null
   }
 }
 const getters = {
