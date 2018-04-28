@@ -61,8 +61,9 @@
                         {{item.description}}
                     </div>
                     <div class="img-list">
-                        <img v-for="(img,i) in item.imgList" :style="{width: 100/(item.imgList.length)+'%'}"
-                             v-lazy="img" :key="i"/>
+                        <div class="img-box"  v-for="(img,i) in item.imgList" :key="i">
+                            <img v-lazy="img"/>
+                        </div>
                     </div>
                     <div class="item-footer">
                         <mu-icon :size=13 color="#7e57c2" value="remove_red_eye"/>
@@ -211,38 +212,27 @@ export default {
                 flex: 3;
             }
             .description-img{
+                border-radius: 8%;
+                overflow: hidden;
                 flex: 1;
+                img{
+                    width: 100%;
+                }
             }
         }
         .img-list {
-            margin-top: 6px;
-            width: 100%;
-            display: block;
-            text-align: center;
-            max-height: 120px;
-            overflow: hidden;
-            position: relative;
+            display: flex;
+            max-height: 128px;
             min-height: 86px;
-            img{
-                display: inline-block;
-                position: absolute;
-                bottom: 0;
-                padding: 1px;
-                border-radius: 5%;
-            }
-            img:first-child{
-                left: 0;
-            }
-            img:nth-child(2){
-                transform: translateX(-50%);
-                -webkit-transform:translateX(-50%);
-                -moz-transform:translateX(-50%);
-            }
-            img:last-child{
-                right: 0;
-                transform: translateX(0);
-                -webkit-transform:translateX(0);
-                -moz-transform:translateX(0);
+            overflow: hidden;
+            .img-box{
+                margin: 2px;
+                flex: 1;
+                border-radius: 8%;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
             }
         }
         .item-footer {
