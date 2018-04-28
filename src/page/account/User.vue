@@ -9,16 +9,16 @@
                 <mu-text-field hintText="个性签名" :value="userInfo.user_name"/>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
-            <mu-list-item>
-                <mu-icon value="school" slot="left"/>
-                <mu-select-field v-model="school">
-                    <mu-menu-item v-for="(item,index) in schoolList" :value="item.id" :key="index" :title="item.name"/>
-                </mu-select-field>
-                <mu-icon value="keyboard_arrow_right" slot="right"/>
-            </mu-list-item>
+            <!--<mu-list-item>-->
+                <!--<mu-icon value="school" slot="left"/>-->
+                <!--<mu-select-field v-model="school">-->
+                    <!--<mu-menu-item v-for="(item,index) in schoolList" :value="item.id" :key="index" :title="item.name"/>-->
+                <!--</mu-select-field>-->
+                <!--<mu-icon value="keyboard_arrow_right" slot="right"/>-->
+            <!--</mu-list-item>-->
             <mu-list-item>
                 <mu-icon value="location_on" slot="left"/>
-                <span class="mu-item-title-row space"  @click="open('bottom')">家乡所在地：{{address}}</span>
+                <span class="mu-item-title-row space"  @click="open('bottom')">家乡所在地：{{userAddress}}</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
 
@@ -125,16 +125,11 @@ export default {
       gender: '1',
       address: ['北京', '北京'],
       addressProvince: '北京',
-      addressCity: '北京'
+      addressCity: '北京',
+      userAddress: []
     }
   },
   methods: {
-    handleToggle (key) {
-      this[key] = !this[key]
-    },
-    login () {
-      this.$router.push('/login')
-    },
     goBack () {
       this.$router.back()
     },
@@ -152,6 +147,7 @@ export default {
           this.addressCity = value
           break
       }
+      this.address = [this.addressProvince, this.addressCity]
     },
     open (position) {
       this[position + 'Popup'] = true
@@ -161,7 +157,7 @@ export default {
     },
     select (position) {
       this[position + 'Popup'] = false
-      this.address = [this.addressProvince, this.addressCity]
+      this.userAddress = this.address
     }
   },
   computed: {
