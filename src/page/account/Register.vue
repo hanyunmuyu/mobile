@@ -8,8 +8,8 @@
         <div class="login">
             <mu-text-field type="text" v-model="username" required icon="account_circle" hintText="用户名"/><br/>
             <mu-text-field type="password" v-model="password" required icon="lock" hintText="密码"/><br/>
-            <mu-text-field type="confirm" v-model="confirm" required icon="lock" hintText="确认密码"/><br/>
-            <mu-raised-button full-width label="注册" @click="login"  primary/>
+            <mu-text-field type="password" v-model="confirm" required icon="lock" hintText="确认密码"/><br/>
+            <mu-raised-button full-width label="注册" @click="register"  primary/>
         </div>
         <mu-toast v-if="toast" :message="msg"/>
     </div>
@@ -22,44 +22,37 @@ export default {
   name: 'register',
   data () {
     return {
-      username: '',
-      password: '',
-      confirm: '',
+      username: 'dalong',
+      password: '123456',
+      confirm: '123456',
       toast: false,
       msg: ''
     }
   },
   methods: {
-    handleToggle (key) {
-      this[key] = !this[key]
-    },
     goBack () {
       this.$router.back()
     },
-    login () {
+    register () {
       this.$store.state.loading = true
       setTimeout(() => {
         this.$store.state.loading = false
       }, 5000)
-      let params = new URLSearchParams()
-      // 你要传给后台的参数值 key/value
-      params.append('userName', this.username)
-      params.append('userPwd', this.password)
-      this.$axios({
-        method: 'post',
-        url: this.$api.login,
-        data: params
-      }).then((res) => {
-        return res.data
-      }).then((res) => {
+
+      this.$service.register(this.$api.register, {userName: this.username, userPwd: this.password}).then((res) => {
         this.toast = true
         this.msg = res.msg
         this.$store.state.loading = false
         setTimeout(() => {
           this.toast = false
           if (res.code === 2000) {
-            localStorage.setItem('token', res.data.token)
-            this.$router.push('/')
+            let userInfo = {}
+            for (let k in res.data) {
+              userInfo[k] = res.data[k]
+              localStorage.setItem(k, res.data[k])
+            }
+            this.$store.commit('login', userInfo)
+            this.$router.back()
           }
         }, 2000)
       })

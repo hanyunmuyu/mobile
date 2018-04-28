@@ -1,7 +1,8 @@
-export const DOMAIN = 'http://192.168.1.131:83/api/v1'
+export const DOMAIN = 'http://192.168.0.106:85/api/v1'
 const api = {
   // 登录
   login: DOMAIN + '/login',
+  register: DOMAIN + '/register',
   // 发现
   explore: DOMAIN + '',
   // 校园列表
