@@ -199,11 +199,11 @@ export default {
         }
         .description {
             margin-top: 10px;
+            display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+            -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+            -webkit-line-clamp: 3; /** 显示的行数 **/
             overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            /*-webkit-line-clamp: 2;*/
+            text-overflow:ellipsis;
         }
         .description-flex{
             display: flex;
@@ -215,22 +215,34 @@ export default {
             }
         }
         .img-list {
+            margin-top: 6px;
             width: 100%;
-            margin: 0 auto;
             display: block;
             text-align: center;
+            max-height: 120px;
+            overflow: hidden;
+            position: relative;
+            min-height: 86px;
             img{
+                display: inline-block;
+                position: absolute;
+                bottom: 0;
                 padding: 1px;
                 border-radius: 5%;
             }
-            img:first-child(odd){
-                float: left;
+            img:first-child{
+                left: 0;
             }
             img:nth-child(2){
-                margin: 0 auto;
+                transform: translateX(-50%);
+                -webkit-transform:translateX(-50%);
+                -moz-transform:translateX(-50%);
             }
             img:last-child{
-                float: right;
+                right: 0;
+                transform: translateX(0);
+                -webkit-transform:translateX(0);
+                -moz-transform:translateX(0);
             }
         }
         .item-footer {
