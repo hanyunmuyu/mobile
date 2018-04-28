@@ -303,7 +303,8 @@ export default {
         position: relative;
     }
     .list-item-img img{
-        height: 100%;
+        border-radius: 3%;
+        width: 100%;
     }
     .ul-list .list-item h2{
         margin-top: 12px;

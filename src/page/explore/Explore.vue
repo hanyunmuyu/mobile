@@ -212,7 +212,7 @@ export default {
                 flex: 3;
             }
             .description-img{
-                border-radius: 8%;
+                border-radius: 4%;
                 overflow: hidden;
                 flex: 1;
                 img{
@@ -228,7 +228,7 @@ export default {
             .img-box{
                 margin: 2px;
                 flex: 1;
-                border-radius: 8%;
+                border-radius: 4%;
                 overflow: hidden;
                 img{
                     width: 100%;
