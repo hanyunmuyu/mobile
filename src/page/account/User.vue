@@ -6,7 +6,7 @@
         <mu-list>
             <mu-list-item>
                 <mu-icon value="account_box" slot="left"/>
-                <mu-text-field hintText="个性签名" value="寒云"/>
+                <mu-text-field hintText="个性签名" :value="userInfo.user_name"/>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
             <mu-list-item>
@@ -167,7 +167,8 @@ export default {
   computed: {
     ...mapGetters([
       'footerActive',
-      'token'
+      'token',
+      'userInfo'
     ])
   },
   watch: {
