@@ -4,7 +4,9 @@ export function get (url, ps) {
   let token = store.state.token
   ps.token = token
   return axios.get(url, {params: ps}).then((res) => {
-    return res.data
+    if (res.status === 200) {
+      return res.data
+    }
   })
 }
 export function post (url, ps) {
@@ -20,7 +22,9 @@ export function post (url, ps) {
     url: url,
     data: params
   }).then((res) => {
-    return res.data
+    if (res.status === 200) {
+      return res.data
+    }
   })
 }
 const service = {

@@ -89,7 +89,8 @@ export default {
       trigger: null,
       loading: false,
       scroller: null,
-      exploreCurrentPage: 1,
+      collectionCurrentPage: 1,
+      lastPage: 1,
       timer: null
     }
   },
@@ -131,24 +132,27 @@ export default {
     },
     loadMore () {
       this.timer = setTimeout(() => {
-        this.refreshing = false
+        this.loading = false
       }, 10000)
-      if (!this.loading) {
-        this.loading = true
-        this.syncDataList()
+      if (this.lastPage > this.collectionCurrentPage) {
+        if (!this.loading) {
+          this.loading = true
+          this.syncDataList()
+        }
       }
     },
     getData () {
-      this.exploreCurrentPage = 1
-      this.$service.getUserCollection(this.$api.userCollectionUrl, {page: this.exploreCurrentPage}).then((r) => {
+      this.collectionCurrentPage = 1
+      this.$service.getUserCollection(this.$api.userCollectionUrl, {page: this.collectionCurrentPage}).then((r) => {
         if (r.code === 2000) {
           this.dataList = r.data.data
-          this.exploreCurrentPage += 1
+          this.collectionCurrentPage += 1
+          this.lastPage = r.data.last_page
         }
       })
     },
     syncDataList () {
-      this.$service.sybcExploreList(this.$api.explore, {page: this.exploreCurrentPage}).then((r) => {
+      this.$service.syncUserCollection(this.$api.userCollectionUrl, {page: this.collectionCurrentPage}).then((r) => {
         if (r.code === 2000) {
           let data = r.data.data
           let tmp = []
@@ -157,7 +161,7 @@ export default {
             tmp.push(data[index])
           }
           this.dataList = tmp
-          this.exploreCurrentPage += 1
+          this.collectionCurrentPage += 1
         }
       })
     },

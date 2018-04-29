@@ -28,6 +28,9 @@ export default new Router({
     {
       path: '/',
       name: 'Explore',
+      meta: {
+        keepAlive: true // 要缓存
+      },
       component: Explore
     },
     {
@@ -51,6 +54,9 @@ export default new Router({
     {
       path: '/account',
       name: 'Account',
+      meta: {
+        keepAlive: true // 要缓存
+      },
       component: Account
     },
     {
@@ -86,9 +92,6 @@ export default new Router({
     {
       path: '/club/:id',
       name: 'Club',
-      meta: {
-        keepAlive: false // 不需要缓存
-      },
       component: Club
     },
     {
@@ -123,18 +126,17 @@ export default new Router({
     }, {
       path: '/setting',
       name: 'Setting',
+      meta: {
+        keepAlive: true // 要缓存
+      },
       component: Setting
     }, {
       path: '/user/collection',
       name: 'Collection',
+      meta: {
+        keepAlive: true // 要缓存
+      },
       component: Collection
     }
-  ],
-  scrollBehavior (to, from, savedPosition) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({x: 0, y: 0})
-      }, 500)
-    })
-  }
+  ]
 })
