@@ -21,9 +21,9 @@
         <mu-divider inset/>
 
         <mu-list>
-            <mu-list-item>
+            <mu-list-item to="/user/collection">
                 <mu-icon value="favorite" slot="left"/>
-                <span class="mu-item-title-row">收藏的文章</span>
+                <span class="mu-item-title-row">我的收藏</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
             <mu-list-item>

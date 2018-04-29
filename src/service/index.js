@@ -83,6 +83,14 @@ const service = {
   register: (url, ps) => {
     // 注册
     return post(url, ps)
+  },
+  getUserCollection: (url, ps) => {
+    // 用户收藏
+    return get(url, ps)
+  },
+  syncUserCollection: (url, ps) => {
+    // 用户收藏
+    return get(url, ps)
   }
 }
 export default service

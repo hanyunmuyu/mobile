@@ -20,6 +20,7 @@ const Message = resolve => require(['../page/message/Message'], resolve)
 const School = resolve => require(['../page/school/School'], resolve)
 const Home = resolve => require(['../page/home/Home'], resolve)
 const Setting = resolve => require(['../page/account/Setting'], resolve)
+const Collection = resolve => require(['../page/account/Collection'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -117,6 +118,10 @@ export default new Router({
       path: '/setting',
       name: 'Setting',
       component: Setting
+    }, {
+      path: '/user/collection',
+      name: 'Collection',
+      component: Collection
     }
   ],
   scrollBehavior (to, from, savedPosition) {
