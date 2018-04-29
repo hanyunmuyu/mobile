@@ -38,6 +38,9 @@ export default new Router({
     {
       path: '/school',
       name: 'School',
+      meta: {
+        keepAlive: true // 要缓存
+      },
       component: School
     },
     {
@@ -83,6 +86,9 @@ export default new Router({
     {
       path: '/club/:id',
       name: 'Club',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
       component: Club
     },
     {
