@@ -31,7 +31,7 @@
                 </div>
             </mu-sub-header>
 
-            <mu-list-item v-for="index in 10" :key="index">
+            <mu-list-item v-for="(item,index) in dataList" :key="index">
                 <div style="display: block;width: 100%;min-height: 200px">
                     <div style="display: flex;width: 100%">
                         <div style="flex: 1">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div style="width: 100%;text-align: left">
-                        <div style="padding: 16px">三月桃花红胜火三月桃花红胜火三月桃花红胜火三月桃花红胜火</div>
+                        <div style="padding: 16px">{{item.content}}</div>
                     </div>
                     <div style="display: flex">
                         <div style="flex: 2">
@@ -114,7 +114,8 @@ export default {
       value: true,
       toast: false,
       msg: '',
-      tag: 'club'
+      tag: 'club',
+      dataList: []
     }
   },
   mounted () {
@@ -150,9 +151,10 @@ export default {
     },
     init () {
       let id = this.$route.params.id
-      this.$service.favoriteDetail(this.$api.favoriteDetailUrl, {id: id, tag: this.tag}).then((r) => {
+      this.$service.getClubActivityPostDetail(this.$api.clubActivityPostDetail, {id: id, tag: this.tag}).then((r) => {
         if (r.code === 2000) {
-          if (r.data.favorite === 1) {
+          this.dataList = r.data.data
+          if (r.data.isFavorite === 1) {
             this.icon = 'favorite'
           }
         }

@@ -95,6 +95,10 @@ const service = {
   syncUserCollection: (url, ps) => {
     // 用户收藏
     return get(url, ps)
+  },
+  getClubActivityPostDetail: (url, ps) => {
+    // 用户收藏
+    return get(url, ps)
   }
 }
 export default service

@@ -19,6 +19,8 @@ const api = {
   addFavoriteUrl: DOMAIN + '/recommend/favorite',
   // 点击收藏的情况
   favoriteDetailUrl: DOMAIN + '/recommend/favorite/detail',
-  userCollectionUrl: DOMAIN + '/user/collection'
+  userCollectionUrl: DOMAIN + '/user/collection',
+  // 社团帖子详情
+  clubActivityPostDetail: DOMAIN + '/club/activity/post/detail'
 }
 export default api
