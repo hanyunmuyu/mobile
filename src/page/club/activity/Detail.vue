@@ -111,7 +111,8 @@ export default {
       msg: '',
       tag: 'club',
       content: '',
-      dataList: []
+      dataList: [],
+      canPost: true
     }
   },
   mounted () {
@@ -130,13 +131,20 @@ export default {
     doPost () {
       let content = this.content
       let id = this.$route.params.id
-      this.$service.clubActivityDoPost(this.$api.clubActivityDoPost, {activityId: id, content: content}).then((r) => {
-        if (r.code === 2000) {
-          this.toast = true
-          this.msg = r.msg
-        }
-      })
+      this.showComment()
+
+      if (this.canPost) {
+        this.canPost = false
+        this.$service.clubActivityDoPost(this.$api.clubActivityDoPost, {activityId: id, content: content}).then((r) => {
+          if (r.code === 2000) {
+            this.canPost = true
+            this.toast = true
+            this.msg = r.msg
+          }
+        })
+      }
       setTimeout(() => {
+        this.canPost = true
         this.toast = false
       }, 2000)
     },
