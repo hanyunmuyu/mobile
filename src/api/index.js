@@ -21,6 +21,8 @@ const api = {
   favoriteDetailUrl: DOMAIN + '/recommend/favorite/detail',
   userCollectionUrl: DOMAIN + '/user/collection',
   // 社团帖子详情
-  clubActivityPostDetail: DOMAIN + '/club/activity/post/detail'
+  clubActivityPostDetail: DOMAIN + '/club/activity/post/detail',
+  // 社团活动评论点赞
+  clubActivityDoPost: DOMAIN + '/club/activity/doPost'
 }
 export default api

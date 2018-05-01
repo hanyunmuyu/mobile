@@ -70,19 +70,14 @@
                         </div>
                     </div>
                 </div>
-                <div style="display:flex;width: 100%;background-color: #f5f5f5;text-align: center">
-                    <div style="flex: 1;color: #7e57c2">
-                        <mu-checkbox label="赞一个"  @input="good(index)" @change="changeVal" uncheckIcon="favorite_border" checkedIcon="favorite"/> <br/>
-                    </div>
-                </div>
             </mu-list-item>
         </mu-list>
 
         <div style="display:block;width:100%;position: fixed;bottom: 0;background-color: #f5f5f5;text-align: center">
             <div v-if="comment" style="display: flex;width: 100%">
                 <div style="width: 100%">
-                    <mu-text-field hintText="写点评论" icon="mode_edit"/>
-                    <mu-flat-button label="发表" primary/>
+                    <mu-text-field hintText="写点评论" @input="contentVal" icon="mode_edit"/>
+                    <mu-flat-button label="发表" @click="doPost" primary/>
 
                 </div>
             </div>
@@ -115,6 +110,7 @@ export default {
       toast: false,
       msg: '',
       tag: 'club',
+      content: '',
       dataList: []
     }
   },
@@ -128,6 +124,22 @@ export default {
     showComment () {
       this.comment = !this.comment
     },
+    contentVal (val) {
+      this.content = val
+    },
+    doPost () {
+      let content = this.content
+      let id = this.$route.params.id
+      this.$service.clubActivityDoPost(this.$api.clubActivityDoPost, {activityId: id, content: content}).then((r) => {
+        if (r.code === 2000) {
+          this.toast = true
+          this.msg = r.msg
+        }
+      })
+      setTimeout(() => {
+        this.toast = false
+      }, 2000)
+    },
     favorite () {
       this.toast = true
       setTimeout(() => {
@@ -140,14 +152,6 @@ export default {
         }
         this.msg = r.msg
       })
-    },
-    changeVal (val) {
-      this.value = val
-    },
-    good (index) {
-      // 点赞事件，根据value的值进行进行判断是点赞还是取消赞，根据index可以知道是哪一条评论
-      console.log(index)
-      console.log(this.value)
     },
     init () {
       let id = this.$route.params.id

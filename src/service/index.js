@@ -99,6 +99,10 @@ const service = {
   getClubActivityPostDetail: (url, ps) => {
     // 用户收藏
     return get(url, ps)
+  },
+  clubActivityDoPost: (url, ps) => {
+    // 社团活动评论
+    return post(url, ps)
   }
 }
 export default service
