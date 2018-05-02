@@ -22,7 +22,7 @@ export default {
   name: 'register',
   data () {
     return {
-      username: 'dalong',
+      username: 'hanyun',
       password: '123456',
       confirm: '123456',
       toast: false,
