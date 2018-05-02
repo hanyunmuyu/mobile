@@ -18,7 +18,7 @@
             <!--</mu-list-item>-->
             <mu-list-item>
                 <mu-icon value="location_on" slot="left"/>
-                <span class="mu-item-title-row space" @click="open('bottom')">家乡所在地：{{district.province.name}}-{{district.city.name}}-{{district.area.name}}</span>
+                <span class="mu-item-title-row space" @click="open('bottom')">家乡所在地：{{province.name}}-{{city.name}}-{{area.name}}</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
 
@@ -114,9 +114,9 @@ export default {
         city: {id: null, name: null},
         area: {id: null, name: null}
       },
-      province: null,
-      city: null,
-      area: null,
+      province: {id: null, name: null},
+      city: {id: null, name: null},
+      area: {id: null, name: null},
       provinces: [],
       cities: [],
       areas: []
@@ -135,6 +135,9 @@ export default {
     },
     select (position) {
       this[position + 'Popup'] = false
+      this.province = this.district.province
+      this.city = this.district.city
+      this.area = this.district.area
     },
     getProvinces () {
       this.$service.getArea(this.$api.areaUrl, {level: 1}).then((r) => {
