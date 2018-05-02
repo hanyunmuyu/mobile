@@ -103,6 +103,10 @@ const service = {
   clubActivityDoPost: (url, ps) => {
     // 社团活动评论
     return post(url, ps)
+  },
+  getArea: (url, ps) => {
+    // 社团活动评论
+    return get(url, ps)
   }
 }
 export default service

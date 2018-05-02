@@ -21,6 +21,7 @@ const School = resolve => require(['../page/school/School'], resolve)
 const Home = resolve => require(['../page/home/Home'], resolve)
 const Setting = resolve => require(['../page/account/Setting'], resolve)
 const Collection = resolve => require(['../page/account/Collection'], resolve)
+const Pick = resolve => require(['../page/pick/Index'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -137,6 +138,13 @@ export default new Router({
         keepAlive: true // 要缓存
       },
       component: Collection
+    }, {
+      path: '/pick',
+      name: 'Pick',
+      meta: {
+        keepAlive: true // 要缓存
+      },
+      component: Pick
     }
   ]
 })
