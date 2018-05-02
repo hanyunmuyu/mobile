@@ -39,7 +39,7 @@ export default {
         this.$store.state.loading = false
       }, 5000)
 
-      this.$service.register(this.$api.register, {userName: this.username, userPwd: this.password}).then((res) => {
+      this.$service.register(this.$api.register, {userName: this.username, userPwd: this.password, confirmPwd: this.confirm}).then((res) => {
         this.toast = true
         this.msg = res.msg
         this.$store.state.loading = false
