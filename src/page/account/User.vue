@@ -18,7 +18,7 @@
             <!--</mu-list-item>-->
             <mu-list-item>
                 <mu-icon value="location_on" slot="left"/>
-                <span class="mu-item-title-row space" @click="open('bottom')">家乡所在地：{{district}}</span>
+                <span class="mu-item-title-row space" @click="open('bottom')">家乡所在地：{{district.province.name}}-{{district.city.name}}-{{district.area.name}}</span>
                 <mu-icon value="keyboard_arrow_right" slot="right"/>
             </mu-list-item>
 
@@ -50,7 +50,7 @@
                 <mu-flat-button slot="right" label="关闭" color="white" @click="close('bottom')"/>
             </mu-appbar>
             <mu-content-block>
-                <p class="mu-item-title-row selected-text-center">你选择了：{{district.province}}</p>
+                <p class="mu-item-title-row selected-text-center">你选择了：{{district.province.name}}-{{district.city.name}}-{{district.area.name}}</p>
                 <div class="picker-container">
                     <ul>
                         <li>
@@ -110,9 +110,9 @@ export default {
       school: 2,
       schoolList: ['请选择高校', '河南工业大学', '郑州大学', '河南财经政法大学'],
       district: {
-        province: null,
-        city: null,
-        area: null
+        province: {id: null, name: null},
+        city: {id: null, name: null},
+        area: {id: null, name: null}
       },
       province: null,
       city: null,
