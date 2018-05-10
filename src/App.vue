@@ -5,16 +5,16 @@
             <router-view v-if="$route.meta.keepAlive"></router-view>
         </keep-alive>
         <router-view v-if="!$route.meta.keepAlive"></router-view>
-        <Footer></Footer>
+        <BottomNav></BottomNav>
     </div>
 </template>
 
 <script>
-import Footer from '@/page/common/Footer'
+import BottomNav from '@/pages/common/BottomNav'
 
 export default {
   name: 'App',
-  components: {Footer}
+  components: {BottomNav}
 }
 </script>
 

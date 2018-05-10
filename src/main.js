@@ -10,14 +10,10 @@ import FastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 import 'muse-ui/dist/muse-ui.css'
 import 'animate.css'
-import api from './api'
-import service from './service'
 import 'reset.css'
 FastClick.attach(document.body)
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 Vue.prototype.$axios = axios
-Vue.prototype.$api = api
-Vue.prototype.$service = service
 
 Vue.use(MuseUI)
 // 懒加载
