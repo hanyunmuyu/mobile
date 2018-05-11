@@ -2,6 +2,7 @@
     <div>
         <mu-appbar title="邀请回答">
             <mu-icon-button icon="arrow_back" @click="goBack" slot="left"/>
+            <mu-flat-button label="发问" slot="right" class="demo-flat-button" primary/>
         </mu-appbar>
         <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="邀请同学/社团/高校回答问题"/>
         <mu-list>
