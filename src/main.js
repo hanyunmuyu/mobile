@@ -11,6 +11,7 @@ import VueLazyload from 'vue-lazyload'
 import 'muse-ui/dist/muse-ui.css'
 import 'animate.css'
 import 'reset.css'
+
 FastClick.attach(document.body)
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 Vue.prototype.$axios = axios
