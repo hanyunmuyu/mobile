@@ -2,46 +2,28 @@
     <div>
         <mu-appbar title="问答">
             <mu-icon-button  @click="goBack" icon="arrow_back" slot="left"/>
-            <mu-flat-button label="邀请回答" icon="group_add" @click="addAnswerUser" slot="right" primary/>
+            <mu-flat-button label="提问" icon="edit" @click="QAAdd" slot="right" primary/>
         </mu-appbar>
-        <mu-divider/>
-        <mu-divider/>
-        <mu-divider/>
-        <mu-text-field style="width: 100%" icon="" v-model="value" hintText="输入你的问题"  multiLine :rows="1" :rowsMax="6"/><br/>
-        <mu-text-field style="width: 100%" hintText="描述一下你的问题"/>
-        <!--<div class="demo-step-container">-->
-            <!--<mu-stepper :activeStep="activeStep">-->
-                <!--<mu-step>-->
-                    <!--<mu-step-label>-->
-                        <!--提问-->
-                    <!--</mu-step-label>-->
-                <!--</mu-step>-->
-                <!--<mu-step>-->
-                    <!--<mu-step-label>-->
-                        <!--描述问题-->
-                    <!--</mu-step-label>-->
-                <!--</mu-step>-->
-                <!--<mu-step>-->
-                    <!--<mu-step-label>-->
-                        <!--邀请回答-->
-                    <!--</mu-step-label>-->
-                <!--</mu-step>-->
-            <!--</mu-stepper>-->
-            <!--<div class="demo-step-content">-->
-                <!--<p v-if="finished">-->
-                    <!--都完成啦!<a href="javascript:;" @click="reset">点这里</a>可以重置-->
-                <!--</p>-->
-                <!--<template v-if="!finished">-->
-                    <!--<p>-->
-                        <!--{{content}}-->
-                    <!--</p>-->
-                    <!--<div>-->
-                        <!--<mu-flat-button class="demo-step-button" label="上一步" :disabled="activeStep === 0" @click="handlePrev"/>-->
-                        <!--<mu-raised-button class="demo-step-button" :label="activeStep === 2 ? '完成' : '下一步'" primary @click="handleNext"/>-->
-                    <!--</div>-->
-                <!--</template>-->
-            <!--</div>-->
-        <!--</div>-->
+        <!--<mu-divider/>-->
+        <!--<mu-text-field style="text-align: left;width: 100%" icon="search" hintText="搜索问题"/>-->
+        <mu-paper>
+            <mu-bottom-nav>
+                <mu-bottom-nav-item value="recents" title="最新" icon="restore"/>
+                <mu-bottom-nav-item value="favorites" title="热议" icon="chat"/>
+                <mu-bottom-nav-item value="nearby" title="经典" icon="loyalty"/>
+            </mu-bottom-nav>
+        </mu-paper>
+        <mu-list>
+            <mu-list-item style="text-align: left" v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                <mu-avatar src="/static/images/morning.jpg" slot="leftAvatar"/>
+                <span slot="describe">
+                <span style="color: rgba(0, 0, 0, .87)">寒云 ：</span>
+                周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                    <!--<p><mu-icon value="favorite" :size="16"/></p>-->
+            </span>
+                <mu-divider inset/>
+            </mu-list-item>
+        </mu-list>
     </div>
 </template>
 
@@ -54,32 +36,9 @@ export default {
       activeStep: 0
     }
   },
-  computed: {
-    content () {
-      let message = ''
-      // switch (this.activeStep) {
-      //   case 0:
-      //     message = '添加问题'
-      //     break
-      //   case 1:
-      //     message = '描述问题'
-      //     break
-      //   case 2:
-      //     message = '邀请问答'
-      //     break
-      //   default:
-      //     message = '等待答复'
-      //     break
-      // }
-      return message
-    },
-    finished () {
-      return this.activeStep > 2
-    }
-  },
   methods: {
-    addAnswerUser () {
-      this.$router.push('/addAnswerUser')
+    QAAdd () {
+      this.$router.push('/qa/add')
     },
     goBack () {
       this.$router.back()

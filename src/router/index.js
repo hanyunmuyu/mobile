@@ -3,7 +3,8 @@ import Router from 'vue-router'
 
 const Explore = resolve => require(['../pages/explore/Explore'], resolve)
 const School = resolve => require(['../pages/school/School'], resolve)
-const QA = resolve => require(['../pages/qa/Index'], resolve)
+const QAAdd = resolve => require(['../pages/qa/Add'], resolve)
+const QAIndex = resolve => require(['../pages/qa/Index'], resolve)
 const AddAnswerUser = resolve => require(['../pages/qa/AddAnswerUser'], resolve)
 Vue.use(Router)
 
@@ -26,12 +27,12 @@ export default new Router({
       component: School
     },
     {
-      path: '/qa',
-      name: 'QA',
+      path: '/qa/add',
+      name: 'QAAdd',
       meta: {
         keepAlive: true // 要缓存
       },
-      component: QA
+      component: QAAdd
     },
     {
       path: '/addAnswerUser',
@@ -40,6 +41,14 @@ export default new Router({
         keepAlive: true // 要缓存
       },
       component: AddAnswerUser
+    },
+    {
+      path: '/qa/index',
+      name: 'QAIndex',
+      meta: {
+        keepAlive: true // 要缓存
+      },
+      component: QAIndex
     }
   ]
 })

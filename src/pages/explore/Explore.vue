@@ -7,12 +7,14 @@
     </mu-tabs>
     <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="同学/社团/高校"/>
     <div style="width: 100%;overflow-x: scroll;">
-        <mu-bottom-nav @change="handleChange">
-            <mu-bottom-nav-item value="school" title="高校圈" icon="school"/>
-            <mu-bottom-nav-item value="group" title="社团" icon="group"/>
-            <mu-bottom-nav-item value="group" title="热议" icon="insert_comment"/>
-            <mu-bottom-nav-item value="question_answer" title="问答" icon="question_answer"/>
-        </mu-bottom-nav>
+        <mu-paper>
+            <mu-bottom-nav @change="handleChange">
+                <mu-bottom-nav-item value="school" title="高校圈" icon="school"/>
+                <mu-bottom-nav-item value="group" title="社团" icon="group"/>
+                <mu-bottom-nav-item value="group" title="热议" icon="insert_comment"/>
+                <mu-bottom-nav-item value="qa" title="问答" icon="question_answer"/>
+            </mu-bottom-nav>
+        </mu-paper>
     </div>
     <mu-list>
         <mu-list-item style="text-align: left" v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
@@ -22,8 +24,8 @@
                 周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
                 <!--<p><mu-icon value="favorite" :size="16"/></p>-->
             </span>
+            <mu-divider inset/>
         </mu-list-item>
-        <mu-divider inset/>
     </mu-list>
 </div>
 </template>
@@ -43,7 +45,9 @@ export default {
     },
     handleChange (val) {
       this.bottomNav = val
-      this.$router.push('/qa')
+      if (val === 'qa') {
+        this.$router.push('/qa/index')
+      }
     }
   }
 }
