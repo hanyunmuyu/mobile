@@ -13,7 +13,6 @@
         <div class="title">
             {{school.name}}
         </div>
-        <mu-divider inset/>
     </mu-list-item>
 </mu-list>
 <div :class="{block:true,hidden:true,show:false}">
@@ -63,7 +62,7 @@ export default {
 
         <style scoped lang="less">
             .school-item{
-                width: 33%;
+                width: 50%;
                 float: left;
                 .content{
                     width: 100%;
