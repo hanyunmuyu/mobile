@@ -1,23 +1,31 @@
 <template>
     <div>
-        <mu-appbar style="background:white;color: #7e57c2" title="校园">
+        <mu-appbar title="高校">
             <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
-            <mu-text-field hintText="搜索校园"/>
-            <mu-flat-button icon="search" @click="QAAdd" slot="right" primary/>
+            <mu-icon value="search" @click="search" slot="right"/>
         </mu-appbar>
-        <div class="content">
-            <ul :style="{width:navWidth+'px'}">
-                <li :class="{'active':activeCity===index}" v-for="(city,index) in cities" :key="index" @click="tab(index)">
-                    {{city.name}}
-                    <span :class="{'active':activeCity===index}"></span>
-                </li>
+        <div style="display: block;width: 100%">
+            <mu-flat-button style="float: left" label="高校推荐" labelPosition="before" icon="refresh"/>
+            <ul style="display: block;clear: both;width: 100%">
+                <li v-for="a in 6" style="width: 33%;height: 50px;line-height:50px;display: block;float: left" :key="a">河南工业大学{{a}}</li>
             </ul>
         </div>
-        <mu-grid-list>
-            <mu-grid-tile v-for="(tile, index) in list" :key="index">
-                <img :src="tile.image"/>
-            </mu-grid-tile>
-        </mu-grid-list>
+        <div style="display: flex;margin: 8px auto;text-align: center;clear: both">
+            <div style="flex: 1;border-bottom: #7e57c2 2px solid">头条</div>
+            <div style="flex: 1">最新</div>
+            <div style="flex: 1">精华</div>
+        </div>
+        <mu-list>
+            <mu-list-item style="text-align: left" v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                <mu-avatar src="/static/images/morning.jpg" slot="leftAvatar"/>
+                <span slot="describe">
+                <span style="color: rgba(0, 0, 0, .87)">寒云 ：</span>
+                周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                    <!--<p><mu-icon value="favorite" :size="16"/></p>-->
+            </span>
+                <mu-divider inset/>
+            </mu-list-item>
+        </mu-list>
 
     </div>
 </template>
@@ -27,41 +35,6 @@ export default {
   name: 'School',
   data () {
     return {
-      list: [
-        {
-          image: '/static/images/breakfast.jpg',
-          title: 'Breakfast',
-          author: 'Myron'
-        }, {
-          image: '/static/images/burger.jpg',
-          title: 'Burger',
-          author: 'Linyu'
-        }, {
-          image: '/static/images/camera.jpg',
-          title: 'Camera',
-          author: 'ruolin'
-        }, {
-          image: '/static/images/hats.jpg',
-          title: 'Hats',
-          author: 'kakali'
-        }, {
-          image: '/static/images/honey.jpg',
-          title: 'Honey',
-          author: 'yuyang'
-        }, {
-          image: '/static/images/morning.jpg',
-          title: 'Morning',
-          author: 'mokayi'
-        }, {
-          image: '/static/images/vegetables.jpg',
-          title: 'Vegetables',
-          author: 'NUyyyyyyy'
-        }, {
-          image: '/static/images/water-plant.jpg',
-          title: 'water',
-          author: 'TDDyyyyyyy'
-        }
-      ],
       cities: [
         {
           name: '郑州',
@@ -108,6 +81,9 @@ export default {
     },
     tab (val) {
       this.activeCity = val
+    },
+    search () {
+      this.$router.push('/school/search')
     }
   },
   computed: {
@@ -123,46 +99,5 @@ export default {
 </script>
 
 <style scoped lang="less">
-    .content {
-        width: 100%;
-        display: block;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        height: 35px;
-        line-height: 30px;
-        white-space: nowrap;
-        word-break: keep-all; /* 不换行 */
-        ul {
-            display: block;
-            line-height: 30px;
-            li {
-                display: block;
-                text-align: center;
-                float: left;
-                height: 30px;
-                line-height: 30px;
-                margin-right: 5px;
-                min-width: 50px;
-                position: relative;
-                span{
-                    display: none;
-                    width: 100%;
-                    height: 2px;
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    background: #7e57c2;
-                }
-            }
-        }
-        .active{
-            display: block;
-            color: #7e57c2;
-        }
-    }
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
 
 </style>

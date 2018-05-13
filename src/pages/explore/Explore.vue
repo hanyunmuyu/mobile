@@ -8,8 +8,8 @@
     <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="同学/社团/高校"/>
     <mu-paper>
         <mu-bottom-nav @change="handleChange">
-            <mu-bottom-nav-item value="school" title="校园" icon="school"/>
-            <mu-bottom-nav-item value="group" title="社团" icon="group"/>
+            <mu-bottom-nav-item value="school" title="高校" icon="school"/>
+            <mu-bottom-nav-item value="club" title="社团" icon="group"/>
             <mu-bottom-nav-item value="group" title="热议" icon="insert_comment"/>
             <mu-bottom-nav-item value="qa" title="问答" icon="question_answer"/>
         </mu-bottom-nav>
@@ -47,6 +47,8 @@ export default {
         this.$router.push('/qa/index')
       } else if (val === 'school') {
         this.$router.push('/school')
+      } else if (val === 'club') {
+        this.$router.push('/club/index')
       }
     }
   }
