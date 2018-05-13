@@ -4,29 +4,18 @@
             <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
             <mu-icon value="search" @click="search" slot="right"/>
         </mu-appbar>
-        <div style="display: block;width: 100%">
-            <mu-flat-button style="float: left" label="高校推荐" labelPosition="before" icon="refresh"/>
-            <ul style="display: block;clear: both;width: 100%">
-                <li v-for="a in 6" style="width: 33%;height: 50px;line-height:50px;display: block;float: left" :key="a">河南工业大学{{a}}</li>
-            </ul>
-        </div>
-        <div style="display: flex;margin: 8px auto;text-align: center;clear: both">
-            <div style="flex: 1;border-bottom: #7e57c2 2px solid">头条</div>
-            <div style="flex: 1">最新</div>
-            <div style="flex: 1">精华</div>
-        </div>
         <mu-list>
-            <mu-list-item style="text-align: left" v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
-                <mu-avatar src="/static/images/morning.jpg" slot="leftAvatar"/>
-                <span slot="describe">
-                <span style="color: rgba(0, 0, 0, .87)">寒云 ：</span>
-                周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
-                    <!--<p><mu-icon value="favorite" :size="16"/></p>-->
-            </span>
+            <mu-list-item class="school-item" v-for="(school,index) in schools" :key="index">
+                <div class="content">
+                    <img v-lazy="school.img"/>
+                    <p class="notice">{{school.noticeNmu}}万人关注</p>
+                </div>
+                <div class="title">
+                    {{school.name}}
+                </div>
                 <mu-divider inset/>
             </mu-list-item>
         </mu-list>
-
     </div>
 </template>
 
@@ -35,44 +24,7 @@ export default {
   name: 'School',
   data () {
     return {
-      cities: [
-        {
-          name: '郑州',
-          id: 1
-        },
-        {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }, {
-          name: '郑州',
-          id: 1
-        }
-      ],
-      activeCity: 0
+      schools: []
     }
   },
   methods: {
@@ -84,6 +36,17 @@ export default {
     },
     search () {
       this.$router.push('/school/search')
+    }
+  },
+  mounted () {
+    for (let i = 0; i < 15; i++) {
+      this.schools.push(
+        {
+          id: i,
+          name: '河南工业大学' + i,
+          noticeNmu: 100,
+          img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526226957771&di=42d8188be4508f1d1cfb0f363b79cbf3&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D1b88f861a551f3ded7bfb127fc879a6a%2Fb58f8c5494eef01fbcb7286eeafe9925bd317dfd.jpg'
+        })
     }
   },
   computed: {
@@ -99,5 +62,29 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+    .school-item {
+        width: 33%;
+        float: left;
+        .content {
+            width: 100%;
+            position: relative;
+            display: block;
+            img {
+                width: 100%;
+                border-radius: 3px
+            }
+            .notice {
+                width: 100%;
+                font-size: 14px;
+                position: absolute;
+                bottom: 4px;
+                background: rgba(0, 0, 0, .1)
+            }
+        }
+        .title {
+            width: 100%;
+            font-size: 12px;
+            text-align: center
+        }
+    }
 </style>

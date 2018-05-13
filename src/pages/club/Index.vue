@@ -2,8 +2,8 @@
     <div>
         <mu-appbar title="社团">
             <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
-            <mu-icon value="list" slot="right"/>
         </mu-appbar>
+        <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="同学/社团/高校"/>
         <div class="content">
             <ul :style="{width:navWidth+'px'}">
                 <li :class="{'active':activeCity===index}" v-for="(city,index) in cities" :key="index" @click="tab(index)">
@@ -63,7 +63,11 @@ export default {
       ],
       cities: [
         {
-          name: '编程',
+          name: '全部',
+          id: 1
+        },
+        {
+          name: '绘画',
           id: 1
         },
         {

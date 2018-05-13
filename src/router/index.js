@@ -64,7 +64,7 @@ export default new Router({
       path: '/club/index',
       name: 'ClubIndex',
       meta: {
-        keepAlive: true // 要缓存
+        keepAlive: false // 要缓存
       },
       component: ClubIndex
     }

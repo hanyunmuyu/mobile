@@ -5,6 +5,7 @@
             <router-view v-if="$route.meta.keepAlive"></router-view>
         </keep-alive>
         <router-view v-if="!$route.meta.keepAlive"></router-view>
+        <div style="height: 50px"></div>
         <BottomNav></BottomNav>
     </div>
 </template>
