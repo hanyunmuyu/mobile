@@ -2,6 +2,7 @@
     <div>
         <mu-appbar title="社团">
             <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
+            <mu-icon-button @click="createClub" icon="add" slot="right"/>
         </mu-appbar>
         <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="同学/社团/高校"/>
         <div class="content">
@@ -135,6 +136,9 @@ export default {
     },
     tab (val) {
       this.activeCity = val
+    },
+    createClub () {
+      this.$router.push('/club/create')
     }
   },
   computed: {

@@ -8,6 +8,7 @@ const QAAdd = resolve => require(['../pages/qa/Add'], resolve)
 const QAIndex = resolve => require(['../pages/qa/Index'], resolve)
 const AddAnswerUser = resolve => require(['../pages/qa/AddAnswerUser'], resolve)
 const ClubIndex = resolve => require(['../pages/club/Index'], resolve)
+const ClubCreate = resolve => require(['../pages/club/Create'], resolve)
 Vue.use(Router)
 
 export default new Router({
@@ -67,6 +68,14 @@ export default new Router({
         keepAlive: false // 要缓存
       },
       component: ClubIndex
+    },
+    {
+      path: '/club/create',
+      name: 'ClubCreate',
+      meta: {
+        keepAlive: false // 要缓存
+      },
+      component: ClubCreate
     }
   ]
 })
