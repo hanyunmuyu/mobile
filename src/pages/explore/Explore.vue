@@ -6,16 +6,14 @@
         <mu-tab value="topic" title="专题"/>
     </mu-tabs>
     <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="同学/社团/高校"/>
-    <div style="width: 100%;overflow-x: scroll;">
-        <mu-paper>
-            <mu-bottom-nav @change="handleChange">
-                <mu-bottom-nav-item value="school" title="高校圈" icon="school"/>
-                <mu-bottom-nav-item value="group" title="社团" icon="group"/>
-                <mu-bottom-nav-item value="group" title="热议" icon="insert_comment"/>
-                <mu-bottom-nav-item value="qa" title="问答" icon="question_answer"/>
-            </mu-bottom-nav>
-        </mu-paper>
-    </div>
+    <mu-paper>
+        <mu-bottom-nav @change="handleChange">
+            <mu-bottom-nav-item value="school" title="校园" icon="school"/>
+            <mu-bottom-nav-item value="group" title="社团" icon="group"/>
+            <mu-bottom-nav-item value="group" title="热议" icon="insert_comment"/>
+            <mu-bottom-nav-item value="qa" title="问答" icon="question_answer"/>
+        </mu-bottom-nav>
+    </mu-paper>
     <mu-list>
         <mu-list-item style="text-align: left" v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
             <mu-avatar src="/static/images/morning.jpg" slot="leftAvatar"/>
@@ -47,6 +45,8 @@ export default {
       this.bottomNav = val
       if (val === 'qa') {
         this.$router.push('/qa/index')
+      } else if (val === 'school') {
+        this.$router.push('/school')
       }
     }
   }
