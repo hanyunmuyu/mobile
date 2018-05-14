@@ -5,7 +5,9 @@
     </mu-appbar>
     <mu-list>
         <mu-list-item>
-            <mu-avatar src="/static/images/morning.jpg"/>
+            <mu-flat-button label="选择头像">
+                <input type="file" class="file-button">
+            </mu-flat-button>
         </mu-list-item>
         <mu-list-item>
             <mu-text-field hintText="输入社团名称" value=""/>
@@ -52,5 +54,12 @@ export default {
 </script>
 
 <style scoped>
-
+    .file-button{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: 0;
+    }
 </style>
