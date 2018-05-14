@@ -4,8 +4,8 @@
             <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
             <mu-icon-button @click="createClub" icon="add" slot="right"/>
         </mu-appbar>
-        <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="同学/社团/高校"/>
-        <div class="content">
+        <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="社团"/>
+        <div class="tab-content">
             <ul :style="{width:navWidth+'px'}">
                 <li :class="{'active':activeCity===index}" v-for="(city,index) in cities" :key="index" @click="tab(index)">
                     {{city.name}}
@@ -13,12 +13,17 @@
                 </li>
             </ul>
         </div>
-        <mu-grid-list>
-            <mu-grid-tile v-for="(tile, index) in list" :key="index">
-                <img :src="tile.image"/>
-            </mu-grid-tile>
-        </mu-grid-list>
-
+        <mu-list>
+            <mu-list-item class="school-item" v-for="(school,index) in schools" :key="index">
+                <div class="content">
+                    <img v-lazy="school.img"/>
+                    <p class="notice">{{school.noticeNmu}}万人关注</p>
+                </div>
+                <div class="title">
+                    {{school.name}}
+                </div>
+            </mu-list-item>
+        </mu-list>
     </div>
 </template>
 
@@ -27,41 +32,7 @@ export default {
   name: 'clubIndex',
   data () {
     return {
-      list: [
-        {
-          image: '/static/images/breakfast.jpg',
-          title: 'Breakfast',
-          author: 'Myron'
-        }, {
-          image: '/static/images/burger.jpg',
-          title: 'Burger',
-          author: 'Linyu'
-        }, {
-          image: '/static/images/camera.jpg',
-          title: 'Camera',
-          author: 'ruolin'
-        }, {
-          image: '/static/images/hats.jpg',
-          title: 'Hats',
-          author: 'kakali'
-        }, {
-          image: '/static/images/honey.jpg',
-          title: 'Honey',
-          author: 'yuyang'
-        }, {
-          image: '/static/images/morning.jpg',
-          title: 'Morning',
-          author: 'mokayi'
-        }, {
-          image: '/static/images/vegetables.jpg',
-          title: 'Vegetables',
-          author: 'NUyyyyyyy'
-        }, {
-          image: '/static/images/water-plant.jpg',
-          title: 'water',
-          author: 'TDDyyyyyyy'
-        }
-      ],
+      schools: [],
       cities: [
         {
           name: '全部',
@@ -130,6 +101,27 @@ export default {
       activeCity: 0
     }
   },
+  mounted () {
+    for (let i = 0; i < 15; i++) {
+      if (i % 3 === 0) {
+        this.schools.push(
+          {
+            id: i,
+            name: '旅游团' + i,
+            noticeNmu: 100,
+            img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526283438972&di=6c352458995eb2b62dca0fa5fe375892&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D3256669430%2C1985233133%26fm%3D214%26gp%3D0.jpg'
+          })
+      } else {
+        this.schools.push(
+          {
+            id: i,
+            name: '旅游团' + i,
+            noticeNmu: 100,
+            img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526283530706&di=3fe0b2613a44810f8f1c4aee43b12ce8&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D2395807436%2C3339272206%26fm%3D214%26gp%3D0.jpg'
+          })
+      }
+    }
+  },
   methods: {
     goBack () {
       this.$router.back()
@@ -154,7 +146,36 @@ export default {
 </script>
 
 <style scoped lang="less">
-    .content {
+    .school-item {
+        width: 50%;
+        float: left;
+        .content {
+            width: 100%;
+            position: relative;
+            display: block;
+            img {
+                width: 100%;
+                border-radius: 3px;
+                height: 150px;
+                overflow: hidden;
+            }
+            .notice {
+                width: 100%;
+                font-size: 14px;
+                position: absolute;
+                bottom: 4px;
+                background: rgba(0, 0, 0, .1);
+                color: white;
+            }
+        }
+        .title {
+            width: 100%;
+            font-size: 12px;
+            text-align: center
+        }
+    }
+
+    .tab-content {
         width: 100%;
         display: block;
         overflow-x: scroll;

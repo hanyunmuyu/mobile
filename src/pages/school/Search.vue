@@ -1,23 +1,23 @@
 <template>
-<div>
-<mu-appbar title="搜索-高校">
-    <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
-</mu-appbar>
-<mu-text-field style="text-align: left;width: 100%" icon="search" hintText="高校"/>
-<mu-list>
-    <mu-list-item class="school-item" v-for="(school,index) in schools" :key="index">
-        <div class="content">
-            <img v-lazy="school.img" />
-            <p class="notice">{{school.noticeNmu}}万人关注</p>
+    <div>
+        <mu-appbar title="搜索-高校">
+            <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
+        </mu-appbar>
+        <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="高校"/>
+        <mu-list>
+            <mu-list-item class="school-item" v-for="(school,index) in schools" :key="index">
+                <div class="content">
+                    <img v-lazy="school.img"/>
+                    <p class="notice">{{school.noticeNmu}}万人关注</p>
+                </div>
+                <div class="title">
+                    {{school.name}}
+                </div>
+            </mu-list-item>
+        </mu-list>
+        <div :class="{block:true,hidden:true,show:false}">
         </div>
-        <div class="title">
-            {{school.name}}
-        </div>
-    </mu-list-item>
-</mu-list>
-<div :class="{block:true,hidden:true,show:false}">
-</div>
-</div>
+    </div>
 </template>
 
 <script>
@@ -25,8 +25,7 @@ export default {
   name: 'clubIndex',
   data () {
     return {
-      schools: [
-      ]
+      schools: []
     }
   },
   mounted () {
@@ -60,34 +59,53 @@ export default {
 }
 </script>
 
-        <style scoped lang="less">
-            .school-item{
-                width: 50%;
-                float: left;
-                .content{
-                    width: 100%;
-                    position: relative;
-                    img{
-                        width: 100%;border-radius: 3px
-                    }
-                    .notice{
-                        width:100%;font-size: 14px;position: absolute;bottom: 4px;background: rgba(0,0,0,.1)
-                    }
-                }
-                .title{
-                    width: 100%;font-size: 12px;text-align: center
-                }
+<style scoped lang="less">
+    .school-item {
+        width: 50%;
+        float: left;
+        .content {
+            width: 100%;
+            position: relative;
+            img {
+                width: 100%;
+                border-radius: 3px;
+                height: 150px;
             }
-            ::-webkit-scrollbar {
-                display: none;
+            .notice {
+                width: 100%;
+                font-size: 14px;
+                position: absolute;
+                bottom: 4px;
+                background: rgba(0, 0, 0, .1);
+                color: white;
             }
-            .block{
-                height: 100%;width: 100%;position: fixed;top: 0;right: 0;z-index: 111;background:rgba(0,0,0,0.6);
-            }
-            .hidden{
-                display: none;
-            }
-            .show{
-                display: block;
-            }
-        </style>
+        }
+        .title {
+            width: 100%;
+            font-size: 12px;
+            text-align: center
+        }
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .block {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 111;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+</style>

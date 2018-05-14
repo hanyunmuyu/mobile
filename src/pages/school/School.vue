@@ -70,14 +70,16 @@ export default {
             display: block;
             img {
                 width: 100%;
-                border-radius: 3px
+                border-radius: 3px;
+                height: 150px;
             }
             .notice {
                 width: 100%;
                 font-size: 14px;
                 position: absolute;
                 bottom: 4px;
-                background: rgba(0, 0, 0, .1)
+                background: rgba(0, 0, 0, .1);
+                color: white;
             }
         }
         .title {
