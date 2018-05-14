@@ -5,7 +5,7 @@
             <mu-icon value="search" @click="search" slot="right"/>
         </mu-appbar>
         <mu-list>
-            <mu-list-item class="school-item" v-for="(school,index) in schools" :key="index">
+            <mu-list-item to="/school/detail" class="school-item" v-for="(school,index) in schools" :key="index">
                 <div class="content">
                     <img v-lazy="school.img"/>
                     <p class="notice">{{school.noticeNmu}}万人关注</p>
