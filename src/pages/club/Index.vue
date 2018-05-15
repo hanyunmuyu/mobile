@@ -4,26 +4,46 @@
             <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
             <mu-icon-button @click="createClub" icon="add" slot="right"/>
         </mu-appbar>
-        <mu-text-field style="text-align: left;width: 100%" icon="search" hintText="社团"/>
-        <div class="tab-content">
-            <ul :style="{width:navWidth+'px'}">
-                <li :class="{'active':activeCity===index}" v-for="(city,index) in cities" :key="index" @click="tab(index)">
-                    {{city.name}}
-                    <span :class="{'active':activeCity===index}"></span>
-                </li>
-            </ul>
+        <mu-paper>
+            <mu-bottom-nav @change="handleChange">
+                <mu-bottom-nav-item value="history" title="动态" icon="history"/>
+                <mu-bottom-nav-item value="list" title="分类" icon="list"/>
+            </mu-bottom-nav>
+        </mu-paper>
+        <div v-if="nav==='history'">
+            <mu-list>
+                <mu-list-item style="text-align: left" v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                    <mu-avatar src="/static/images/morning.jpg" slot="leftAvatar"/>
+                    <span slot="describe">
+                <span style="color: rgba(0, 0, 0, .87)">寒云 ：</span>
+                周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                        <!--<p><mu-icon value="favorite" :size="16"/></p>-->
+                </span>
+                <mu-divider inset/>
+                </mu-list-item>
+            </mu-list>
         </div>
-        <mu-list>
-            <mu-list-item class="school-item" v-for="(school,index) in schools" :key="index">
-                <div class="content">
-                    <img v-lazy="school.img"/>
-                    <p class="notice">{{school.noticeNmu}}万人关注</p>
-                </div>
-                <div class="title">
-                    {{school.name}}
-                </div>
-            </mu-list-item>
-        </mu-list>
+        <div style="width: 100%" v-else>
+            <div class="tab-content">
+                <ul :style="{width:navWidth+'px'}">
+                    <li :class="{'active':activeCity===index}" v-for="(city,index) in cities" :key="index" @click="tab(index)">
+                        {{city.name}}
+                        <span :class="{'active':activeCity===index}"></span>
+                    </li>
+                </ul>
+            </div>
+            <mu-list>
+                <mu-list-item class="school-item" v-for="(school,index) in schools" :key="index">
+                    <div class="content">
+                        <img v-lazy="school.img"/>
+                        <p class="notice">{{school.noticeNmu}}万人关注</p>
+                    </div>
+                    <div class="title">
+                        {{school.name}}
+                    </div>
+                </mu-list-item>
+            </mu-list>
+        </div>
     </div>
 </template>
 
@@ -32,6 +52,7 @@ export default {
   name: 'clubIndex',
   data () {
     return {
+      nav: 'history',
       schools: [],
       cities: [
         {
@@ -123,6 +144,9 @@ export default {
     }
   },
   methods: {
+    handleChange (val) {
+      this.nav = val
+    },
     goBack () {
       this.$router.back()
     },

@@ -4,17 +4,38 @@
             <mu-icon-button @click="goBack" icon="arrow_back" slot="left"/>
             <mu-icon value="search" @click="search" slot="right"/>
         </mu-appbar>
-        <mu-list>
-            <mu-list-item to="/school/detail" class="school-item" v-for="(school,index) in schools" :key="index">
-                <div class="content">
-                    <img v-lazy="school.img"/>
-                    <p class="notice">{{school.noticeNmu}}万人关注</p>
-                </div>
-                <div class="title">
-                    {{school.name}}
-                </div>
-            </mu-list-item>
-        </mu-list>
+        <mu-paper>
+            <mu-bottom-nav @change="handleChange">
+                <mu-bottom-nav-item value="history" title="动态" icon="history"/>
+                <mu-bottom-nav-item value="business" title="校园" icon="business"/>
+            </mu-bottom-nav>
+        </mu-paper>
+        <div v-if="nav==='history'">
+            <mu-list>
+                <mu-list-item style="text-align: left" v-for="index in 10" title="这个周末一起吃饭么?" :key="index">
+                    <mu-avatar src="/static/images/morning.jpg" slot="leftAvatar"/>
+                    <span slot="describe">
+                <span style="color: rgba(0, 0, 0, .87)">寒云 ：</span>
+                周末要来你这里出差，要不要一起吃个饭呀，实在编不下去了,哈哈哈哈哈哈
+                        <!--<p><mu-icon value="favorite" :size="16"/></p>-->
+                </span>
+                    <mu-divider inset/>
+                </mu-list-item>
+            </mu-list>
+        </div>
+        <div style="width: 100%"  v-else>
+            <mu-list>
+                <mu-list-item to="/school/detail" class="school-item" v-for="(school,index) in schools" :key="index">
+                    <div class="content">
+                        <img v-lazy="school.img"/>
+                        <p class="notice">{{school.noticeNmu}}万人关注</p>
+                    </div>
+                    <div class="title">
+                        {{school.name}}
+                    </div>
+                </mu-list-item>
+            </mu-list>
+        </div>
     </div>
 </template>
 
@@ -23,10 +44,14 @@ export default {
   name: 'School',
   data () {
     return {
+      nav: 'history',
       schools: []
     }
   },
   methods: {
+    handleChange (val) {
+      this.nav = val
+    },
     goBack () {
       this.$router.back()
     },
