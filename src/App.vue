@@ -5,7 +5,6 @@
             <router-view v-if="$route.meta.keepAlive"></router-view>
         </keep-alive>
         <router-view v-if="!$route.meta.keepAlive"></router-view>
-        <div style="height: 50px"></div>
         <BottomNav v-show="show"></BottomNav>
     </div>
 </template>
@@ -22,8 +21,7 @@ export default {
     }
   },
   mounted () {
-    let scrollTop = window.scrollY
-    this.scrollTop = scrollTop
+    this.scrollTop = window.scrollY
     window.addEventListener('touchstart', this.showBottom)
     window.addEventListener('touchmove', this.winScroll)
   },
@@ -52,5 +50,8 @@ export default {
         color: #2c3e50;
         height: 100%;
         width: 100%;
+    }
+    ::-webkit-scrollbar{
+        display: none;
     }
 </style>
