@@ -4,18 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import axios from 'axios'
 import MuseUI from 'muse-ui'
 import FastClick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 import 'muse-ui/dist/muse-ui.css'
-import 'animate.css'
 import 'reset.css'
 
 FastClick.attach(document.body)
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-Vue.prototype.$axios = axios
-
 Vue.use(MuseUI)
 // 懒加载
 Vue.use(VueLazyload, {

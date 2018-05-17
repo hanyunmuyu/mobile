@@ -1,10 +1,10 @@
 <template>
     <div id="app" ref="app">
-        <!--<img src="/static/logo.png">-->
-        <keep-alive>
+            <keep-alive>
+
             <router-view v-if="$route.meta.keepAlive"></router-view>
-        </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive"></router-view>
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
         <BottomNav v-show="show"></BottomNav>
     </div>
 </template>
@@ -17,7 +17,8 @@ export default {
   data () {
     return {
       show: true,
-      scrollTop: 0
+      scrollTop: 0,
+      timer: null
     }
   },
   mounted () {
@@ -31,10 +32,13 @@ export default {
       if (Math.abs(scrollTop - this.scrollTop) > 30) {
         this.show = false
         this.scrollTop = scrollTop
+        clearTimeout(this.timer)
       }
     },
     showBottom () {
-      this.show = true
+      this.timer = setTimeout(() => {
+        this.show = true
+      }, 200)
     }
   },
   components: {BottomNav}
