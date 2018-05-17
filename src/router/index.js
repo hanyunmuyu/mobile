@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Explore = resolve => require(['../pages/explore/Explore'], resolve)
+const Detail = resolve => require(['../pages/explore/Detail'], resolve)
 const School = resolve => require(['../pages/school/School'], resolve)
 const SchoolSearch = resolve => require(['../pages/school/Search'], resolve)
 const SchoolDetail = resolve => require(['../pages/school/Detail'], resolve)
@@ -21,6 +22,14 @@ export default new Router({
         keepAlive: true // 要缓存
       },
       component: Explore
+    },
+    {
+      path: '/explore/detail',
+      name: 'Detail',
+      meta: {
+        keepAlive: true // 要缓存
+      },
+      component: Detail
     },
     {
       path: '/school',

@@ -15,7 +15,7 @@
         </mu-bottom-nav>
     </mu-paper>
     <mu-list>
-        <mu-list-item v-for="index in 10" :key="index">
+        <mu-list-item to="/explore/detail" v-for="index in 10" :key="index">
             <div  @click.stop="authorInfo" class="item-header">
                 <div class="item-avatar">
                     <img src="/static/images/morning.jpg"/>
@@ -29,7 +29,7 @@
                     欢迎大家加入我们的团队
                 </div>
                 <div class="item-content">
-                    扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了扩军了
+                    莘莘团一直在打造一个纯洁的高校交友平台，为大家解决学习找那个中的各种烦恼
                 </div>
             </div>
             <div class="item-footer">
@@ -98,12 +98,11 @@ export default {
         clear: both;
         display: block;
         text-align: left;
-        margin-top: 8px;
+        margin: 8px 0;
         .item-title{
             font-weight: bold;
         }
         .item-content{
-            font-size: 90%;
             margin-top: 8px;
         }
     }

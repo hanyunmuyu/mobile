@@ -1,7 +1,6 @@
 <template>
     <div id="app" ref="app">
             <keep-alive>
-
             <router-view v-if="$route.meta.keepAlive"></router-view>
             </keep-alive>
             <router-view v-if="!$route.meta.keepAlive"></router-view>
@@ -31,6 +30,7 @@ export default {
       let scrollTop = window.scrollY
       if (Math.abs(scrollTop - this.scrollTop) > 30) {
         this.show = false
+        this.$store.state.isShowHeader = false
         this.scrollTop = scrollTop
         clearTimeout(this.timer)
       }
@@ -38,7 +38,8 @@ export default {
     showBottom () {
       this.timer = setTimeout(() => {
         this.show = true
-      }, 200)
+        this.$store.state.isShowHeader = true
+      }, 100)
     }
   },
   components: {BottomNav}
@@ -57,5 +58,8 @@ export default {
     }
     ::-webkit-scrollbar{
         display: none;
+    }
+    .a{
+        background: red;
     }
 </style>

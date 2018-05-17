@@ -8,6 +8,7 @@ const state = {
   footerActive: 'explore',
   token: localStorage.getItem('token'),
   isShowFooter: true,
+  isShowHeader: true,
   userInfo: {user_name: localStorage.getItem('user_name'), avatar: localStorage.getItem('avatar')}
 }
 const mutations = {
